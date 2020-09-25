@@ -8,6 +8,17 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        implementation 'com.google.ar:core:1.16.0'
+    }
+}
+android {
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    dependencies {
+        implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.8.0'
+        implementation 'com.google.ar.sceneform:core:1.8.0'
     }
 }
 
