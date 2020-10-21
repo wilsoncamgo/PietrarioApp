@@ -1,14 +1,14 @@
-class Recurso {
+import 'package:pietrario_sample_app/model/Bioasset.dart';
+
+class Recurso extends Bioasset {
 
   int valor;
   double produccion;
   int minCosto;
   int maxCosto;
-  int costoAgua;
-  int costoMusgo;
-  int costoEnergia;
 
   Recurso({this.valor, this.produccion, this.minCosto, this.maxCosto,
-      this.costoAgua, this.costoMusgo, this.costoEnergia});
+  costoAgua, costoMusgo, costoEnergia, descripcion})
+  : super(costoAgua: costoAgua, costoMusgo: costoMusgo, costoEnergia: costoEnergia);
 
 }

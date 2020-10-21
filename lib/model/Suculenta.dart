@@ -10,6 +10,8 @@ class Suculenta extends Bioasset {
   Vital temperatura;
   String especie;
 
-  Suculenta({this.salud, this.hidratacion, this.minerales, this.temperatura, this.especie});
+  Suculenta({this.salud, this.hidratacion, this.minerales, this.temperatura, this.especie,
+  costoAgua, costoMusgo, costoEnergia, descripcion})
+  : super(costoAgua: costoAgua, costoMusgo: costoMusgo, costoEnergia: costoEnergia);
 
 }

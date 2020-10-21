@@ -1,8 +1,10 @@
 class Bioasset {
 
-  int precio;
+  int costoAgua;
+  int costoMusgo;
+  int costoEnergia;
   String descripcion;
 
-  Bioasset({this.precio, this.descripcion});
+  Bioasset({this.costoAgua, this.costoMusgo, this.costoEnergia, this.descripcion});
 
 }

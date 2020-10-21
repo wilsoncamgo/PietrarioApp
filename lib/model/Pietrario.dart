@@ -4,6 +4,8 @@ class Pietrario {
 
   String terreno;
   List<Suculenta> suculentas;
-  int temperatura;
+  double temperatura;
+
+  Pietrario({this.terreno, this.suculentas, this.temperatura});
 
 }
