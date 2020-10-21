@@ -1,9 +1,15 @@
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:pietrario_sample_app/screens/intro_page.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 void main() {
-  runApp(HelloWorld());
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: IntroPage(),
+  ));
 }
 
 class HelloWorld extends StatefulWidget {
@@ -17,14 +23,10 @@ class _HelloWorldState extends State<HelloWorld> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Hello World'),
-        ),
-        body: ArCoreView(
-          onArCoreViewCreated: _onArCoreViewCreated,
-        ),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => IntroPage(),
+      },
     );
   }
 
@@ -50,6 +52,7 @@ class _HelloWorldState extends State<HelloWorld> {
     );
     controller.addArCoreNode(node);
   }
+
   void _addCylinder(ArCoreController controller) {
     final material = ArCoreMaterial(
       color: Colors.red,
