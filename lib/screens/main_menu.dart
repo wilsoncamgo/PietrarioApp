@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pietrario_sample_app/screens/market.dart';
 
 class MainMenu extends StatefulWidget {
+  @override
+  _MainMenuState createState() => _MainMenuState();
+}
+
+class _MainMenuState extends State<MainMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -12,17 +18,11 @@ class MainMenu extends StatefulWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MainMenu()),
+              MaterialPageRoute(builder: (context) => Market()),
             );
           },
         ),
       ),
     );
-  }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
   }
 }

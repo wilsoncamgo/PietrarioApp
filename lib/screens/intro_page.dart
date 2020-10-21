@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pietrario_sample_app/screens/main_menu.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({Key key}) : super(key: key);
@@ -7,17 +8,27 @@ class IntroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Insert Image Demo'),
-        ),
         body: Center(
-          child: Column(
-            children: <Widget>[
-              Image.asset('assets/img/ar.png'),
-            ],
-          ),
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MainMenu()),
+              );
+            },
+            child: Container(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: Image.asset(
+                  'assets/img/logo.png',
+                  height: 200,
+                  width: 400,),
+              ),),
+          )
         ),
       ),
     );
   }
 }
+
+

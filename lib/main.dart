@@ -1,14 +1,14 @@
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pietrario_sample_app/screens/market.dart';
+import 'package:pietrario_sample_app/screens/intro_page.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 void main() {
   SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Market(),
+    home: IntroPage(),
   ));
 }
 
@@ -25,7 +25,7 @@ class _HelloWorldState extends State<HelloWorld> {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => Market(),
+        '/': (context) => IntroPage(),
       },
     );
   }
