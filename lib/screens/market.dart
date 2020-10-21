@@ -1,5 +1,6 @@
 import 'dart:math' as Math;
 import 'package:flutter/material.dart';
+import 'package:pietrario_sample_app/screens/main_menu.dart';
 import 'package:pietrario_sample_app/util/Assets.dart';
 
 class Market extends StatefulWidget {
@@ -10,8 +11,8 @@ class Market extends StatefulWidget {
 class _MarketState extends State<Market> {
   @override
   Widget build(BuildContext context) {
-    final double w = MediaQuery.of(context).size.width;
-    final double h = MediaQuery.of(context).size.height;
+    // final double w = MediaQuery.of(context).size.width;
+    // final double h = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Consts.bgColor,
       body: Column(
@@ -38,11 +39,14 @@ class _MarketBarState extends State<MarketBar> {
       children: [
         // Title and back button
         Container(
-            padding: EdgeInsets.all(w/30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Transform.rotate(
+          padding: EdgeInsets.all(w/30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap:() => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MainMenu())),
+                child: Transform.rotate(
                   angle: Math.pi,
                   child: Image.asset(
                     Assets.img('next'),
@@ -50,21 +54,22 @@ class _MarketBarState extends State<MarketBar> {
                     height: w/12,
                   ),
                 ),
-                Text(
-                  'Mercado',
-                  style: TextStyle(
-                    fontSize: w/20,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.5,
-                    color: Consts.textColor,
-                  ),
+              ),
+              Text(
+                'Mercado',
+                style: TextStyle(
+                  fontSize: w/20,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.5,
+                  color: Consts.textColor,
                 ),
-                SizedBox(
-                  width: w/12,
-                ),
-              ],
-            )
-        ),
+              ),
+              SizedBox(
+                width: w/12,
+              ),
+            ],
+          )
+      ),
         //Resources panel
         Container(
           padding: EdgeInsets.all(w/30),
