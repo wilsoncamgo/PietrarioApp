@@ -9,19 +9,17 @@ class MainMenu extends StatefulWidget {
 class _MainMenuState extends State<MainMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Center(
-        child: RaisedButton(
-          child: Text('Launch screen'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Market()),
-            );
-          },
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Image.asset(
+            'assets/img/logo.png',
+            width: 100.0,
+            height: 100.0,
+          ),
+        ],
       ),
     );
   }
