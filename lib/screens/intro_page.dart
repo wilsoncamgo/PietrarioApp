@@ -5,12 +5,17 @@ class IntroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          child: Image.asset("/img/logo.png"),
-          width: 124,
-          height: 152,
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Insert Image Demo'),
+        ),
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              Image.asset('assets/img/ar.png'),
+            ],
+          ),
         ),
       ),
     );
