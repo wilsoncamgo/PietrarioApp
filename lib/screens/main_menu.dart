@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/screens/market.dart';
+import 'package:pietrario_sample_app/screens/settings.dart';
 
 class MainMenu extends StatefulWidget {
   @override
@@ -10,15 +10,24 @@ class _MainMenuState extends State<MainMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Image.asset(
-            'assets/img/logo.png',
+            'assets/img/leaf.png',
             width: 100.0,
             height: 100.0,
           ),
+          RaisedButton(
+            child: Text('Settings'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Setting()),
+              );
+            },
+          )
         ],
       ),
     );

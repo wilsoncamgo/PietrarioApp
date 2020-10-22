@@ -16,14 +16,13 @@ class IntroPage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => MainMenu()),
               );
             },
-            child: Container(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
+            child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.0),
                 child: Image.asset(
                   'assets/img/logo.png',
                   height: 200,
                   width: 400,),
-              ),),
+            ),
           )
         ),
       ),
