@@ -1,11 +1,13 @@
-import 'package:pietrario_sample_app/model/Suculenta.dart';
+import 'package:pietrario_sample_app/model/Bioasset.dart';
+
 
 class Pietrario {
 
-  String terreno;
-  List<Suculenta> suculentas;
-  double temperatura;
 
-  Pietrario({this.terreno, this.suculentas, this.temperatura});
+  String terrain;
+  double temperature;
+  Map<int, Bioasset> bioassets;
+
+  Pietrario({this.terrain, this.temperature, this.bioassets});
 
 }

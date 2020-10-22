@@ -1,10 +1,14 @@
 class Vital {
 
-  int valor;
-  int minValor;
-  int maxValor;
-  int perdidaValor;
+  int value;
+  int minValue;
+  int maxValue;
+  int losingValue;
 
-  Vital({this.valor, this.minValor, this.maxValor, this.perdidaValor});
+  Vital({this.value, this.minValue, this.maxValue, this.losingValue});
+
+  Vital copy() {
+    return Vital(value: value, minValue: minValue, maxValue: maxValue, losingValue: losingValue);
+  }
 
 }
