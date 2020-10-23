@@ -9,26 +9,25 @@ class IntroPage extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MainMenu()),
-              );
-            },
-            child: Container(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
-                child: Image.asset(
-                  'assets/img/logo.png',
-                  height: 200,
-                  width: 400,),
-              ),),
-          )
-        ),
+            child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainMenu()),
+            );
+          },
+          child: Container(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: Image.asset(
+                'assets/img/logo.png',
+                height: 200,
+                width: 400,
+              ),
+            ),
+          ),
+        )),
       ),
     );
   }
 }
-
-
