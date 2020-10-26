@@ -1,4 +1,3 @@
-import 'package:pietrario_sample_app/controller/PietrarioCtrl.dart';
 import 'package:pietrario_sample_app/model/Bioasset.dart';
 import 'package:pietrario_sample_app/model/Guardian.dart';
 import 'package:pietrario_sample_app/model/Pietrario.dart';
@@ -7,7 +6,8 @@ import 'package:pietrario_sample_app/model/Succulent.dart';
 import 'package:pietrario_sample_app/model/User.dart';
 import 'package:pietrario_sample_app/model/Vital.dart';
 
-class InventoryController {
+/// @author estidlozano
+class InventoryCtrl {
 
   static void initUserData() {
     User().pietrario = Pietrario(terrain: 'Desert', temperature: 35);
@@ -68,7 +68,7 @@ class InventoryController {
       User().inventory[bioasset.name] = bioasset;
       b = true;
     }
-    print('put: $b');
+    // print('put: $b');
     return b;
   }
 
@@ -78,7 +78,7 @@ class InventoryController {
       User().inventory[name].amount += amount;
       b = true;
     }
-    print('add: $b');
+    // print('add: $b');
     return b;
   }
 
@@ -88,13 +88,13 @@ class InventoryController {
       User().inventory[name].amount -= amount;
       b = true;
     }
-    print('drop: $b');
+    // print('drop: $b');
     return b;
   }
 
   static bool exist(String name) {
     bool b = User().inventory.containsKey(name);
-    print('exist: $b');
+    // print('exist: $b');
     return b;
   }
 

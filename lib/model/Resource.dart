@@ -1,5 +1,6 @@
 import 'package:pietrario_sample_app/model/Bioasset.dart';
 
+/// @author estidlozano
 class Resource extends Bioasset {
 
   double production;

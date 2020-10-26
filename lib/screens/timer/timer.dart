@@ -7,25 +7,20 @@ class Timer extends StatefulWidget {
 }
 
 class TimerState extends State<Timer> with TickerProviderStateMixin {
+
   AnimationController controller;
-  Map data={};
-  int number=10;
-
-
+  Map data = {};
+  int number = 10;
   // bool isPlaying = false;
 
-  String get TimerString {
-    Duration duration = controller.duration * controller.value;
-    return '${duration.inMinutes}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
+  String getTimerString() {
+    Duration d = controller.duration * controller.value;
+    return '${d.inMinutes}:${(d.inSeconds % 60).toString().padLeft(2, '0')}';
   }
-
 
   @override
   void initState()  {
-     super.initState();
-
-
-
+    super.initState();
     // ..addStatusListener((status) {
     //     if (controller.status == AnimationStatus.dismissed) {
     //       setState(() => isPlaying = false);
@@ -37,16 +32,14 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    data =ModalRoute.of(context).settings.arguments;
+    data = ModalRoute.of(context).settings.arguments;
     setState(() {
-      number=data['time'];
+      number = data['time'];
     });
     controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: number),
     );
-
-
 
     ThemeData themeData = Theme.of(context);
     return Scaffold(
@@ -67,11 +60,12 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
                           animation: controller,
                           builder: (BuildContext context, Widget child) {
                             return CustomPaint(
-                                painter: TimerPainter(
-                                  animation: controller,
-                                  backgroundColor: Colors.white,
-                                  color: themeData.indicatorColor,
-                                ));
+                              painter: TimerPainter(
+                                animation: controller,
+                                backgroundColor: Colors.white,
+                                color: themeData.indicatorColor,
+                              )
+                            );
                           },
                         ),
                       ),
@@ -83,14 +77,14 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
                           children: <Widget>[
                             Text(
                               "Temporizador",
-                              style: themeData.textTheme.subhead,
+                              style: themeData.textTheme.subtitle1,
                             ),
                             AnimatedBuilder(
                                 animation: controller,
                                 builder: (BuildContext context, Widget child) {
                                   return Text(
-                                    TimerString,
-                                    style: themeData.textTheme.display4,
+                                    getTimerString(),
+                                    style: themeData.textTheme.headline1,
                                   );
                                 }),
                           ],

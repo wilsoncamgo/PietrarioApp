@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/screens/main_menu.dart';
-import 'package:pietrario_sample_app/util/Assets.dart';
+import 'package:pietrario_sample_app/util/Config.dart';
+import 'package:pietrario_sample_app/util/Consts.dart';
 
-class Setting extends StatefulWidget {
+/// @author JuanCuevas2207
+class Settings extends StatefulWidget {
   @override
-  _SettingState createState() => _SettingState();
+  _SettingsState createState() => _SettingsState();
 }
 
-class _SettingState extends State<Setting> {
+class _SettingsState extends State<Settings> {
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0.0,
+        elevation: 0,
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
         ),
@@ -20,151 +22,144 @@ class _SettingState extends State<Setting> {
       body: Center(
         child: Column(
           children: [
-            Image.asset(
-              'assets/img/logo.png',
-              width: 100.0,
-              height: 150.0,
+            Text(
+              Consts.getText('settings'),
+              style: Consts.titleStyle,
             ),
-            SettingOptions()
+            SizedBox(
+              height: Consts.width(20),
+            ),
+            buildSettings(),
           ],
         ),
       ),
     );
   }
-}
 
-class SettingOptions extends StatefulWidget {
-  @override
-  _SettingOptionsState createState() => _SettingOptionsState();
-}
-
-class _SettingOptionsState extends State<SettingOptions> {
-  static bool rigorous = false;
-  static bool cloudy = false;
-  static bool vibration = false;
-
-  static double sound = 0;
-  static double music = 0;
-
-  static String language = 'Español';
-
-  Widget build(BuildContext context) {
-    final double w = MediaQuery.of(context).size.width;
-
+  Widget buildSettings() {
     return Container(
-        margin: EdgeInsets.all(w/10),
-        padding: EdgeInsets.all(w/20),
-        decoration: BoxDecoration(
-            color: Consts.mainColor,
-            borderRadius: BorderRadius.all(
-                Radius.circular(10)
-            )
+      margin: EdgeInsets.all(Consts.width(10)),
+      padding: EdgeInsets.all(Consts.width(5)),
+      decoration: BoxDecoration(
+        color: Consts.mainColor,
+        borderRadius: BorderRadius.all(
+            Radius.circular(Consts.width(5))
         ),
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Modo riguroso', style: TextStyle(fontSize: 18.0)),
-                Switch(
-                  value: rigorous,
-                  onChanged: (value) {
-                    setState(() {
-                      rigorous = value;
-                    });
-                  },
-                  activeTrackColor: Colors.lightGreenAccent,
-                  activeColor: Colors.green,
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Modo nublado', style: TextStyle(fontSize: 18.0)),
-                Switch(
-                  value: cloudy,
-                  onChanged: (value) {
-                    setState(() {
-                      cloudy = value;
-                    });
-                  },
-                  activeTrackColor: Colors.lightGreenAccent,
-                  activeColor: Colors.green,
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Modo vibracion', style: TextStyle(fontSize: 18.0)),
-                Switch(
-                  value: vibration,
-                  onChanged: (value) {
-                    setState(() {
-                      vibration = value;
-                    });
-                  },
-                  activeTrackColor: Colors.lightGreenAccent,
-                  activeColor: Colors.green,
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Idioma', style: TextStyle(fontSize: 18.0)),
-                DropdownButton(
-                  value: language,
-                  items: [
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                Consts.getText('rigorous'),
+                style: Consts.textStyle,
+              ),
+              Switch(
+                value: Config.rigorous,
+                onChanged: (v) => setState(() {
+                  Config.setRigorous(v);
+                }),
+                activeTrackColor: Colors.lightGreenAccent,
+                activeColor: Colors.green,
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                Consts.getText('cloudy'),
+                style: Consts.textStyle,
+              ),
+              Switch(
+                value: Config.cloudy,
+                onChanged: (v) => setState(() {
+                  Config.setCloudy(v);
+                }),
+                activeTrackColor: Colors.lightGreenAccent,
+                activeColor: Colors.green,
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                Consts.getText('vibration'),
+                style: Consts.textStyle,
+              ),
+              Switch(
+                value: Config.vibration,
+                onChanged: (v) => setState(() {
+                  Config.setVibration(v);
+                }),
+                activeTrackColor: Colors.lightGreenAccent,
+                activeColor: Colors.green,
+              )
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                Consts.getText('language'),
+                style: Consts.textStyle,
+              ),
+              DropdownButton(
+                value: Config.getLang(),
+                items: Config.langs.map((v) =>
                     DropdownMenuItem(
-                      child: Text("Español"),
-                      value: 'Español',
-                    ),
-                  ],
-                  onChanged: (value) {
-                    setState(() {
-                      language = value;
-                    });
-                  },
-                )
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Text('Sonido', style: TextStyle(fontSize: 18.0)),
-                Slider(
-                    value: sound,
-                    min: 0,
-                    max: 10,
-                    divisions: 10,
-                    activeColor: Colors.lightGreenAccent,
-                    inactiveColor: Colors.grey,
-                    onChanged: (double value) {
-                      setState(() {
-                        sound = value;
-                      });
-                    })
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Text('Musica', style: TextStyle(fontSize: 18.0)),
-                Slider(
-                    value: music,
-                    min: 0,
-                    max: 10,
-                    divisions: 10,
-                    activeColor: Colors.lightGreenAccent,
-                    inactiveColor: Colors.grey,
-                    onChanged: (double value) {
-                      setState(() {
-                        music = value;
-                      });
-                    })
-              ],
-            ),
-          ],
-        ));
+                      child: Text('$v'),
+                      value: '$v',
+                    )
+                ).toList(),
+                onChanged: (v) => setState(() {
+                  Config.setLang(Config.langs.indexOf(v));
+                }),
+              )
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                Consts.getText('sound'),
+                style: Consts.textStyle,
+              ),
+              Slider(
+                value: Config.sound,
+                min: 0,
+                max: 10,
+                divisions: 10,
+                activeColor: Colors.lightGreenAccent,
+                inactiveColor: Colors.grey,
+                onChanged: (v) => setState(() {
+                  Config.setSound(v);
+                }),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                Consts.getText('music'),
+                style: Consts.textStyle,
+              ),
+              Slider(
+                value: Config.music,
+                min: 0,
+                max: 10,
+                divisions: 10,
+                activeColor: Colors.lightGreenAccent,
+                inactiveColor: Colors.grey,
+                onChanged: (v) => setState(() {
+                  Config.setMusic(v);
+                }),
+              ),
+            ],
+          ),
+        ],
+      )
+    );
   }
 }

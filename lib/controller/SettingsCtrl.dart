@@ -1,4 +1,5 @@
+
 /// @author estidlozano
-class MarketCtrl {
+class SettingsCtrl {
 
 }

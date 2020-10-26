@@ -1,7 +1,8 @@
 import 'package:pietrario_sample_app/model/Bioasset.dart';
 import 'package:pietrario_sample_app/model/User.dart';
 
-class PietrarioController {
+/// @author estidlozano
+class PietrarioCtrl {
 
   static bool put(Bioasset bioasset, int place) {
     if(isIn(place)) return false;

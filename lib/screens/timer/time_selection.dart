@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pietrario_sample_app/util/Consts.dart';
 
 class TimeSelection extends StatelessWidget {
   @override
@@ -22,7 +23,14 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Consts.bgColor,
+      appBar: new AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+      ),
       body: new Container(
           padding: const EdgeInsets.all(40.0),
           child: new Column(

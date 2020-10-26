@@ -2,6 +2,7 @@ import 'package:pietrario_sample_app/model/Bioasset.dart';
 
 import 'Vital.dart';
 
+/// @author estidlozano
 class Succulent extends Bioasset {
 
   Vital health;

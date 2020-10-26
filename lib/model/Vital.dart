@@ -1,3 +1,4 @@
+/// @author estidlozano
 class Vital {
 
   int value;

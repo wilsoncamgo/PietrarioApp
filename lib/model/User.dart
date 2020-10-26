@@ -1,6 +1,7 @@
 import 'package:pietrario_sample_app/model/Bioasset.dart';
 import 'package:pietrario_sample_app/model/Pietrario.dart';
 
+/// @author estidlozano
 class User {
 
   Pietrario pietrario;
