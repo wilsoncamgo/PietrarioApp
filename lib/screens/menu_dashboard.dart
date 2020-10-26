@@ -39,8 +39,14 @@ class _MenuDashboardState extends State<MenuDashboard>
 
   @override
   Widget build(BuildContext context) {
-    screenHeight = MediaQuery.of(context).size.height;
-    screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
+    screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
     return Material(
       child: Stack(
         children: [buildDashboard(context), buildLatMenu(), buildTop()],
@@ -257,7 +263,10 @@ class _MenuDashboardState extends State<MenuDashboard>
                         InkWell(
                           child: Image(
                             image: AssetImage('assets/mountain-2.png'),
-                            width: MediaQuery.of(context).size.width,
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width,
                           ),
                         ),
                         Align(
