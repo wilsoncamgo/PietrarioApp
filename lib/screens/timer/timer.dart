@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
 class Timer extends StatefulWidget {
   @override
   TimerState createState() => TimerState();

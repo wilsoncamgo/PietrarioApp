@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pietrario_sample_app/screens/market.dart';
+import 'package:pietrario_sample_app/screens/menu_dashboard.dart';
 import 'package:pietrario_sample_app/util/Assets.dart';
 import 'package:pietrario_sample_app/screens/settings.dart';
 
@@ -19,8 +20,8 @@ class _MainMenuState extends State<MainMenu> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             InkWell(
-              /*onTap:() => Navigator.push(context,
-              MaterialPageRoute(builder: (context) => PietrarioMenu())),*/
+              onTap:() => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => MenuDashboard())),
               child: Image.asset(
                 Assets.img('logo'),
                 width: h / 8,
