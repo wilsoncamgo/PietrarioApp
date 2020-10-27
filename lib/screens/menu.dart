@@ -5,7 +5,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pietrario_sample_app/model/User.dart';
 import 'package:pietrario_sample_app/screens/market.dart';
 import 'package:pietrario_sample_app/screens/settings.dart';
-import 'file:///C:/Users/cesar/Desktop/Programming/University/Software/PietrarioApp/lib/screens/time_selection.dart';
+import 'package:pietrario_sample_app/screens/time_selection.dart';
 import 'package:pietrario_sample_app/util/Assets.dart';
 import 'package:pietrario_sample_app/util/Consts.dart';
 
