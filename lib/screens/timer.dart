@@ -37,9 +37,15 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
       number = data['time'];
     });
     controller = AnimationController(
+
       vsync: this,
       duration: Duration(seconds: number),
+
     );
+    controller.reverse(from: number.toDouble());
+    if (controller.value==0){
+      Navigator.pop(context);
+    };
 
     ThemeData themeData = Theme.of(context);
     return Scaffold(
@@ -101,6 +107,7 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   FloatingActionButton(
+                    heroTag: "1",
                     child: AnimatedBuilder(
                       animation: controller,
                       builder: (BuildContext context, Widget child) {
@@ -125,7 +132,8 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
                                 : controller.value);
                       }
                     },
-                  )
+                  ),
+
                 ],
               ),
             )
@@ -133,6 +141,7 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
         ),
       ),
     );
+
   }
 }
 

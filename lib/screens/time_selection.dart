@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'file:///C:/Users/cesar/Desktop/Programming/University/Software/PietrarioApp/lib/screens/timer.dart';
 import 'package:pietrario_sample_app/util/Consts.dart';
+import 'file:///C:/Users/cesar/Desktop/Programming/University/Software/PietrarioApp/lib/screens/time_selection.dart';
 
 class TimeSelection extends StatelessWidget {
   @override
@@ -58,7 +60,7 @@ class HomePageState extends State<HomePage> {
                 onPressed: () {
                   if (int.parse(number.text) >= 5 &&
                       int.parse(number.text) <= 120) {
-                    Navigator.pushNamed(context, '/timer',
+                    Navigator.pushNamed(context, '/cron',
                         arguments: {'time': int.parse(number.text) * 60});
                   } else {
                     setState(() {
