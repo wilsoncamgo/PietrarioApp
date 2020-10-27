@@ -2,9 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:pietrario_sample_app/model/User.dart';
 import 'package:pietrario_sample_app/screens/market.dart';
 import 'package:pietrario_sample_app/screens/settings.dart';
-import 'package:pietrario_sample_app/screens/timer/time_selection.dart';
+import 'file:///C:/Users/cesar/Desktop/Programming/University/Software/PietrarioApp/lib/screens/time_selection.dart';
 import 'package:pietrario_sample_app/util/Assets.dart';
 import 'package:pietrario_sample_app/util/Consts.dart';
 
@@ -137,8 +138,8 @@ class _MenuState extends State<Menu>
       duration: duration,
       top: 0,
       bottom: 0,
-      left: isCollapsed ? 0 : - Consts.width(60),
-      right: isCollapsed ? 0 : Consts.width(40),
+      left: isCollapsed ? 0 : - Consts.width(40),
+      right: isCollapsed ? 0 : Consts.width(10),
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: SafeArea(
@@ -146,7 +147,7 @@ class _MenuState extends State<Menu>
           child: Stack(
             children: [
               Align(
-                alignment: Alignment(-1.5, -0.6),
+                alignment: Alignment(-1.2, -0.6),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(
@@ -155,16 +156,13 @@ class _MenuState extends State<Menu>
                     color: Consts.mainColor,
                   ),
                   padding: EdgeInsets.all(Consts.width(5)),
-                  width: Consts.width(45),
-                  height: Consts.width(45),
+                  width: Consts.width(40),
+                  height: Consts.width(40),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Spacer(),
                       Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
                             Assets.img('water'),
@@ -175,37 +173,16 @@ class _MenuState extends State<Menu>
                             width: Consts.width(3),
                           ),
                           AutoSizeText(
-                            "30%",
+                            '${User().inventory['water'].amount}',
                             style: Consts.textStyle,
                           ),
                         ],
                       ),
-                      Spacer(),
                       Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Image(
-                            image: AssetImage(Assets.img('moss')),
-                            width: Consts.width(7),
-                            height: Consts.width(7),
-                          ),
-                          SizedBox(
-                            width: Consts.width(3),
-                          ),
-                          AutoSizeText(
-                            "40%",
-                            style: Consts.textStyle,
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            Assets.img('lightning'),
+                            Assets.img('moss'),
                             width: Consts.width(7),
                             height: Consts.width(7),
                           ),
@@ -213,12 +190,28 @@ class _MenuState extends State<Menu>
                             width: Consts.width(3),
                           ),
                           AutoSizeText(
-                            "80%",
+                            '${User().inventory['moss'].amount}',
                             style: Consts.textStyle,
                           ),
                         ],
                       ),
-                      Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            Assets.img('energy'),
+                            width: Consts.width(7),
+                            height: Consts.width(7),
+                          ),
+                          SizedBox(
+                            width: Consts.width(3),
+                          ),
+                          AutoSizeText(
+                            '${User().inventory['energy'].amount}',
+                            style: Consts.textStyle,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -231,7 +224,7 @@ class _MenuState extends State<Menu>
                   arcType: ArcType.FULL,
                   backgroundColor: Consts.bgColor,
                   progressColor: Colors.yellow,
-                  percent: 0.5,
+                  percent: 0.95,
                   animation: true,
                   radius: Consts.width(22),
                   lineWidth: Consts.width(1),
@@ -266,38 +259,29 @@ class _MenuState extends State<Menu>
   }
 
   Widget buildTop() {
-    return AnimatedPositioned(
-      duration: duration,
-      //bottom: isCollapsed ? 0 : 0.2 * screenWidth,
-      //right: isCollapsed ? 0 : 0.6 * screenWidth,
-      left: isCollapsed ? 0 : - 40,
-      width: Consts.width(100),
-      child: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(Consts.width(5)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                child: Icon(
-                  Icons.exit_to_app_sharp,
-                  size: Consts.width(9),
-                ),
-              ),
-              InkWell(
-                child: Icon(
-                  Icons.menu,
-                  size: Consts.width(9),
-                ),
-                onTap: () => setState(() {
-                  if (isCollapsed) _controller.forward();
-                  else _controller.reverse();
-                  isCollapsed = !isCollapsed;
-                }),
-              ),
-            ],
+    return Padding(
+      padding: EdgeInsets.all(Consts.width(5)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            child: Icon(
+              Icons.exit_to_app_sharp,
+              size: Consts.width(9),
+            ),
           ),
-        ),
+          InkWell(
+            child: Icon(
+              Icons.menu,
+              size: Consts.width(9),
+            ),
+            onTap: () => setState(() {
+              if (isCollapsed) _controller.forward();
+              else _controller.reverse();
+              isCollapsed = !isCollapsed;
+            }),
+          ),
+        ],
       ),
     );
   }

@@ -62,6 +62,16 @@ class InventoryCtrl {
     ));
   }
 
+  static String getResourceText(String resource) {
+    double precision(double d, int n) => double.parse(d.toStringAsFixed(n));
+    int amount = User().inventory[resource].amount;
+    if(amount > 2000000)
+      return '${precision(amount.toDouble()/1000000, 1)}M';
+    else if(amount > 2000)
+      return '${precision(amount.toDouble()/1000, 1)}K';
+    return '$amount';
+  }
+
   static bool put(Bioasset bioasset) {
     bool b = false;
     if(!exist(bioasset.name)) {

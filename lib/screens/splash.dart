@@ -23,7 +23,7 @@ class Splash extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(Consts.screenW/40),
+          borderRadius: BorderRadius.circular(Consts.width(2)),
           child: Image.asset(
             Assets.img('logo'),
             height: Consts.width(30),

@@ -32,35 +32,35 @@ class _MarketState extends State<Market> {
               ),
               //Resources panel
               Container(
-                padding: EdgeInsets.all(Consts.screenW/30),
+                padding: EdgeInsets.all(Consts.width(3)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
                       Assets.img('water'),
-                      width: Consts.screenW/15,
-                      height: Consts.screenW/15,
+                      width: Consts.width(7),
+                      height: Consts.width(7),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: Consts.screenW/50, right: Consts.screenW/20),
+                      margin: EdgeInsets.only(left: Consts.width(1), right: Consts.width(5)),
                       child: Text('${User().inventory['water'].amount}'),
                     ),
                     Image.asset(
                       Assets.img('moss'),
-                      width: Consts.screenW/15,
-                      height: Consts.screenW/15,
+                      width: Consts.width(7),
+                      height: Consts.width(7),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: Consts.screenW/50, right: Consts.screenW/20),
+                      margin: EdgeInsets.only(left: Consts.width(1.5), right: Consts.width(5)),
                       child: Text('${User().inventory['moss'].amount}'),
                     ),
                     Image.asset(
                       Assets.img('energy'),
-                      width: Consts.screenW/15,
-                      height: Consts.screenW/15,
+                      width: Consts.width(7),
+                      height: Consts.width(7),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: Consts.screenW/50, right: Consts.screenW/20),
+                      margin: EdgeInsets.only(left: Consts.width(1), right: Consts.width(5)),
                       child: Text('${User().inventory['energy'].amount}'),
                     ),
                   ],
@@ -71,29 +71,34 @@ class _MarketState extends State<Market> {
           // MARKET SPACE
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(Consts.screenW/30),
+              padding: EdgeInsets.all(Consts.width(5)),
               child: GridView.count(
-                crossAxisCount: 4,
-                crossAxisSpacing: Consts.screenW/40,
+                crossAxisCount: 3,
+                crossAxisSpacing: Consts.width(2),
                 childAspectRatio: 0.75,
                 children: User().inventory.values.map((v) =>
                   Container(
-                    margin: EdgeInsets.all(Consts.screenW/60),
-                    // color: Consts.mainColor,
+                    margin: EdgeInsets.all(Consts.width(2)),
+                    /*decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(Consts.width(3)),
+                      ),
+                      color: Consts.mainColor,
+                    ),*/
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
                           Assets.img(v.name),
-                          width: Consts.screenW/10,
-                          height: Consts.screenW/10,
+                          width: Consts.width(12),
+                          height: Consts.width(12),
                         ),
-                        SizedBox(
-                          height: Consts.screenW/50,
-                        ),
+                        SizedBox(height: Consts.width(2)),
                         cost('water', v.costWater),
+                        SizedBox(height: Consts.width(1)),
                         cost('moss', v.costMoss),
+                        SizedBox(height: Consts.width(1)),
                         cost('energy', v.costEnergy),
                       ],
                     ),
@@ -108,16 +113,16 @@ class _MarketState extends State<Market> {
   }
 
   Widget cost(String img, int val) {
-    print('$img $val');
     return val == 0 || val == null ? SizedBox() :
     Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
           Assets.img('$img'),
-          width: Consts.screenW/30,
-          height: Consts.screenW/30,
+          width: Consts.width(5),
+          height: Consts.width(5),
         ),
+        SizedBox(width: Consts.width(1)),
         Text(
           '$val',
           style: Consts.textStyle,

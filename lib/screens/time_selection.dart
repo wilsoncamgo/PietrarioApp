@@ -58,7 +58,7 @@ class HomePageState extends State<HomePage> {
                 onPressed: () {
                   if (int.parse(number.text) >= 5 &&
                       int.parse(number.text) <= 120) {
-                    Navigator.pushNamed(context, '/timer',
+                    Navigator.pushNamed(context, '/cron',
                         arguments: {'time': int.parse(number.text) * 60});
                   } else {
                     setState(() {
