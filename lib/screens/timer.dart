@@ -7,10 +7,11 @@ class Timer extends StatefulWidget {
 }
 
 class TimerState extends State<Timer> with TickerProviderStateMixin {
-
   AnimationController controller;
   Map data = {};
   int number = 10;
+  bool start = false;
+
   // bool isPlaying = false;
 
   String getTimerString() {
@@ -19,7 +20,7 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
   }
 
   @override
-  void initState()  {
+  void initState() {
     super.initState();
     // ..addStatusListener((status) {
     //     if (controller.status == AnimationStatus.dismissed) {
@@ -36,16 +37,11 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
     setState(() {
       number = data['time'];
     });
-    controller = AnimationController(
 
+    controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: number),
-
     );
-    controller.reverse(from: number.toDouble());
-    if (controller.value==0){
-      Navigator.pop(context);
-    };
 
     ThemeData themeData = Theme.of(context);
     return Scaffold(
@@ -66,12 +62,11 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
                           animation: controller,
                           builder: (BuildContext context, Widget child) {
                             return CustomPaint(
-                              painter: TimerPainter(
-                                animation: controller,
-                                backgroundColor: Colors.white,
-                                color: themeData.indicatorColor,
-                              )
-                            );
+                                painter: TimerPainter(
+                              animation: controller,
+                              backgroundColor: Colors.white,
+                              color: themeData.indicatorColor,
+                            ));
                           },
                         ),
                       ),
@@ -133,7 +128,6 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
                       }
                     },
                   ),
-
                 ],
               ),
             )
@@ -141,7 +135,6 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
         ),
       ),
     );
-
   }
 }
 

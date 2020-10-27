@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'file:///C:/Users/cesar/Desktop/Programming/University/Software/PietrarioApp/lib/screens/timer.dart';
 import 'package:pietrario_sample_app/util/Consts.dart';
-import 'file:///C:/Users/cesar/Desktop/Programming/University/Software/PietrarioApp/lib/screens/time_selection.dart';
 
 class TimeSelection extends StatelessWidget {
   @override
