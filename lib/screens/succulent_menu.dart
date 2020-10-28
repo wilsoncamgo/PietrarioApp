@@ -80,10 +80,12 @@ class SucculentMenu extends StatelessWidget {
                   height: 20,
                 ),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     AutoSizeText(
                       "Salud",
                       minFontSize: 14,
+                      textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w200,
@@ -100,7 +102,7 @@ class SucculentMenu extends StatelessWidget {
                               Radius.circular(30),
                             ),
                           ),
-                          width: 100,
+                          width: 130,
                           height: 10,
                         ),
                         Container(
@@ -113,7 +115,7 @@ class SucculentMenu extends StatelessWidget {
                             ),
                             color: Color(0xFF0065FD),
                           ),
-                          width: 0.4 * 100,
+                          width: 0.4 * 130,
                           height: 10,
                         ),
                       ],
@@ -144,7 +146,7 @@ class SucculentMenu extends StatelessWidget {
                               Radius.circular(30),
                             ),
                           ),
-                          width: 100,
+                          width: 130,
                           height: 10,
                         ),
                         Container(
@@ -157,7 +159,7 @@ class SucculentMenu extends StatelessWidget {
                             ),
                             color: Color(0xFF0093FD),
                           ),
-                          width: 0.4 * 100,
+                          width: 0.4 * 130,
                           height: 10,
                         ),
                       ],
@@ -188,7 +190,7 @@ class SucculentMenu extends StatelessWidget {
                               Radius.circular(30),
                             ),
                           ),
-                          width: 100,
+                          width: 130,
                           height: 10,
                         ),
                         Container(
@@ -201,7 +203,7 @@ class SucculentMenu extends StatelessWidget {
                             ),
                             color: Color(0xFF808080),
                           ),
-                          width: 0.4 * 100,
+                          width: 0.4 * 130,
                           height: 10,
                         ),
                       ],
@@ -232,7 +234,7 @@ class SucculentMenu extends StatelessWidget {
                               Radius.circular(30),
                             ),
                           ),
-                          width: 100,
+                          width: 130,
                           height: 10,
                         ),
                         Container(
@@ -245,7 +247,7 @@ class SucculentMenu extends StatelessWidget {
                             ),
                             color: Color(0xFFFF4500),
                           ),
-                          width: 0.4 * 100,
+                          width: 0.4 * 130,
                           height: 10,
                         ),
                       ],
