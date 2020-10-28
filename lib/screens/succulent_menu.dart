@@ -29,6 +29,14 @@ class SucculentMenu extends StatelessWidget {
               height: 200,
             ),
           ),
+          Align(
+            alignment: Alignment(-1.9, 0.1),
+            child: Image(
+              image: AssetImage('assets/succulent.png'),
+              width: 200,
+              height: 200,
+            ),
+          ),
         ],
       ),
     );
