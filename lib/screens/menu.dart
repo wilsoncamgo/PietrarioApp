@@ -9,6 +9,8 @@ import 'package:pietrario_sample_app/screens/time_selection.dart';
 import 'package:pietrario_sample_app/util/Assets.dart';
 import 'package:pietrario_sample_app/util/Consts.dart';
 
+import 'inventory.dart';
+
 /// @author wilsoncamgo
 class Menu extends StatefulWidget {
   Menu({Key key}) : super(key: key);
@@ -106,6 +108,9 @@ class _MenuState extends State<Menu>
                     Assets.img('coin'),
                     width: btnSize,
                     height: btnSize,
+                  ),
+                  onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Inventory()),
                   ),
                 ),
                 InkWell(

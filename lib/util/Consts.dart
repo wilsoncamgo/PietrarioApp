@@ -41,6 +41,8 @@ class Consts {
     texts['settings'] = {'Settings', 'Ajustes'};
     texts['sound'] = {'Sound', 'Sonido'};
     texts['vibration'] = {'Vibration', 'Vibración'};
+    // INVENTORY
+    texts['inventory'] = {'Inventory', 'Inventario'};
   }
 
   static String getText(String name) {
