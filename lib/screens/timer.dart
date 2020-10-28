@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class Timer extends StatefulWidget {
+  final int myInt;
+  Timer({this.myInt});
   @override
   TimerState createState() => TimerState();
 }
 
 class TimerState extends State<Timer> with TickerProviderStateMixin {
+
   AnimationController controller;
   Map data = {};
   int number = 10;
@@ -35,7 +38,7 @@ class TimerState extends State<Timer> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
     setState(() {
-      number = data['time'];
+      number = widget.myInt*60;
     });
 
     controller = AnimationController(

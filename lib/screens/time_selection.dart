@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pietrario_sample_app/screens/timer.dart';
 import 'package:pietrario_sample_app/util/Consts.dart';
 
-class TimeSelection extends StatelessWidget {
+
+class TimeSelection extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return new HomePage();
-  }
+  TimeState createState() => TimeState();
 }
 
-class HomePage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return new HomePageState();
-  }
-}
-
-class HomePageState extends State<HomePage> {
+class TimeState extends State<TimeSelection> {
   TextEditingController number = new TextEditingController();
   String message = '';
 
@@ -58,8 +51,11 @@ class HomePageState extends State<HomePage> {
                 onPressed: () {
                   if (int.parse(number.text) >= 5 &&
                       int.parse(number.text) <= 120) {
-                    Navigator.pushNamed(context, '/cron',
-                        arguments: {'time': int.parse(number.text) * 60});
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                            builder: (context) => Timer(myInt: int.parse(number.text),)
+                        )
+                    );
                   } else {
                     setState(() {
                       message =
