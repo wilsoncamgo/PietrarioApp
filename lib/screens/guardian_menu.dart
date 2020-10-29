@@ -2,9 +2,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class GuardianMenu extends StatelessWidget {
+class GuardianMenu extends StatefulWidget {
   const GuardianMenu({Key key}) : super(key: key);
 
+  @override
+  _GuardianMenuState createState() => _GuardianMenuState();
+}
+
+class _GuardianMenuState extends State<GuardianMenu> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -70,6 +75,51 @@ class GuardianMenu extends StatelessWidget {
     );
   }
 
+  Widget _buildAboutDialog(BuildContext context) {
+    return new AlertDialog(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            height: 30,
+            width: 30,
+          ),
+          Text(
+            'Guardián Canino',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w300,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: InkWell(
+              child: Icon(
+                Icons.close,
+                size: 30,
+              ),
+              onTap: () => Navigator.of(context).pop(),
+            ),
+          ),
+        ],
+      ),
+      content: new Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(
+            "Este pastor aleman, habitante de los climas fríos es idóneo para proteger de depredadores a sus amos y sus posesiones.",
+            style: TextStyle(
+              fontWeight: FontWeight.w200,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget buildMainCircle() {
     return Align(
       alignment: Alignment(-1, 0.4),
@@ -117,6 +167,10 @@ class GuardianMenu extends StatelessWidget {
             Align(
               alignment: Alignment.centerRight,
               child: InkWell(
+                onTap: () => showDialog(
+                  context: context,
+                  builder: (BuildContext context) => _buildAboutDialog(context),
+                ),
                 child: Icon(
                   Icons.info,
                   size: 40,
