@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pietrario_sample_app/screens/guardian_menu.dart';
+import 'package:pietrario_sample_app/screens/help_menu.dart';
 import 'package:pietrario_sample_app/screens/intro_page.dart';
 import 'package:pietrario_sample_app/screens/menu_dashboard.dart';
 import 'package:pietrario_sample_app/screens/succulent_menu.dart';
@@ -10,7 +11,7 @@ void main() {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: GuardianMenu(),
+      home: HelpMenu(),
     ),
   );
 }
