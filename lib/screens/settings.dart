@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pietrario_sample_app/util/Assets.dart';
 import 'package:pietrario_sample_app/util/Config.dart';
 import 'package:pietrario_sample_app/util/Consts.dart';
 
@@ -11,27 +12,59 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: new AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
-        ),
+    return Material(
+      child: Stack(
+        children: [
+          Scaffold(
+            backgroundColor: Consts.bgColor,
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              iconTheme: IconThemeData(
+                color: Consts.textColor, //change your color here
+              ),
+              centerTitle: true,
+              title: Text(
+                Consts.getText('settings'),
+                style: Consts.titleStyle,
+              ),
+            ),
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                buildSettings(),
+              ],
+            ),
+          ),
+          buildBulb(),
+        ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              Consts.getText('settings'),
-              style: Consts.titleStyle,
+    );
+  }
+
+  Widget buildBulb() {
+    return Align(
+      alignment: Alignment(0.8, -1),
+      child: Column(
+        children: [
+          SizedBox(
+            width: Consts.width(0.6),
+            height: Consts.width(25),
+            child: Container(
+              color: Consts.textColor,
             ),
-            SizedBox(
-              height: Consts.width(20),
+          ),
+          InkWell(
+            child: Image.asset(
+              Assets.img(Config.dark ? 'bulb_off' : 'bulb'),
+              width: Consts.width(14),
+              height: Consts.width(14),
             ),
-            buildSettings(),
-          ],
-        ),
+            onTap: () => setState(() {
+              Config.setDark(!Config.dark);
+            }),
+          ),
+        ],
       ),
     );
   }
@@ -57,12 +90,14 @@ class _SettingsState extends State<Settings> {
               ),
               Switch(
                 value: Config.rigorous,
+                activeTrackColor: Colors.lightGreenAccent,
+                activeColor: Colors.green,
+                inactiveThumbColor: Consts.bgColor,
+                inactiveTrackColor: Consts.scndColor,
                 onChanged: (v) => setState(() {
                   Config.setRigorous(v);
                 }),
-                activeTrackColor: Colors.lightGreenAccent,
-                activeColor: Colors.green,
-              )
+              ),
             ],
           ),
           Row(
@@ -74,12 +109,14 @@ class _SettingsState extends State<Settings> {
               ),
               Switch(
                 value: Config.cloudy,
+                activeTrackColor: Colors.lightGreenAccent,
+                activeColor: Colors.green,
+                inactiveThumbColor: Consts.bgColor,
+                inactiveTrackColor: Consts.scndColor,
                 onChanged: (v) => setState(() {
                   Config.setCloudy(v);
                 }),
-                activeTrackColor: Colors.lightGreenAccent,
-                activeColor: Colors.green,
-              )
+              ),
             ],
           ),
           Row(
@@ -91,12 +128,14 @@ class _SettingsState extends State<Settings> {
               ),
               Switch(
                 value: Config.vibration,
+                activeTrackColor: Colors.lightGreenAccent,
+                activeColor: Colors.green,
+                inactiveThumbColor: Consts.bgColor,
+                inactiveTrackColor: Consts.scndColor,
                 onChanged: (v) => setState(() {
                   Config.setVibration(v);
                 }),
-                activeTrackColor: Colors.lightGreenAccent,
-                activeColor: Colors.green,
-              )
+              ),
             ],
           ),
           Row(
@@ -108,6 +147,8 @@ class _SettingsState extends State<Settings> {
               ),
               DropdownButton(
                 value: Config.getLang(),
+                dropdownColor: Consts.mainColor,
+                style: Consts.textStyle,
                 items: Config.langs.map((v) =>
                     DropdownMenuItem(
                       child: Text('$v'),
@@ -117,7 +158,7 @@ class _SettingsState extends State<Settings> {
                 onChanged: (v) => setState(() {
                   Config.setLang(Config.langs.indexOf(v));
                 }),
-              )
+              ),
             ],
           ),
           Row(
@@ -132,7 +173,7 @@ class _SettingsState extends State<Settings> {
                 max: 10,
                 divisions: 10,
                 activeColor: Colors.lightGreenAccent,
-                inactiveColor: Colors.grey,
+                inactiveColor: Consts.scndColor,
                 onChanged: (v) => setState(() {
                   Config.setSound(v);
                 }),
@@ -159,7 +200,7 @@ class _SettingsState extends State<Settings> {
             ],
           ),
         ],
-      )
+      ),
     );
   }
 }

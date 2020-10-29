@@ -1,5 +1,6 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:pietrario_sample_app/util/Assets.dart';
+import 'package:pietrario_sample_app/util/Consts.dart';
 
 class SucculentMenu extends StatelessWidget {
   const SucculentMenu({Key key}) : super(key: key);
@@ -7,6 +8,7 @@ class SucculentMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Consts.bgColor,
       child: Stack(
         children: [
           buildEnvironment(),
@@ -14,27 +16,29 @@ class SucculentMenu extends StatelessWidget {
             alignment: Alignment(-1.4, -0.6),
             child: Container(
               decoration: BoxDecoration(
+                color: Consts.mainColor,
                 shape: BoxShape.circle,
-                border: Border.all(
-                  color: Colors.black,
-                ),
+                border: Border.all(color: Consts.textColor),
               ),
-              padding: EdgeInsets.only(
-                left: 40,
-                top: 50,
-                bottom: 30,
+              padding: EdgeInsets.all(Consts.width(10)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Mi Teyuna Parte 2',
+                    textAlign: TextAlign.center,
+                    style: Consts.textStyle,
+                  ),
+                  Image.asset(
+                    Assets.img('succulent1'),
+                    width: Consts.width(20),
+                    height: Consts.width(20),
+                  ),
+                ],
               ),
-              child: Text("Mi Teyuna Parte 2"),
-              width: 200,
-              height: 200,
-            ),
-          ),
-          Align(
-            alignment: Alignment(-1.9, 0.1),
-            child: Image(
-              image: AssetImage('assets/succulent.png'),
-              width: 200,
-              height: 200,
+              width: Consts.width(50),
+              height: Consts.width(50),
             ),
           ),
         ],
@@ -44,219 +48,18 @@ class SucculentMenu extends StatelessWidget {
 
   Widget buildEnvironment() {
     return Container(
-      color: Colors.white,
-      padding: EdgeInsets.symmetric(
-        horizontal: 40,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 40),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: InkWell(
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: 3,
-                    height: 100,
-                    child: Container(
-                      color: Colors.black,
-                    ),
-                  ),
-                  Image(
-                    image: AssetImage('assets/bulb.png'),
-                    width: 50,
-                    height: 50,
-                  ),
-                ],
-              ),
-            ),
-          ),
           Align(
             alignment: Alignment.centerRight,
             child: Column(
               children: [
-                SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    AutoSizeText(
-                      "Salud",
-                      minFontSize: 14,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w200,
-                      ),
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFF0065FD),
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                          ),
-                          width: 130,
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFF0065FD),
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                            color: Color(0xFF0065FD),
-                          ),
-                          width: 0.4 * 130,
-                          height: 10,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  children: [
-                    AutoSizeText(
-                      "Hidratacion",
-                      minFontSize: 14,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w200,
-                      ),
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFF0093FD),
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                          ),
-                          width: 130,
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFF0093FD),
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                            color: Color(0xFF0093FD),
-                          ),
-                          width: 0.4 * 130,
-                          height: 10,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  children: [
-                    AutoSizeText(
-                      "Minerales",
-                      minFontSize: 14,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w200,
-                      ),
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFF808080),
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                          ),
-                          width: 130,
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFF808080),
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                            color: Color(0xFF808080),
-                          ),
-                          width: 0.4 * 130,
-                          height: 10,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Column(
-                  children: [
-                    AutoSizeText(
-                      "Temperatura",
-                      minFontSize: 14,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w200,
-                      ),
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFFFF4500),
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                          ),
-                          width: 130,
-                          height: 10,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Color(0xFFFF4500),
-                            ),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30),
-                            ),
-                            color: Color(0xFFFF4500),
-                          ),
-                          width: 0.4 * 130,
-                          height: 10,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
+                buildBar('health', Color(0xFF00CC66)),
+                buildBar('hidratation', Color(0xFF0066CC)),
+                buildBar('minerals', Color(0xFFAAAAAA)),
+                buildBar('temperature', Color(0xFFCC3333)),
               ],
             ),
           ),
@@ -266,10 +69,10 @@ class SucculentMenu extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 InkWell(
-                  child: Image(
-                    image: AssetImage('assets/fox_lowpoly.png'),
-                    width: 149,
-                    height: 210,
+                  child: Image.asset(
+                    Assets.img('fox'),
+                    width: Consts.width(35),
+                    height: Consts.width(50),
                   ),
                 ),
               ],
@@ -277,6 +80,40 @@ class SucculentMenu extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget buildBar(String text, Color color) {
+    return Column(
+      children: [
+        SizedBox(height: Consts.width(3)),
+        Text(
+            Consts.getText(text),
+            textAlign: TextAlign.start,
+            style: Consts.textStyle
+        ),
+        SizedBox(height: Consts.width(0.5)),
+        Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: color),
+                borderRadius: BorderRadius.all(Radius.circular(Consts.width(7))),
+              ),
+              width: Consts.width(32),
+              height: Consts.width(3),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(Consts.width(7))),
+                color: color,
+              ),
+              width: 0.4 * Consts.width(32),
+              height: Consts.width(3),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

@@ -6,31 +6,23 @@ class Consts {
 
   static double screenW, screenH;
   static TextStyle titleStyle, textStyle;
-  static final Color bgColor = Colors.grey[50];
-  static final Color mainColor = Colors.grey[300];
+  static Color bgColor = Colors.grey[50];
+  static Color mainColor = Colors.grey[300];
+  static Color scndColor = Colors.grey[500];
+  static Color textColor = Colors.grey[900];
 
   static final Map<String, Set<String>> texts = Map<String, Set<String>>();
 
   static void setScreenSize(Size screenSize) {
     screenW = screenSize.width;
     screenH = screenSize.height;
-    titleStyle = TextStyle(
-      fontSize: Consts.width(6),
-      fontWeight: FontWeight.bold,
-      letterSpacing: 1.5,
-      color: Colors.grey[900],
-    );
-    textStyle = TextStyle(
-      fontSize: Consts.width(4),
-      fontWeight: FontWeight.normal,
-      letterSpacing: 1.5,
-      color: Colors.grey[900],
-    );
   }
 
   static void loadTexts() {
     // HELP
     texts['help'] = {'Help', 'Ayuda'};
+    // INVENTORY
+    texts['inventory'] = {'Inventory', 'Inventario'};
     // MARKET
     texts['market'] = {'Market', 'Mercado'};
     // SETTINGS
@@ -41,8 +33,37 @@ class Consts {
     texts['settings'] = {'Settings', 'Ajustes'};
     texts['sound'] = {'Sound', 'Sonido'};
     texts['vibration'] = {'Vibration', 'Vibración'};
-    // INVENTORY
-    texts['inventory'] = {'Inventory', 'Inventario'};
+    // SUCCULENT STATS
+    texts['health'] = {'Health', 'Salud'};
+    texts['hidratation'] = {'Hidratation', 'Hidratación'};
+    texts['minerals'] = {'Minerals', 'Minerales'};
+    texts['temperature'] = {'Temperature', 'Temperatura'};
+  }
+
+  static String setDark(bool dark) {
+    if(dark) {
+      bgColor = Colors.grey[900];
+      mainColor = Colors.grey[600];
+      scndColor = Colors.grey[400];
+      textColor = Colors.grey[50];
+    } else {
+      bgColor = Colors.grey[50];
+      mainColor = Colors.grey[300];
+      scndColor = Colors.grey[500];
+      textColor = Colors.grey[900];
+    }
+    titleStyle = TextStyle(
+      fontSize: Consts.width(6),
+      fontWeight: FontWeight.bold,
+      letterSpacing: 1.5,
+      color: textColor,
+    );
+    textStyle = TextStyle(
+      fontSize: Consts.width(4),
+      fontWeight: FontWeight.normal,
+      letterSpacing: 1.5,
+      color: textColor,
+    );
   }
 
   static String getText(String name) {

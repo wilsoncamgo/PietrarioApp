@@ -5,6 +5,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pietrario_sample_app/model/User.dart';
 import 'package:pietrario_sample_app/screens/market.dart';
 import 'package:pietrario_sample_app/screens/settings.dart';
+import 'package:pietrario_sample_app/screens/succulent_menu.dart';
 import 'package:pietrario_sample_app/screens/time_selection.dart';
 import 'package:pietrario_sample_app/util/Assets.dart';
 import 'package:pietrario_sample_app/util/Consts.dart';
@@ -48,6 +49,7 @@ class _MenuState extends State<Menu>
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Consts.bgColor,
       child: Stack(
         children: [
           buildDashboard(),
@@ -59,7 +61,6 @@ class _MenuState extends State<Menu>
   }
 
   Widget buildLatMenu() {
-    double btnSize = Consts.width(10);
     return SlideTransition(
       position: _slideAnimation,
       child: ScaleTransition(
@@ -83,53 +84,11 @@ class _MenuState extends State<Menu>
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                InkWell(
-                  child: Image.asset(
-                    Assets.img('time'),
-                    width: btnSize,
-                    height: btnSize,
-                  ),
-                  onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => TimeSelection()),
-                  ),
-                ),
-                InkWell(
-                  child: Image.asset(
-                    Assets.img('market'),
-                    width: btnSize,
-                    height: btnSize,
-                  ),
-                  onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Market()),
-                  ),
-                ),
-                InkWell(
-                  child: Image.asset(
-                    Assets.img('coin'),
-                    width: btnSize,
-                    height: btnSize,
-                  ),
-                  onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Inventory()),
-                  ),
-                ),
-                InkWell(
-                  child: Image.asset(
-                    Assets.img('question'),
-                    width: btnSize,
-                    height: btnSize,
-                  ),
-                ),
-                InkWell(
-                  child: Image.asset(
-                    Assets.img('settings'),
-                    width: btnSize,
-                    height: btnSize,
-                  ),
-                  onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Settings()),
-                  ),
-                ),
+                buildLatButton('time', TimeSelection()),
+                buildLatButton('market', Market()),
+                buildLatButton('coin', Inventory()),
+                buildLatButton('question', null/*Help()*/),
+                buildLatButton('settings', Settings()),
               ],
             ),
           ),
@@ -165,59 +124,28 @@ class _MenuState extends State<Menu>
                   height: Consts.width(40),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
+                    children: {'water', 'moss', 'energy'}.map((e) =>
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            Assets.img('water'),
-                            width: Consts.width(7),
-                            height: Consts.width(7),
+                          ColorFiltered(
+                            colorFilter: ColorFilter.mode(Consts.textColor, BlendMode.srcIn),
+                            child: Image.asset(
+                              Assets.img(e),
+                              width: Consts.width(7),
+                              height: Consts.width(7),
+                            ),
                           ),
                           SizedBox(
                             width: Consts.width(3),
                           ),
-                          AutoSizeText(
-                            '${User().inventory['water'].amount}',
+                          Text(
+                            '${User().inventory[e].amount}',
                             style: Consts.textStyle,
                           ),
                         ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            Assets.img('moss'),
-                            width: Consts.width(7),
-                            height: Consts.width(7),
-                          ),
-                          SizedBox(
-                            width: Consts.width(3),
-                          ),
-                          AutoSizeText(
-                            '${User().inventory['moss'].amount}',
-                            style: Consts.textStyle,
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            Assets.img('energy'),
-                            width: Consts.width(7),
-                            height: Consts.width(7),
-                          ),
-                          SizedBox(
-                            width: Consts.width(3),
-                          ),
-                          AutoSizeText(
-                            '${User().inventory['energy'].amount}',
-                            style: Consts.textStyle,
-                          ),
-                        ],
-                      ),
-                    ],
+                    ).toList(),
                   ),
                 ),
               ),
@@ -254,6 +182,9 @@ class _MenuState extends State<Menu>
                     width: Consts.width(80),
                     height: Consts.width(80),
                   ),
+                  onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SucculentMenu()),
+                  ),
                 ),
               ),
             ],
@@ -273,12 +204,14 @@ class _MenuState extends State<Menu>
             child: Icon(
               Icons.exit_to_app_sharp,
               size: Consts.width(9),
+              color: Consts.textColor,
             ),
           ),
           InkWell(
             child: Icon(
               Icons.menu,
               size: Consts.width(9),
+              color: Consts.textColor,
             ),
             onTap: () => setState(() {
               if (isCollapsed) _controller.forward();
@@ -290,4 +223,22 @@ class _MenuState extends State<Menu>
       ),
     );
   }
+
+  Widget buildLatButton(String img, Widget route) {
+    double btnSize = Consts.width(10);
+    return InkWell(
+      child: ColorFiltered(
+        colorFilter: ColorFilter.mode(Consts.textColor, BlendMode.srcIn),
+        child: Image.asset(
+          Assets.img(img),
+          width: btnSize,
+          height: btnSize,
+        ),
+      ),
+      onTap: () => Navigator.push(context,
+        MaterialPageRoute(builder: (context) => route),
+      ),
+    );
+  }
+
 }

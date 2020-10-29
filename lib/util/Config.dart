@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:pietrario_sample_app/util/Consts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// @author estidlozano
@@ -6,7 +8,7 @@ class Config {
   static SharedPreferences prefs;
   static List<String> langs = new List<String>();
   static int lang;
-  static bool cloudy, rigorous, vibration;
+  static bool cloudy, dark, rigorous, vibration;
   static double music, sound;
 
   static Future<void> loadConfig() async {
@@ -15,10 +17,12 @@ class Config {
     prefs = await SharedPreferences.getInstance();
     lang = prefs.getInt('lang') ?? 0;
     cloudy = prefs.getBool('cloudy') ?? false;
+    dark = prefs.getBool('dark') ?? false;
     rigorous = prefs.getBool('rigorous') ?? false;
     vibration = prefs.getBool('vibration') ?? true;
     music = prefs.getDouble('music') ?? 10;
     sound = prefs.getDouble('sound') ?? 10;
+    Consts.setDark(dark);
   }
 
   static void setLang(int val) {
@@ -29,6 +33,12 @@ class Config {
   static void setCloudy(bool val) {
     cloudy = val;
     prefs.setBool('cloudy', val);
+  }
+
+  static void setDark(bool val) {
+    dark = val;
+    prefs.setBool('dark', val);
+    Consts.setDark(dark);
   }
 
   static void setRigorous(bool val) {
