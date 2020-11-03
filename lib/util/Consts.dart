@@ -38,6 +38,10 @@ class Consts {
     texts['hidratation'] = {'Hidratation', 'Hidratación'};
     texts['minerals'] = {'Minerals', 'Minerales'};
     texts['temperature'] = {'Temperature', 'Temperatura'};
+    // TIMER
+    texts['focus_timer'] = {'Timer', 'Temporizador'};
+    texts['minuts'] = {'Minuts', 'Minutos'};
+    texts['enter_time'] = {'Enter your focusing time', 'Ingresa tu tiempo de concentración'};
   }
 
   static String setDark(bool dark) {

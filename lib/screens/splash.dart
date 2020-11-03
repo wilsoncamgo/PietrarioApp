@@ -10,16 +10,21 @@ import 'package:pietrario_sample_app/util/Consts.dart';
 /// @author estidlozano
 class Splash extends StatelessWidget {
 
+  static bool loaded = false;
+
   @override
   Widget build(BuildContext context) {
-    Consts.setScreenSize(MediaQuery.of(context).size);
-    Consts.loadTexts();
-    Config.loadConfig();
-    InventoryCtrl.initUserData();
-    new Timer.periodic(new Duration(seconds: 3), (time) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Menu()));
-      time.cancel();
-    });
+    if(!loaded) {
+      Consts.setScreenSize(MediaQuery.of(context).size);
+      Consts.loadTexts();
+      Config.loadConfig();
+      InventoryCtrl.initUserData();
+      Timer.periodic(Duration(seconds: 3), (time) {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Menu()));
+        time.cancel();
+      });
+      loaded = true;
+    }
     return Scaffold(
       body: Center(
         child: ClipRRect(
