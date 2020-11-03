@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/util/Assets.dart';
-import 'package:pietrario_sample_app/util/Consts.dart';
+import 'package:pietrario_sample_app/util/assets.dart';
+import 'package:pietrario_sample_app/util/consts.dart';
+import 'package:pietrario_sample_app/util/prefabs.dart';
 
-class SucculentMenu extends StatelessWidget {
-  const SucculentMenu({Key key}) : super(key: key);
+class SucculentScreen extends StatelessWidget {
+  const SucculentScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +31,7 @@ class SucculentMenu extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: Consts.textStyle,
                   ),
-                  Image.asset(
-                    Assets.img('succulent1'),
-                    width: Consts.width(20),
-                    height: Consts.width(20),
-                  ),
+                  Prefabs.image(img: 'succulent1', size: 20, blend: false),
                 ],
               ),
               width: Consts.width(50),
@@ -89,7 +86,6 @@ class SucculentMenu extends StatelessWidget {
         SizedBox(height: Consts.width(3)),
         Text(
             Consts.getText(text),
-            textAlign: TextAlign.start,
             style: Consts.textStyle
         ),
         SizedBox(height: Consts.width(0.5)),

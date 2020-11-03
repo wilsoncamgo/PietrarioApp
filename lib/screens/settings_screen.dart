@@ -1,34 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/util/Assets.dart';
-import 'package:pietrario_sample_app/util/Config.dart';
-import 'package:pietrario_sample_app/util/Consts.dart';
+import 'package:pietrario_sample_app/util/assets.dart';
+import 'package:pietrario_sample_app/util/config.dart';
+import 'package:pietrario_sample_app/util/consts.dart';
+import 'package:pietrario_sample_app/util/prefabs.dart';
 
 /// @author JuanCuevas2207
-class Settings extends StatefulWidget {
+class SettingsScreen extends StatefulWidget {
   @override
-  _SettingsState createState() => _SettingsState();
+  _SettingsScreenState createState() => _SettingsScreenState();
 }
 
-class _SettingsState extends State<Settings> {
+class _SettingsScreenState extends State<SettingsScreen> {
 
   Widget build(BuildContext context) {
     return Material(
       child: Stack(
         children: [
-          Scaffold(
-            backgroundColor: Consts.bgColor,
-            appBar: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              iconTheme: IconThemeData(
-                color: Consts.textColor, //change your color here
-              ),
-              centerTitle: true,
-              title: Text(
-                Consts.getText('settings'),
-                style: Consts.titleStyle,
-              ),
-            ),
+          Prefabs.scaffold(title: 'settings',
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

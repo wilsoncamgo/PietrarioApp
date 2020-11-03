@@ -3,24 +3,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pietrario_sample_app/model/User.dart';
-import 'package:pietrario_sample_app/screens/market.dart';
-import 'package:pietrario_sample_app/screens/settings.dart';
-import 'package:pietrario_sample_app/screens/succulent_menu.dart';
+import 'package:pietrario_sample_app/screens/inventory_screen.dart';
+import 'package:pietrario_sample_app/screens/market_screen.dart';
+import 'package:pietrario_sample_app/screens/settings_screen.dart';
+import 'package:pietrario_sample_app/screens/succulent_screen.dart';
 import 'package:pietrario_sample_app/screens/timer_screen.dart';
-import 'package:pietrario_sample_app/util/Assets.dart';
-import 'package:pietrario_sample_app/util/Consts.dart';
+import 'package:pietrario_sample_app/util/assets.dart';
+import 'package:pietrario_sample_app/util/consts.dart';
+import 'package:pietrario_sample_app/util/prefabs.dart';
 
-import 'inventory.dart';
+import 'help_screen.dart';
+
 
 /// @author wilsoncamgo
-class Menu extends StatefulWidget {
-  Menu({Key key}) : super(key: key);
+class MenuScreen extends StatefulWidget {
+  MenuScreen({Key key}) : super(key: key);
 
   @override
-  _MenuState createState() => _MenuState();
+  _MenuScreenState createState() => _MenuScreenState();
 }
 
-class _MenuState extends State<Menu>
+class _MenuScreenState extends State<MenuScreen>
     with SingleTickerProviderStateMixin {
   bool isCollapsed = true;
   final Duration duration = const Duration(milliseconds: 300);
@@ -83,13 +86,14 @@ class _MenuState extends State<Menu>
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildLatButton('time', TimerScreen()),
-                buildLatButton('market', Market()),
-                buildLatButton('coin', Inventory()),
-                buildLatButton('question', null/*Help()*/),
-                buildLatButton('settings', Settings()),
-              ],
+              children: <String, Widget>{
+                'time' : TimerScreen(),
+                'market' : MarketScreen(),
+                'inventory' : InventoryScreen(),
+                'help' : HelpScreen(),
+                'settings' : SettingsScreen(),
+              }.entries.map((e) => Prefabs.imgRouteButton(
+                  img: Prefabs.image(img: e.key), context: context, route: e.value)).toList(),
             ),
           ),
         ),
@@ -128,14 +132,7 @@ class _MenuState extends State<Menu>
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ColorFiltered(
-                            colorFilter: ColorFilter.mode(Consts.textColor, BlendMode.srcIn),
-                            child: Image.asset(
-                              Assets.img(e),
-                              width: Consts.width(7),
-                              height: Consts.width(7),
-                            ),
-                          ),
+                          Prefabs.image(img: e, size: 7),
                           SizedBox(
                             width: Consts.width(3),
                           ),
@@ -176,16 +173,8 @@ class _MenuState extends State<Menu>
                 padding: EdgeInsets.symmetric(
                   horizontal: Consts.width(5),
                 ),
-                child: InkWell(
-                  child: Image.asset(
-                    Assets.img('mountain2'),
-                    width: Consts.width(80),
-                    height: Consts.width(80),
-                  ),
-                  onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SucculentMenu()),
-                  ),
-                ),
+                child: Prefabs.imgRouteButton(img: Prefabs.image(img: 'mountain2', size: 80, blend: false),
+                  context: context, route: SucculentScreen()),
               ),
             ],
           ),
@@ -220,23 +209,6 @@ class _MenuState extends State<Menu>
             }),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget buildLatButton(String img, Widget route) {
-    double btnSize = Consts.width(10);
-    return InkWell(
-      child: ColorFiltered(
-        colorFilter: ColorFilter.mode(Consts.textColor, BlendMode.srcIn),
-        child: Image.asset(
-          Assets.img(img),
-          width: btnSize,
-          height: btnSize,
-        ),
-      ),
-      onTap: () => Navigator.push(context,
-        MaterialPageRoute(builder: (context) => route),
       ),
     );
   }

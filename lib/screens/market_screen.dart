@@ -1,31 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:pietrario_sample_app/model/User.dart';
-import 'package:pietrario_sample_app/util/Assets.dart';
-import 'package:pietrario_sample_app/util/Consts.dart';
+import 'package:pietrario_sample_app/util/assets.dart';
+import 'package:pietrario_sample_app/util/consts.dart';
+import 'package:pietrario_sample_app/util/prefabs.dart';
 
 /// @author estidlozano
-class Market extends StatefulWidget {
+class MarketScreen extends StatefulWidget {
   @override
-  _MarketState createState() => _MarketState();
+  _MarketScreenState createState() => _MarketScreenState();
 }
 
-class _MarketState extends State<Market> {
+class _MarketScreenState extends State<MarketScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Consts.bgColor,
-      appBar: new AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(
-          color: Consts.textColor, //change your color here
-        ),
-        centerTitle: true,
-        title: Text(
-          Consts.getText('market'),
-          style: Consts.titleStyle,
-        ),
-      ),
+    return Prefabs.scaffold(
+      title: 'market',
       body: Column(
         children: [
           // TOP-BAR
@@ -40,14 +29,7 @@ class _MarketState extends State<Market> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ColorFiltered(
-                          colorFilter: ColorFilter.mode(Consts.textColor, BlendMode.srcIn),
-                          child: Image.asset(
-                            Assets.img(e),
-                            width: Consts.width(7),
-                            height: Consts.width(7),
-                          ),
-                        ),
+                        Prefabs.image(img: e, size: 7),
                         Container(
                           margin: EdgeInsets.only(left: Consts.width(1), right: Consts.width(5)),
                           child: Text(
@@ -109,14 +91,7 @@ class _MarketState extends State<Market> {
     Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ColorFiltered(
-          colorFilter: ColorFilter.mode(Consts.textColor, BlendMode.srcIn),
-          child: Image.asset(
-            Assets.img('$img'),
-            width: Consts.width(5),
-            height: Consts.width(5),
-          ),
-        ),
+        Prefabs.image(img: img, size: 5),
         SizedBox(width: Consts.width(1)),
         Text(
           '$val',

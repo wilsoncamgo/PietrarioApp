@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/util/Config.dart';
+import 'package:pietrario_sample_app/util/config.dart';
 
 /// @author estidlozano
 class Consts {
@@ -21,6 +21,9 @@ class Consts {
   static void loadTexts() {
     // HELP
     texts['help'] = {'Help', 'Ayuda'};
+    texts['help_introduction'] = {'Introduction', 'Introducción'};
+    texts['help_market'] = {'Market', 'Mercado'};
+    texts['help_resources'] = {'Resources', 'Recursos'};
     // INVENTORY
     texts['inventory'] = {'Inventory', 'Inventario'};
     // MARKET
@@ -39,9 +42,9 @@ class Consts {
     texts['minerals'] = {'Minerals', 'Minerales'};
     texts['temperature'] = {'Temperature', 'Temperatura'};
     // TIMER
-    texts['focus_timer'] = {'Timer', 'Temporizador'};
-    texts['minuts'] = {'Minuts', 'Minutos'};
     texts['enter_time'] = {'Enter your focusing time', 'Ingresa tu tiempo de concentración'};
+    texts['focus_time'] = {'It\'s time to focus', 'Es hora de concentrarse'};
+    texts['timer'] = {'Timer', 'Temporizador'};
   }
 
   static String setDark(bool dark) {
@@ -71,6 +74,7 @@ class Consts {
   }
 
   static String getText(String name) {
+    print(name);
     return texts[name].elementAt(Config.lang);
   }
 

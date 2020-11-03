@@ -1,38 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pietrario_sample_app/model/User.dart';
-import 'package:pietrario_sample_app/util/Assets.dart';
-import 'package:pietrario_sample_app/util/Consts.dart';
+import 'package:pietrario_sample_app/util/assets.dart';
+import 'package:pietrario_sample_app/util/consts.dart';
+import 'package:pietrario_sample_app/util/prefabs.dart';
 
-class Inventory extends StatefulWidget {
+class InventoryScreen extends StatefulWidget {
   @override
-  _InventoryState createState() => _InventoryState();
+  _InventoryScreenState createState() => _InventoryScreenState();
 }
 
-class _InventoryState extends State<Inventory> {
+class _InventoryScreenState extends State<InventoryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Consts.bgColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        iconTheme: IconThemeData(
-          color: Consts.textColor, //change your color here
-        ),
-        centerTitle: true,
-        title: Text(
-          Consts.getText('inventory'),
-          style: Consts.titleStyle,
-        ),
-      ),
+    return Prefabs.scaffold(
+      title: 'inventory',
       body: Center(
         child: Column(
           children: [
             buildInventory(),
           ],
         ),
-      ),
+      )
     );
   }
 
@@ -57,11 +46,7 @@ class _InventoryState extends State<Inventory> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    Assets.img(v.name),
-                    width: Consts.width(12),
-                    height: Consts.width(12),
-                  ),
+                  Prefabs.image(img: v.name, size: 12, blend: false),
                   SizedBox(height: Consts.width(2)),
                   Text(
                     '${v.amount}',

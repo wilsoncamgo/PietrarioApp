@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pietrario_sample_app/controller/InventoryCtrl.dart';
-import 'package:pietrario_sample_app/screens/menu.dart';
-import 'package:pietrario_sample_app/util/Assets.dart';
-import 'package:pietrario_sample_app/util/Config.dart';
-import 'package:pietrario_sample_app/util/Consts.dart';
+import 'package:pietrario_sample_app/screens/menu_screen.dart';
+import 'package:pietrario_sample_app/util/assets.dart';
+import 'package:pietrario_sample_app/util/config.dart';
+import 'package:pietrario_sample_app/util/consts.dart';
 
 /// @author estidlozano
-class Splash extends StatelessWidget {
+class SplashScreen extends StatelessWidget {
 
   static bool loaded = false;
 
@@ -20,7 +20,7 @@ class Splash extends StatelessWidget {
       Config.loadConfig();
       InventoryCtrl.initUserData();
       Timer.periodic(Duration(seconds: 3), (time) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Menu()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => MenuScreen()));
         time.cancel();
       });
       loaded = true;
