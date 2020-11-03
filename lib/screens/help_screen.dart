@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
 
+/// @author estidlozano
 class HelpScreen extends StatefulWidget {
   @override
   _HelpScreenState createState() => _HelpScreenState();

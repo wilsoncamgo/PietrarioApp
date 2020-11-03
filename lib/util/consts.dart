@@ -45,6 +45,7 @@ class Consts {
     texts['enter_time'] = {'Enter your focusing time', 'Ingresa tu tiempo de concentración'};
     texts['focus_time'] = {'It\'s time to focus', 'Es hora de concentrarse'};
     texts['timer'] = {'Timer', 'Temporizador'};
+    texts['timer_reward'] = {'¡Get your reward!', '¡Obtén tu recompensa!'};
   }
 
   static String setDark(bool dark) {
@@ -74,7 +75,6 @@ class Consts {
   }
 
   static String getText(String name) {
-    print(name);
     return texts[name].elementAt(Config.lang);
   }
 

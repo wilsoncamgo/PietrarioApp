@@ -2,12 +2,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:pietrario_sample_app/controller/InventoryCtrl.dart';
 
-import 'package:pietrario_sample_app/util/assets.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
 
-
+/// @author estidlozano
 class TimerScreen extends StatefulWidget {
   @override
   TimeState createState() => TimeState();
@@ -15,8 +15,17 @@ class TimerScreen extends StatefulWidget {
 
 class TimeState extends State<TimerScreen> {
 
-  int time, minuts, seconds, minTime, maxTime, defaultTime;
-  bool isRunning = false;
+  int time,
+      minuts,
+      seconds,
+      minTime,
+      maxTime,
+      defaultTime,
+      obtainedWater,
+      obtainedMoss,
+      obtainedEnergy;
+  bool running = false,
+      ended = false;
 
   TextField inputMinuts;
   TextEditingController inputMinutsController;
@@ -44,6 +53,9 @@ class TimeState extends State<TimerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String text = running ? 'focus_time' : (ended ? 'timer_reward' : 'enter_time');
+    String imgButton = running ? 'pause' : (ended ? 'check' : 'play');
+    Function onTap = () => running ? stopTimer() : (ended ? checkReward() : startTimer());
     return Prefabs.scaffold(
       title: 'timer',
       body: Align(
@@ -53,26 +65,24 @@ class TimeState extends State<TimerScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              Consts.getText(isRunning ? 'focus_time' : 'enter_time'),
+              Consts.getText(text),
               style: Consts.textStyle,
             ),
             CircularPercentIndicator(
-              radius: Consts.width(60),
+              backgroundColor: Consts.mainColor,
               lineWidth: Consts.width(2),
               percent: ((minuts.toDouble() * 60 + seconds)/(time.toDouble() * 60)),
-              center: isRunning ?
+              progressColor: Consts.textColor,
+              radius: Consts.width(60),
+              center: running ?
               Text(
                 '$minuts : $seconds',
                 style: textStyle,
-              )
-                  :
-              inputMinuts,
-              progressColor: Consts.textColor,
-              backgroundColor: Consts.mainColor,
+              ) : (ended ? buildReward() : inputMinuts),
             ),
             InkWell(
-              child: Prefabs.image(img: isRunning ? 'pause' : 'play', size: 20),
-              onTap: () => isRunning ? stopTimer() : startTimer(),
+              child: Prefabs.image(img: imgButton, size: 20),
+              onTap: onTap,
             ),
           ],
         ),
@@ -104,12 +114,46 @@ class TimeState extends State<TimerScreen> {
     );
   }
 
+  Widget buildReward() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: Consts.width(10)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: {'water' : obtainedWater, 'moss' : obtainedMoss, 'energy': obtainedEnergy}
+            .entries.map((e) =>
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Prefabs.image(img: e.key, size: 7),
+                SizedBox(width: Consts.width(3)),
+                Text(
+                  '${e.value}',
+                  style: Consts.textStyle,
+                ),
+              ],
+            ),
+        ).toList(),
+      ),
+    );
+  }
+
+  void endFocusTime() {
+    double hours = time / 60;
+    obtainedWater = (InventoryCtrl.getProduction('water') * hours).round();
+    obtainedMoss = (InventoryCtrl.getProduction('moss') * hours).round();
+    obtainedEnergy = (InventoryCtrl.getProduction('energy') * hours).round();
+    InventoryCtrl.add('water', obtainedWater);
+    InventoryCtrl.add('moss', obtainedMoss);
+    InventoryCtrl.add('energy', obtainedEnergy);
+    ended = true;
+  }
+
   void startTimer() {
     setState(() {
-      isRunning = true;
+      running = true;
     });
     Timer.periodic(Duration(seconds: 1), (time) {
-      if(!isRunning) time.cancel();
+      if(!running) time.cancel();
       setState(() {
         if(--seconds == -1) {
           if(--minuts == -1) {
@@ -128,12 +172,16 @@ class TimeState extends State<TimerScreen> {
 
   void stopTimer() {
     setState(() {
-      isRunning = false;
+      running = false;
+      minuts = time;
+      seconds = 0;
     });
   }
 
-  void endFocusTime() {
-
+  void checkReward() {
+    setState(() {
+      ended = false;
+    });
   }
 
 }

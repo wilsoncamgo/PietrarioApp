@@ -8,12 +8,10 @@ import 'package:pietrario_sample_app/screens/market_screen.dart';
 import 'package:pietrario_sample_app/screens/settings_screen.dart';
 import 'package:pietrario_sample_app/screens/succulent_screen.dart';
 import 'package:pietrario_sample_app/screens/timer_screen.dart';
-import 'package:pietrario_sample_app/util/assets.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
 
 import 'help_screen.dart';
-
 
 /// @author wilsoncamgo
 class MenuScreen extends StatefulWidget {
@@ -133,9 +131,7 @@ class _MenuScreenState extends State<MenuScreen>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Prefabs.image(img: e, size: 7),
-                          SizedBox(
-                            width: Consts.width(3),
-                          ),
+                          SizedBox(width: Consts.width(3)),
                           Text(
                             '${User().inventory[e].amount}',
                             style: Consts.textStyle,

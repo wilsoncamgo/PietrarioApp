@@ -72,6 +72,10 @@ class InventoryCtrl {
     return '$amount';
   }
 
+  static double getProduction(String resource) {
+    return (User().inventory[resource] as Resource).production;
+  }
+
   static bool put(Bioasset bioasset) {
     bool b = false;
     if(!exist(bioasset.name)) {
