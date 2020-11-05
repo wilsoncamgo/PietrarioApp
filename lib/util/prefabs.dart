@@ -25,7 +25,8 @@ class Prefabs {
     );
   }
 
-  static Widget image({@required String img, double size = 10, bool blend = true}) {
+  static Widget image({@required String img, double size = 10,
+      bool blend = true}) {
     return blend ?
     ColorFiltered(
       colorFilter: ColorFilter.mode(Consts.textColor, BlendMode.srcIn),
@@ -42,9 +43,43 @@ class Prefabs {
   }
 
   static Widget imgRouteButton({@required Widget img,
-    @required context, @required Widget route}) {
+      @required context, @required Widget route}) {
     return InkWell(child: img,
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => route)),
+      onTap: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => route)),
+    );
+  }
+
+  static Widget popUp({@required String title, @required content, @required context}) {
+    double padding = Consts.width(6);
+    return AlertDialog(
+      backgroundColor: Consts.mainColor,
+      titlePadding: EdgeInsets.fromLTRB(padding, padding, padding, 0),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(width: padding),
+          Text(
+            Consts.getText(title),
+            style: Consts.textStyle,
+          ),
+          InkWell(
+            child: Icon(
+              Icons.close,
+              size: padding,
+              color: Consts.textColor,
+            ),
+            onTap: () => Navigator.of(context).pop(),
+          ),
+        ],
+      ),
+      contentPadding: EdgeInsets.all(padding),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          content,
+        ],
+      ),
     );
   }
 

@@ -1,15 +1,16 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
+import 'package:pietrario_sample_app/util/assets.dart';
+import 'package:pietrario_sample_app/util/consts.dart';
+import 'package:pietrario_sample_app/util/prefabs.dart';
 
-class GuardianMenu extends StatefulWidget {
-  const GuardianMenu({Key key}) : super(key: key);
+class GuardianScreen extends StatefulWidget {
+  const GuardianScreen({Key key}) : super(key: key);
 
   @override
-  _GuardianMenuState createState() => _GuardianMenuState();
+  _GuardianScreenState createState() => _GuardianScreenState();
 }
 
-class _GuardianMenuState extends State<GuardianMenu> {
+class _GuardianScreenState extends State<GuardianScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -19,24 +20,24 @@ class _GuardianMenuState extends State<GuardianMenu> {
             alignment: Alignment(-1, 0.4),
             child: Row(
               children: [
-                Image(
-                  image: AssetImage('assets/dog_lowpoly.png'),
-                  width: 200,
-                  height: 500,
+                Image.asset(
+                  Assets.img('dog'),
+                  width: Consts.width(40),
+                  height: Consts.width(100),
                 ),
                 InkWell(
                   child: Icon(
                     Icons.arrow_back_ios_rounded,
-                    size: 30,
+                    size: Consts.width(6),
+                    color: Consts.textColor,
                   ),
                 ),
-                SizedBox(
-                  width: 40,
-                ),
+                SizedBox(width: Consts.width(8)),
                 InkWell(
                   child: Icon(
                     Icons.arrow_forward_ios_rounded,
-                    size: 30,
+                    size: Consts.width(6),
+                    color: Consts.textColor,
                   ),
                 )
               ],
@@ -53,8 +54,8 @@ class _GuardianMenuState extends State<GuardianMenu> {
                   color: Colors.red,
                 ),
               ),
-              width: 150,
-              height: 150,
+              width: Consts.width(30),
+              height: Consts.width(30),
             ),
           ),
           Align(
@@ -66,8 +67,8 @@ class _GuardianMenuState extends State<GuardianMenu> {
                   color: Colors.black,
                 ),
               ),
-              width: 150,
-              height: 150,
+              width: Consts.width(30),
+              height: Consts.width(30),
             ),
           ),
         ],
@@ -76,55 +77,30 @@ class _GuardianMenuState extends State<GuardianMenu> {
   }
 
   Widget _buildAboutDialog(BuildContext context) {
-    return new AlertDialog(
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          SizedBox(
-            height: 30,
-            width: 30,
-          ),
-          Text(
-            'Guardián Canino',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w300,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: InkWell(
-              child: Icon(
-                Icons.close,
-                size: 30,
-              ),
-              onTap: () => Navigator.of(context).pop(),
-            ),
-          ),
-        ],
-      ),
-      content: new Column(
+    return Prefabs.popUp(
+      title: 'market',
+      content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            "Este pastor aleman, habitante de los climas fríos es idóneo para proteger de depredadores a sus amos y sus posesiones.",
-            style: TextStyle(
-              fontWeight: FontWeight.w200,
-            ),
+              'Este pastor aleman, habitante de los climas fríos es idóneo para proteger de depredadores a sus amos y sus posesiones.',
+              style: Consts.textStyle,
           )
         ],
       ),
+      context: context,
     );
   }
 
   Widget buildMainCircle() {
     return Align(
       alignment: Alignment(-1, 0.4),
-      child: Image(
-        image: AssetImage('assets/Ellipse-2.png'),
+      child: Image.asset(
+        Assets.img('Ellipse-2'),
+        width: Consts.width(90),
+        height: Consts.height(90),
       ),
     );
   }
@@ -132,7 +108,7 @@ class _GuardianMenuState extends State<GuardianMenu> {
   Widget buildEnvironment() {
     return SafeArea(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30),
+        padding: EdgeInsets.symmetric(horizontal: Consts.width(6)),
         child: Column(
           children: [
             Row(
@@ -142,25 +118,19 @@ class _GuardianMenuState extends State<GuardianMenu> {
                 InkWell(
                   child: Icon(
                     Icons.arrow_back_ios,
-                    size: 36,
+                    size: Consts.width(7.2),
                   ),
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: AutoSizeText(
-                    "Guardián Canino",
-                    textAlign: TextAlign.center,
-                    maxFontSize: 20,
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w300,
-                    ),
+                  child: Text(
+                    'Guardián Canino',
+                    style: Consts.textStyle,
                   ),
                 ),
                 SizedBox(
-                  height: 36,
-                  width: 36,
+                  height: Consts.width(7.2),
+                  width: Consts.width(7.2),
                 )
               ],
             ),
@@ -173,7 +143,7 @@ class _GuardianMenuState extends State<GuardianMenu> {
                 ),
                 child: Icon(
                   Icons.info,
-                  size: 40,
+                  size: Consts.width(8),
                 ),
               ),
             )

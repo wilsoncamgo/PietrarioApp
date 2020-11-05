@@ -5,6 +5,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pietrario_sample_app/model/User.dart';
 import 'package:pietrario_sample_app/screens/inventory_screen.dart';
 import 'package:pietrario_sample_app/screens/market_screen.dart';
+import 'package:pietrario_sample_app/screens/pietrario_screen.dart';
 import 'package:pietrario_sample_app/screens/settings_screen.dart';
 import 'package:pietrario_sample_app/screens/succulent_screen.dart';
 import 'package:pietrario_sample_app/screens/timer_screen.dart';
@@ -112,6 +113,13 @@ class _MenuScreenState extends State<MenuScreen>
           left: false,
           child: Stack(
             children: [
+              Container(
+                alignment: Alignment.bottomCenter,
+                margin: EdgeInsets.only(bottom: Consts.width(20)),
+                child: Prefabs.imgRouteButton(img:
+                Prefabs.image(img: 'pietrario', size: 90, blend: false),
+                    context: context, route: PietrarioScreen()),
+              ),
               Align(
                 alignment: Alignment(-1.2, -0.6),
                 child: Container(
@@ -155,22 +163,11 @@ class _MenuScreenState extends State<MenuScreen>
                   radius: Consts.width(22),
                   lineWidth: Consts.width(1),
                   center: AutoSizeText(
-                    "50%",
+                    "95%",
                     style: Consts.textStyle,
                   ),
                   circularStrokeCap: CircularStrokeCap.round,
                 ),
-              ),
-              Container(
-                alignment: Alignment.bottomCenter,
-                margin: EdgeInsets.only(
-                  bottom: Consts.width(20),
-                ),
-                padding: EdgeInsets.symmetric(
-                  horizontal: Consts.width(5),
-                ),
-                child: Prefabs.imgRouteButton(img: Prefabs.image(img: 'mountain2', size: 80, blend: false),
-                  context: context, route: SucculentScreen()),
               ),
             ],
           ),

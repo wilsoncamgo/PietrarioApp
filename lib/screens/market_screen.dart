@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pietrario_sample_app/controller/MarketCtrl.dart';
+import 'package:pietrario_sample_app/model/Bioasset.dart';
 import 'package:pietrario_sample_app/model/User.dart';
 import 'package:pietrario_sample_app/util/assets.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
@@ -26,19 +28,7 @@ class _MarketScreenState extends State<MarketScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: {'water', 'moss', 'energy'}.map((e) =>
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Prefabs.image(img: e, size: 7),
-                        Container(
-                          margin: EdgeInsets.only(left: Consts.width(1), right: Consts.width(5)),
-                          child: Text(
-                            '${User().inventory[e].amount}',
-                            style: Consts.textStyle,
-                          ),
-                        ),
-                      ],
-                    )
+                    buildResource(e),
                   ).toList(),
                 ),
               ),
@@ -53,34 +43,60 @@ class _MarketScreenState extends State<MarketScreen> {
                 crossAxisSpacing: Consts.width(2),
                 childAspectRatio: 0.75,
                 children: User().inventory.values.map((v) =>
-                  Container(
-                    margin: EdgeInsets.all(Consts.width(2)),
-                    decoration: BoxDecoration(
-                      color: Consts.mainColor,
-                      borderRadius: BorderRadius.all(Radius.circular(Consts.width(5))),
+                  InkWell(
+                    child: buildBioasset(v),
+                    onTap: () => showDialog(
+                      context: context,
+                      builder: (BuildContext context) => buildPurchasing(v, context),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                          Image.asset(
-                            Assets.img(v.name),
-                            width: Consts.width(12),
-                            height: Consts.width(12),
-                          ),
-                        SizedBox(height: Consts.width(2)),
-                        buildCost('water', v.costWater),
-                        SizedBox(height: Consts.width(1)),
-                        buildCost('moss', v.costMoss),
-                        SizedBox(height: Consts.width(1)),
-                        buildCost('energy', v.costEnergy),
-                      ],
-                    ),
-                  )
+                  ),
                 ).toList(),
               ),
             )
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildResource(String resource) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Prefabs.image(img: resource, size: 7),
+        Container(
+          margin: EdgeInsets.only(left: Consts.width(1), right: Consts.width(5)),
+          child: Text(
+            '${User().inventory[resource].amount}',
+            style: Consts.textStyle,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildBioasset(Bioasset b) {
+    return Container(
+      margin: EdgeInsets.all(Consts.width(2)),
+      decoration: BoxDecoration(
+        color: Consts.mainColor,
+        borderRadius: BorderRadius.all(Radius.circular(Consts.width(5))),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            Assets.img(b.name),
+            width: Consts.width(12),
+            height: Consts.width(12),
+          ),
+          SizedBox(height: Consts.width(2)),
+          buildCost('water', b.costWater),
+          SizedBox(height: Consts.width(1)),
+          buildCost('moss', b.costMoss),
+          SizedBox(height: Consts.width(1)),
+          buildCost('energy', b.costEnergy),
         ],
       ),
     );
@@ -100,4 +116,30 @@ class _MarketScreenState extends State<MarketScreen> {
       ],
     );
   }
+
+  Widget buildPurchasing(Bioasset b, BuildContext context) {
+    bool canPurchase = MarketCtrl.canPurchase(b);
+    return Prefabs.popUp(
+        title: 'exchange',
+        content: canPurchase ? Column(
+          children: [
+            buildBioasset(b),
+            SizedBox(height: Consts.width(6)),
+            InkWell(
+              child: Prefabs.image(
+                img: 'check',
+                size: 8,
+              ),
+              onTap: () => setState(() => MarketCtrl.purchase(b)),
+            ),
+          ],
+        ) : Text(
+          Consts.getText('insuficient_resources'),
+          textAlign: TextAlign.center,
+          style: Consts.textStyle,
+        ),
+        context: context,
+    );
+  }
+
 }

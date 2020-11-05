@@ -34,10 +34,20 @@ class InventoryCtrl {
         health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
         hidratation: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 5),
         minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
-        temperature: Vital(value: 20, minValue: 10, maxValue: 32, losingValue: 1),
+        temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 1),
         costWater: 540,
         costMoss: 500,
         name: 'succulent2',
+        description: 'succulent'
+    ));
+    put(Succulent(
+        health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
+        hidratation: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+        minerals: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 5),
+        temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 1),
+        costWater: 500,
+        costMoss: 540,
+        name: 'succulent3',
         description: 'succulent'
     ));
     put(Guardian(

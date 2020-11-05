@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:pietrario_sample_app/screens/guardian_screen.dart';
 import 'package:pietrario_sample_app/util/assets.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
 
 class SucculentScreen extends StatelessWidget {
-  const SucculentScreen({Key key}) : super(key: key);
+
+  BuildContext context;
 
   @override
   Widget build(BuildContext context) {
+    this.context = context;
     return Material(
       color: Consts.bgColor,
       child: Stack(
@@ -71,6 +74,8 @@ class SucculentScreen extends StatelessWidget {
                     width: Consts.width(35),
                     height: Consts.width(50),
                   ),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GuardianScreen())),
                 ),
               ],
             ),

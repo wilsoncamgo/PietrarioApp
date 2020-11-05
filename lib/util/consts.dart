@@ -11,7 +11,7 @@ class Consts {
   static Color scndColor = Colors.grey[500];
   static Color textColor = Colors.grey[900];
 
-  static final Map<String, Set<String>> texts = Map<String, Set<String>>();
+  static final Map<String, List<String>> texts = Map<String, List<String>>();
 
   static void setScreenSize(Size screenSize) {
     screenW = screenSize.width;
@@ -20,32 +20,39 @@ class Consts {
 
   static void loadTexts() {
     // HELP
-    texts['help'] = {'Help', 'Ayuda'};
-    texts['help_introduction'] = {'Introduction', 'Introducción'};
-    texts['help_market'] = {'Market', 'Mercado'};
-    texts['help_resources'] = {'Resources', 'Recursos'};
+    texts['help'] = ['Help', 'Ayuda'];
+    texts['help_introduction'] = ['Introduction', 'Introducción'];
+    texts['help_market'] = ['Market', 'Mercado'];
+    texts['help_resources'] = ['Resources', 'Recursos'];
     // INVENTORY
-    texts['inventory'] = {'Inventory', 'Inventario'};
+    texts['inventory'] = ['Inventory', 'Inventario'];
     // MARKET
-    texts['market'] = {'Market', 'Mercado'};
+    texts['market'] = ['Market', 'Mercado'];
+    texts['exchange'] = ['Exchange', 'Intercambiar'];
+    texts['insuficient_resources'] = [
+      'You do not have the necessary resources',
+      'No tienes los recursos necesarios',
+    ];
+    // PIETRARIO
+    texts['pietrario'] = ['Pietrario', 'Pietrario'];
     // SETTINGS
-    texts['cloudy'] = {'Cloudy Mode', 'Modo nublado'};
-    texts['language'] = {'Language', 'Idioma'};
-    texts['music'] = {'Music', 'Música'};
-    texts['rigorous'] = {'Rigorous Mode', 'Modo Riguroso'};
-    texts['settings'] = {'Settings', 'Ajustes'};
-    texts['sound'] = {'Sound', 'Sonido'};
-    texts['vibration'] = {'Vibration', 'Vibración'};
+    texts['cloudy'] = ['Cloudy Mode', 'Modo nublado'];
+    texts['language'] = ['Language', 'Idioma'];
+    texts['music'] = ['Music', 'Música'];
+    texts['rigorous'] = ['Rigorous Mode', 'Modo Riguroso'];
+    texts['settings'] = ['Settings', 'Ajustes'];
+    texts['sound'] = ['Sound', 'Sonido'];
+    texts['vibration'] = ['Vibration', 'Vibración'];
     // SUCCULENT STATS
-    texts['health'] = {'Health', 'Salud'};
-    texts['hidratation'] = {'Hidratation', 'Hidratación'};
-    texts['minerals'] = {'Minerals', 'Minerales'};
-    texts['temperature'] = {'Temperature', 'Temperatura'};
+    texts['health'] = ['Health', 'Salud'];
+    texts['hidratation'] = ['Hidratation', 'Hidratación'];
+    texts['minerals'] = ['Minerals', 'Minerales'];
+    texts['temperature'] = ['Temperature', 'Temperatura'];
     // TIMER
-    texts['enter_time'] = {'Enter your focusing time', 'Ingresa tu tiempo de concentración'};
-    texts['focus_time'] = {'It\'s time to focus', 'Es hora de concentrarse'};
-    texts['timer'] = {'Timer', 'Temporizador'};
-    texts['timer_reward'] = {'¡Get your reward!', '¡Obtén tu recompensa!'};
+    texts['enter_time'] = ['Enter your focusing time', 'Ingresa tu tiempo de concentración'];
+    texts['focus_time'] = ['It\'s time to focus', 'Es hora de concentrarse'];
+    texts['timer'] = ['Timer', 'Temporizador'];
+    texts['timer_reward'] = ['¡Get your reward!', '¡Obtén tu recompensa!'];
   }
 
   static String setDark(bool dark) {

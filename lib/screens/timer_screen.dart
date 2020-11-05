@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pietrario_sample_app/controller/InventoryCtrl.dart';
+import 'package:pietrario_sample_app/util/config.dart';
 
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
@@ -24,8 +26,9 @@ class TimeState extends State<TimerScreen> {
       obtainedWater,
       obtainedMoss,
       obtainedEnergy;
-  bool running = false,
-      ended = false;
+  bool running,
+      ended,
+      vibrationSupport;
 
   TextField inputMinuts;
   TextEditingController inputMinutsController;
@@ -46,6 +49,11 @@ class TimeState extends State<TimerScreen> {
     minuts = time;
     seconds = 0;
 
+    running = false;
+    ended = false;
+    () async {
+      vibrationSupport = await Vibrate.canVibrate;
+    }.call();
     inputMinutsController = TextEditingController();
     inputMinutsController.text = '$defaultTime';
     inputMinuts = buildInputText(inputMinutsController);
@@ -146,6 +154,9 @@ class TimeState extends State<TimerScreen> {
     InventoryCtrl.add('moss', obtainedMoss);
     InventoryCtrl.add('energy', obtainedEnergy);
     ended = true;
+    if(vibrationSupport && Config.vibration) {
+      Vibrate.vibrate();
+    }
   }
 
   void startTimer() {
