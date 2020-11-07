@@ -45,14 +45,13 @@ class _MarketScreenState extends State<MarketScreen> {
                 children: User().inventory.values.map((v) =>
                   InkWell(
                     child: buildBioasset(v),
-                    onTap: () => showDialog(
-                      context: context,
+                    onTap: () => showDialog(context: context,
                       builder: (BuildContext context) => buildPurchasing(v, context),
                     ),
                   ),
                 ).toList(),
               ),
-            )
+            ),
           ),
         ],
       ),
@@ -103,7 +102,7 @@ class _MarketScreenState extends State<MarketScreen> {
   }
 
   Widget buildCost(String img, int val) {
-    return val == 0 || val == null ? SizedBox() :
+    return val == 0 ? SizedBox() :
     Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -130,7 +129,10 @@ class _MarketScreenState extends State<MarketScreen> {
                 img: 'check',
                 size: 8,
               ),
-              onTap: () => setState(() => MarketCtrl.purchase(b)),
+              onTap: () => setState(() {
+                MarketCtrl.purchase(b);
+                Navigator.of(context).pop();
+              }),
             ),
           ],
         ) : Text(

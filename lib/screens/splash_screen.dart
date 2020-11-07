@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pietrario_sample_app/controller/InventoryCtrl.dart';
+import 'package:pietrario_sample_app/controller/PietrarioCtrl.dart';
 import 'package:pietrario_sample_app/screens/menu_screen.dart';
 import 'package:pietrario_sample_app/util/assets.dart';
 import 'package:pietrario_sample_app/util/config.dart';
@@ -18,7 +19,8 @@ class SplashScreen extends StatelessWidget {
       Consts.setScreenSize(MediaQuery.of(context).size);
       Consts.loadTexts();
       Config.loadConfig();
-      InventoryCtrl.initUserData();
+      InventoryCtrl.initInventory();
+      PietrarioCtrl.initPietrario();
       Timer.periodic(Duration(seconds: 3), (time) {
         Navigator.push(context, MaterialPageRoute(builder: (context) => MenuScreen()));
         time.cancel();

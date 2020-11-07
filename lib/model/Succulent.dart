@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:pietrario_sample_app/model/Bioasset.dart';
 
 import 'Vital.dart';
@@ -5,14 +6,31 @@ import 'Vital.dart';
 /// @author estidlozano
 class Succulent extends Bioasset {
 
-  Vital health;
-  Vital hidratation;
-  Vital minerals;
-  Vital temperature;
+  Vital health,
+      hidratation,
+      minerals,
+      temperature;
 
-  Succulent({this.health, this.hidratation, this.minerals, this.temperature,
-  int costWater = 0, int costMoss = 0, int costEnergy = 0, int amount = 0, String name, String description})
-  : super(costWater: costWater, costMoss: costMoss, costEnergy: costEnergy, amount: amount, name: name, description: description);
+  Succulent({
+    @required this.health,
+    @required this.hidratation,
+    @required this.minerals,
+    @required this.temperature,
+    int costWater = 0,
+    int costMoss = 0,
+    int costEnergy = 0,
+    int amount = 0,
+    @required String name,
+    @required String description
+  }) : super(
+    costWater: costWater,
+    costMoss: costMoss,
+    costEnergy: costEnergy,
+    amount: amount,
+    name: name,
+    description: description,
+    type: 'succulent',
+  );
 
   @override
   Succulent copy() {

@@ -9,14 +9,8 @@ import 'package:pietrario_sample_app/model/Vital.dart';
 /// @author estidlozano
 class InventoryCtrl {
 
-  static void initUserData() {
-    User().pietrario = Pietrario(terrain: 'Desert', temperature: 35);
-    User().inventory = Map<String, Bioasset>();
-    initInventory();
-    //PietrarioController.put(User().inventory['succulent1'], 0);
-  }
-
   static void initInventory() {
+    User().inventory = Map<String, Bioasset>();
     put(Resource(costMoss: 200, costEnergy: 200, amount: 500, name: 'water', description: 'resource'));
     put(Resource(costWater: 200, costEnergy: 200, amount: 500, name: 'moss', description: 'resource'));
     put(Resource(costWater: 200, costMoss: 200, amount: 500, name: 'energy', description: 'resource'));
@@ -70,6 +64,10 @@ class InventoryCtrl {
         name: 'fox',
         description: 'smart protector of your plants'
     ));
+  }
+
+  static Map<String, Bioasset> getAll() {
+    return User().inventory;
   }
 
   static String getResourceText(String resource) {

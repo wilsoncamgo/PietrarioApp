@@ -61,7 +61,7 @@ class Prefabs {
           SizedBox(width: padding),
           Text(
             Consts.getText(title),
-            style: Consts.textStyle,
+            style: Consts.titleStyle,
           ),
           InkWell(
             child: Icon(

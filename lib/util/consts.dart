@@ -35,6 +35,18 @@ class Consts {
     ];
     // PIETRARIO
     texts['pietrario'] = ['Pietrario', 'Pietrario'];
+    texts['guardian'] = ['Guardian', 'Guardian'];
+    texts['guardians'] = ['Guardians', 'Guardianes'];
+    texts['no_guardians'] = [
+      'You do not have guardians on your inventory',
+      'No tienes guardianes en tu inventario',
+    ];
+    texts['succulent'] = ['Succulent', 'Suculenta'];
+    texts['succulents'] = ['Succulents', 'Suculentas'];
+    texts['no_succulents'] = [
+      'You do not have succulents on your inventory',
+      'No tienes suculentas en tu inventario',
+    ];
     // SETTINGS
     texts['cloudy'] = ['Cloudy Mode', 'Modo nublado'];
     texts['language'] = ['Language', 'Idioma'];

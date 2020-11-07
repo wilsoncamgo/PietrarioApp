@@ -1,15 +1,25 @@
+import 'package:flutter/cupertino.dart';
+
 /// @author estidlozano
 class Bioasset {
 
-  int costWater;
-  int costMoss;
-  int costEnergy;
-  int amount;
-  String name;
-  String description;
+  int costWater,
+      costMoss,
+      costEnergy,
+      amount;
+  String name,
+      description,
+      type;
 
-  Bioasset({this.costWater = 0, this.costMoss = 0, this.costEnergy = 0,
-    this.amount = 0, this.name, this.description});
+  Bioasset({
+    this.costWater = 0,
+    this.costMoss = 0,
+    this.costEnergy = 0,
+    this.amount = 0,
+    @required this.name,
+    @required this.description,
+    @required this.type,
+  });
 
   Bioasset copy() {
     return Bioasset(
@@ -19,6 +29,7 @@ class Bioasset {
       amount: amount,
       name: name,
       description: description,
+      type: type,
     );
   }
 
