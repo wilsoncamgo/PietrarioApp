@@ -1,0 +1,5 @@
+
+/// @author estidlozano
+class SettingsCtrl {
+
+}

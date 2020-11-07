@@ -1,10 +1,27 @@
+import 'package:flutter/cupertino.dart';
+
+/// @author estidlozano
 class Vital {
 
-  int valor;
-  int minValor;
-  int maxValor;
-  int perdidaValor;
+  int value,
+      minValue,
+      maxValue,
+      losingValue;
 
-  Vital({this.valor, this.minValor, this.maxValor, this.perdidaValor});
+  Vital({
+    @required this.value,
+    @required this.minValue,
+    @required this.maxValue,
+    @required this.losingValue
+  });
+
+  Vital copy() {
+    return Vital(
+      value: value,
+      minValue: minValue,
+      maxValue: maxValue,
+      losingValue: losingValue,
+    );
+  }
 
 }
