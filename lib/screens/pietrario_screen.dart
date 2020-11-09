@@ -85,7 +85,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           child: InkWell(
             child: Prefabs.image(img: e.name, size: 12, blend: false),
             onTap: () => setState(() {
-              PietrarioCtrl.putGuardian(e);
+              PietrarioCtrl.addGuardian(e);
               Navigator.of(context).pop();
             }),
           ),
@@ -130,7 +130,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           ),
           SizedBox(height: Consts.width(4)),
           Text(
-            g.description,
+            Consts.getText('desc_' + g.name),
             style: Consts.textStyle,
             textAlign: TextAlign.center,
           ),
@@ -190,7 +190,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           ),
           SizedBox(height: Consts.width(4)),
           Text(
-            s.description,
+            Consts.getText('desc_' + s.name),
             style: Consts.textStyle,
             textAlign: TextAlign.center,
           ),
@@ -220,7 +220,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           child: InkWell(
             child: Prefabs.image(img: e.name, size: 12, blend: false),
             onTap: () => setState(() {
-              PietrarioCtrl.put(e, place);
+              PietrarioCtrl.add(e as Succulent, place);
               Navigator.of(context).pop();
             }),
           ),

@@ -103,20 +103,26 @@ class TimeState extends State<TimerScreen> {
       controller: controller,
       decoration: InputDecoration(
         border: InputBorder.none,
+        counterText: '',
       ),
-      keyboardType: TextInputType.number,
       inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
+        FilteringTextInputFormatter.digitsOnly,
       ],
+      keyboardType: TextInputType.number,
       style: textStyle,
-      textAlign: TextAlign.center,// Only numbers can be entered
+      textAlign: TextAlign.center,
+      maxLength: 3,
       onChanged: (e) {
-        int v = int.parse(inputMinutsController.text ?? 0);
+        int v = int.parse(inputMinutsController.text) ?? 0;
         setState(() {
           time = v < minTime ? minTime : (v > maxTime ? maxTime : v);
           minuts = time;
           seconds = 0;
-          inputMinutsController.text = '$time';
+          if(v != time) {
+            inputMinutsController.text = '$time';
+            int offset = inputMinutsController.text.length;
+            inputMinutsController.selection = TextSelection(baseOffset: offset, extentOffset: offset);
+          }
         });
       },
     );

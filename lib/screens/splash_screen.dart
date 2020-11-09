@@ -22,7 +22,7 @@ class SplashScreen extends StatelessWidget {
       InventoryCtrl.initInventory();
       PietrarioCtrl.initPietrario();
       Timer.periodic(Duration(seconds: 3), (time) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => MenuScreen()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MenuScreen()));
         time.cancel();
       });
       loaded = true;

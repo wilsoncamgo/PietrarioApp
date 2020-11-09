@@ -19,6 +19,33 @@ class Consts {
   }
 
   static void loadTexts() {
+    // BIOASSETS NAME
+    texts['succulent1'] = ['Succulent1', 'Suculenta1'];
+    texts['succulent2'] = ['Succulent2', 'Suculenta2'];
+    texts['succulent3'] = ['Succulent3', 'Suculenta3'];
+    texts['dog'] = ['Dog', 'Perro'];
+    texts['fox'] = ['Fox', 'Zorro'];
+    // BIOASSETS DESCRIPTION
+    texts['desc_succulent1'] = [
+      'Pretty1',
+      'Bonita1',
+    ];
+    texts['desc_succulent2'] = [
+      'Pretty2',
+      'Bonita2',
+    ];
+    texts['desc_succulent3'] = [
+      'Pretty3',
+      'Bonita3',
+    ];
+    texts['desc_dog'] = [
+      'Good guardian for your plants',
+      'Buen guardián para tus plantas',
+    ];
+    texts['desc_fox'] = [
+      'Smart guardian for your plants',
+      'Guardián inteligente para tus plantas',
+    ];
     // HELP
     texts['help'] = ['Help', 'Ayuda'];
     texts['help_introduction'] = ['Introduction', 'Introducción'];
