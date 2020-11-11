@@ -13,14 +13,12 @@ class Resource extends Bioasset {
     int costEnergy = 0,
     int amount = 0,
     @required String name,
-    @required String description
   }) : super(
     costWater: costWater,
     costMoss: costMoss,
     costEnergy: costEnergy,
     amount: amount,
     name: name,
-    description: description,
     type: 'resource',
   );
 

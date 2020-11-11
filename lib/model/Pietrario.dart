@@ -13,8 +13,8 @@ class Pietrario {
   Pietrario({
     @required this.terrain,
     @required this.temperature,
-    @required this.succulents,
-    @required this.guardian,
+    this.succulents,
+    this.guardian,
   });
 
 }
