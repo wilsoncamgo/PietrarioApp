@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 /// @author estidlozano
 class Vital {
 
-  double value,
+  int value,
       minValue,
       maxValue,
       losingValue;
