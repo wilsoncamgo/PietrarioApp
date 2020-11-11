@@ -6,6 +6,7 @@ import 'package:pietrario_sample_app/model/Guardian.dart';
 import 'package:pietrario_sample_app/model/Succulent.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
+import 'package:pietrario_sample_app/util/tools.dart';
 
 /// @author estidlozano
 class PietrarioScreen extends StatefulWidget {
@@ -25,13 +26,13 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
               alignment: Alignment(0, 0),
               child: Prefabs.image(img: 'base', size: 90, blend: false),
             ),
-            buidMoss(0.5, 0.03),
-            buidMoss(-0.15, 0.1),
-            buidMoss(0.35, 0.13),
-            buidMoss(0.85, 0.16),
-            buidMoss(-0.3, 0.2),
-            buidMoss(0.2, 0.23),
-            buidMoss(0.7, 0.26),
+            buildMoss(0.5, 0.03),
+            buildMoss(-0.15, 0.1),
+            buildMoss(0.35, 0.13),
+            buildMoss(0.85, 0.16),
+            buildMoss(-0.3, 0.2),
+            buildMoss(0.2, 0.23),
+            buildMoss(0.7, 0.26),
 
             buildSucculent(-0.65, -0.35, 0),
             buildSucculent(-0.85, -0.15, 1),
@@ -49,7 +50,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
     );
   }
 
-  Widget buidMoss(double x, double y) {
+  Widget buildMoss(double x, double y) {
     return Align(
       alignment: Alignment(x, y),
       child: Prefabs.image(img: 'moss1', size: 26, blend: false),
@@ -85,7 +86,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           child: InkWell(
             child: Prefabs.image(img: e.name, size: 12, blend: false),
             onTap: () => setState(() {
-              PietrarioCtrl.addGuardian(e);
+              PietrarioCtrl.putGuardian(e);
               Navigator.of(context).pop();
             }),
           ),
@@ -114,15 +115,10 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
 
   Widget buildGuardianInfo(Guardian g, BuildContext context) {
     return Prefabs.popUp(
-      title: 'guardian',
+      title: g.name,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            g.name,
-            style: Consts.textStyle,
-          ),
-          SizedBox(height: Consts.width(4)),
           Prefabs.image(
             img: g.name,
             size: 25,
@@ -130,7 +126,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           ),
           SizedBox(height: Consts.width(4)),
           Text(
-            Consts.getText('desc_' + g.name),
+            g.description,
             style: Consts.textStyle,
             textAlign: TextAlign.center,
           ),
@@ -174,15 +170,10 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
   Widget buildSucculentInfo(int place, BuildContext context) {
     Succulent s = PietrarioCtrl.get(place);
     return Prefabs.popUp(
-      title: 'succulent',
+      title: s.name,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            s.name,
-            style: Consts.textStyle,
-          ),
-          SizedBox(height: Consts.width(4)),
           Prefabs.image(
             img: s.name,
             size: 25,
@@ -190,7 +181,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           ),
           SizedBox(height: Consts.width(4)),
           Text(
-            Consts.getText('desc_' + s.name),
+            s.description,
             style: Consts.textStyle,
             textAlign: TextAlign.center,
           ),
@@ -204,6 +195,21 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
               PietrarioCtrl.drop(place);
               Navigator.of(context).pop();
             }),
+          ),
+          SizedBox(height: Consts.width(4)),
+          Text(
+            Consts.getText('statistics'),
+            style: Consts.titleStyle,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: Consts.width(4)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Tools.progressCircle(s.hydration.value, s.hydration.maxValue, "water2", Consts.water),
+              Tools.progressCircle(s.minerals.value, s.minerals.maxValue, "mineral", Consts.minerals),
+              Tools.progressCircle(s.temperature.value, s.temperature.maxValue, "temperature", Consts.temperature),
+            ],
           ),
         ],
       ),
@@ -220,7 +226,15 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           child: InkWell(
             child: Prefabs.image(img: e.name, size: 12, blend: false),
             onTap: () => setState(() {
-              PietrarioCtrl.add(e as Succulent, place);
+<<<<<<< HEAD
+<<<<<<< HEAD
+              PietrarioCtrl.put(e as Succulent, place);
+=======
+              PietrarioCtrl.put(e, place);
+>>>>>>> parent of f9dc8d7... added local database
+=======
+              PietrarioCtrl.put(e, place);
+>>>>>>> parent of f9dc8d7... added local database
               Navigator.of(context).pop();
             }),
           ),

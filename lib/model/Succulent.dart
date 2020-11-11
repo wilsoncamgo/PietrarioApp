@@ -7,26 +7,35 @@ import 'Vital.dart';
 class Succulent extends Bioasset {
 
   Vital health,
-      hydration,
+      hidratation,
       minerals,
       temperature;
 
   Succulent({
     @required this.health,
-    @required this.hydration,
+    @required this.hidratation,
     @required this.minerals,
     @required this.temperature,
     int costWater = 0,
     int costMoss = 0,
     int costEnergy = 0,
     int amount = 0,
+<<<<<<< HEAD
+    @required String name, String description,
+=======
     @required String name,
+    @required String description
+<<<<<<< HEAD
+>>>>>>> parent of f9dc8d7... added local database
+=======
+>>>>>>> parent of f9dc8d7... added local database
   }) : super(
     costWater: costWater,
     costMoss: costMoss,
     costEnergy: costEnergy,
     amount: amount,
     name: name,
+    description: description,
     type: 'succulent',
   );
 
@@ -34,7 +43,7 @@ class Succulent extends Bioasset {
   Succulent copy() {
     return Succulent(
       health: health.copy(),
-      hydration: hydration.copy(),
+      hidratation: hidratation.copy(),
       minerals: minerals.copy(),
       temperature: temperature.copy(),
       costWater: costWater,
@@ -42,6 +51,7 @@ class Succulent extends Bioasset {
       costEnergy: costEnergy,
       amount: amount,
       name: name,
+      description: description
     );
   }
 
