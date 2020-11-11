@@ -8,7 +8,6 @@ class Bioasset {
       costEnergy,
       amount;
   String name,
-      description,
       type;
 
   Bioasset({
@@ -17,7 +16,6 @@ class Bioasset {
     this.costEnergy = 0,
     this.amount = 0,
     @required this.name,
-    @required this.description,
     @required this.type,
   });
 
@@ -28,7 +26,6 @@ class Bioasset {
       costEnergy: costEnergy,
       amount: amount,
       name: name,
-      description: description,
       type: type,
     );
   }

@@ -3,7 +3,6 @@ import 'package:pietrario_sample_app/screens/guardian_screen.dart';
 import 'package:pietrario_sample_app/util/assets.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
-import 'package:pietrario_sample_app/util/tools.dart';
 
 class SucculentScreen extends StatelessWidget {
 
@@ -57,10 +56,10 @@ class SucculentScreen extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: Column(
               children: [
-                Tools.buildBar('health', Consts.health),
-                Tools.buildBar('hydration', Consts.water),
-                Tools.buildBar('minerals', Consts.minerals),
-                Tools.buildBar('temperature', Consts.temperature),
+                buildBar('health', Color(0xFF00CC66)),
+                buildBar('hidratation', Color(0xFF0066CC)),
+                buildBar('minerals', Color(0xFFAAAAAA)),
+                buildBar('temperature', Color(0xFFCC3333)),
               ],
             ),
           ),
@@ -83,6 +82,39 @@ class SucculentScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget buildBar(String text, Color color) {
+    return Column(
+      children: [
+        SizedBox(height: Consts.width(3)),
+        Text(
+            Consts.getText(text),
+            style: Consts.textStyle
+        ),
+        SizedBox(height: Consts.width(0.5)),
+        Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: color),
+                borderRadius: BorderRadius.all(Radius.circular(Consts.width(7))),
+              ),
+              width: Consts.width(32),
+              height: Consts.width(3),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(Consts.width(7))),
+                color: color,
+              ),
+              width: 0.4 * Consts.width(32),
+              height: Consts.width(3),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

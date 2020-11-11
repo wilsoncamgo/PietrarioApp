@@ -42,15 +42,3 @@ app.*.map.json
 *.bin
 *.lock
 android/.gradle/buildOutputCleanup/buildOutputCleanup.lock
-*.dart
-lib/controller/InventoryCtrl.dart
-lib/model/Bioasset.dart
-lib/model/Guardian.dart
-lib/model/Pietrario.dart
-lib/model/Resource.dart
-lib/model/Succulent.dart
-lib/model/Vital.dart
-lib/screens/pietrario_screen.dart
-lib/screens/timer_screen.dart
-lib/util/consts.dart
-lib/util/db_helper.dart

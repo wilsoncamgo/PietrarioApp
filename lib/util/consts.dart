@@ -10,10 +10,6 @@ class Consts {
   static Color mainColor = Colors.grey[300];
   static Color scndColor = Colors.grey[500];
   static Color textColor = Colors.grey[900];
-  static Color health = Color(0xFF00CC66);
-  static Color water = Color(0xFF0066CC);
-  static Color minerals = Color(0xFFAAAAAA);
-  static Color temperature = Color(0xFFCC3333);
 
   static final Map<String, List<String>> texts = Map<String, List<String>>();
 
@@ -23,16 +19,12 @@ class Consts {
   }
 
   static void loadTexts() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
     // BIOASSETS NAME
     texts['succulent1'] = ['Succulent1', 'Suculenta1'];
     texts['succulent2'] = ['Succulent2', 'Suculenta2'];
     texts['succulent3'] = ['Succulent3', 'Suculenta3'];
     texts['dog'] = ['Dog', 'Perro'];
     texts['fox'] = ['Fox', 'Zorro'];
-
     // BIOASSETS DESCRIPTION
     texts['desc_succulent1'] = [
       'Pretty1',
@@ -54,42 +46,11 @@ class Consts {
       'Smart guardian for your plants',
       'Guardián inteligente para tus plantas',
     ];
-
-=======
->>>>>>> parent of f9dc8d7... added local database
-=======
->>>>>>> parent of f9dc8d7... added local database
     // HELP
     texts['help'] = ['Help', 'Ayuda'];
     texts['help_introduction'] = ['Introduction', 'Introducción'];
     texts['help_market'] = ['Market', 'Mercado'];
     texts['help_resources'] = ['Resources', 'Recursos'];
-    texts['help_timer'] = ['Timer', 'Temporizador'];
-    texts['help_pietrario'] = ['Pietrario', 'Pietrario'];
-    texts['help_modes'] = ['Modes', 'Modos'];
-
-    //HELP TEXTS
-    texts['content_introduction'] = [
-      'Pietrario app tries to train your focus on your daily activities. For that, it is based on Pomodoro methodology and offers you a Pietrario (a space where succulents grow), where you may use rewards won by concentrating to plant, take care and personalize them. Next, you will find more information about the different parts of the games ',
-      'La aplicación Pietrario busca fortalecer tu concentración en tus actividades diarias. Para ello, se basa en la metodología Pomodoro y te ofrece un Pietrario (un espacio donde se cultivan suculentas), donde podrás usar recompensas ganadas en tiempos de concentración para plantar, cuidar y personalizarlas. A continuación, encontrarás información sobre las distintas partes del juego. '
-    ];
-    texts['content_resources'] = [
-      'For the plants to survive, they need some assets.\n\n- Moss: In it,  some minerals are found which the plant needs.\n- Energy: To keep a certain temperature, regulated by … that needs the energy.\n- Water: To keep the adequate moist level, water is used.\n\n\nMarket: \nIn the market you may use your gained assets to trade them with others that you may need, new plants and guardians.\n\nGuardians:\nGuardians are animals who take care of the Pietrario. Each one of them offers a different buff on it ',
-      'Para la supervivencia de las plantas se necesitan ciertos assets.\n\n- Musgo: En este se encuentran minerales necesarios para la planta. \n- Energía: Para mantener cierta temperatura, regulada por un regulador que requiere de esta energia.\n- Agua: Para mantener la hidratación adecuada, se usa agua en la planta.\n\n\nMercado: \nEn el mercado podrás usar los assets ganados para intercambiarlos con otros que necesites, nuevas plantas y guardianes. \n\nGuardianes:\nLos guardianes son animales que se encargan de cuidar el Pietrario. Estos ofrecen una ventaja  distinta sobre él. '
-    ];
-    texts['content_timer'] = [
-      'The timer counts the focus time of your activities. After setting a quantity of minutes, less than 120, and finishing that time, you’ll receive an amount of assets of each type. This is the only way to get the assets. ',
-      'El temporizador, contabiliza el tiempo de concentración de tus actividades. Luego de ingresar una cantidad de minutos, menor a 120, y cumplir con dicho tiempo, se te dará una cantidad de assets de cada tipo. Esta es la única forma de conseguir los assets . '
-    ];
-    texts['content_pietrario'] = [
-      'The whole Pietrario needs the energy to keep the temperature the same and each plant requires an amount of moss and water every so often. That is why, for them to survive, they will need you to accomplish focus times.',
-      'El Pietrario requiere cierta cantidad de energía y cada planta requiere una cantidad de Musgo y Agua cada cierto tiempo para que no muera. Por eso, para que estas sobrevivan, necesitan que cumplas tiempos de concentración. '
-    ];
-    texts['content_modes'] = [
-      'There are some modes in the app which may ease your experience:\n\n- Rigorous: This mode tries to completely remove every phone distraction. When it is active, none app on your phone will be allowed to be used.\n- Cloudy: Deletes the need of light in the game, however, it comes with debuffs on the plants.\n- Night: Eases the use od the app on dark environments with more adequate colors.',
-      'Hay ciertos modos en la aplicación que pueden facilitar tu experiencia:\n\n- Riguroso: Este modo busca eliminar por completo las distracciones. Cuando esta activo, ninguna aplicación del celular puede ser usada.\n- Nublado: Elimina la necesidad de luz en el juego, sin embargo, trae desventajas para las plantas.\n- Noche: Facilita el uso de la aplicación en ambientes oscuros con colores mas adecuados. '
-    ];
-
     // INVENTORY
     texts['inventory'] = ['Inventory', 'Inventario'];
     // MARKET
@@ -123,10 +84,9 @@ class Consts {
     texts['vibration'] = ['Vibration', 'Vibración'];
     // SUCCULENT STATS
     texts['health'] = ['Health', 'Salud'];
-    texts['hidratation'] = ['Hydration', 'Hidratación'];
+    texts['hidratation'] = ['Hidratation', 'Hidratación'];
     texts['minerals'] = ['Minerals', 'Minerales'];
     texts['temperature'] = ['Temperature', 'Temperatura'];
-    texts['statistics'] = ['Statistics', 'Estadisticas'];
     // TIMER
     texts['enter_time'] = ['Enter your focusing time', 'Ingresa tu tiempo de concentración'];
     texts['focus_time'] = ['It\'s time to focus', 'Es hora de concentrarse'];
