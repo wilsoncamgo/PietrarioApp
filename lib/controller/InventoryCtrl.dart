@@ -16,6 +16,7 @@ class InventoryCtrl {
     put(Resource(costWater: 200, costMoss: 200, amount: 500, name: 'energy', description: 'resource'));
     put(Succulent(
 <<<<<<< HEAD
+<<<<<<< HEAD
         health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
         hydration: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
         minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
@@ -29,6 +30,8 @@ class InventoryCtrl {
         health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
         hydration: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 5),
 =======
+=======
+>>>>>>> parent of f9dc8d7... added local database
       health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
       hidratation: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
       minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
@@ -41,6 +44,9 @@ class InventoryCtrl {
     put(Succulent(
         health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
         hidratation: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 5),
+<<<<<<< HEAD
+>>>>>>> parent of f9dc8d7... added local database
+=======
 >>>>>>> parent of f9dc8d7... added local database
         minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
         temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 1),
@@ -52,7 +58,11 @@ class InventoryCtrl {
     put(Succulent(
         health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
 <<<<<<< HEAD
+<<<<<<< HEAD
         hydration: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+=======
+        hidratation: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+>>>>>>> parent of f9dc8d7... added local database
 =======
         hidratation: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
 >>>>>>> parent of f9dc8d7... added local database
@@ -82,6 +92,9 @@ class InventoryCtrl {
       amount: 0,
       name: 'dog',
       description: 'good protector of your plants'
+<<<<<<< HEAD
+>>>>>>> parent of f9dc8d7... added local database
+=======
 >>>>>>> parent of f9dc8d7... added local database
     ));
     put(Guardian(

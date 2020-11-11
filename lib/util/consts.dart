@@ -24,6 +24,7 @@ class Consts {
 
   static void loadTexts() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     // BIOASSETS NAME
     texts['succulent1'] = ['Succulent1', 'Suculenta1'];
@@ -54,6 +55,8 @@ class Consts {
       'Guardián inteligente para tus plantas',
     ];
 
+=======
+>>>>>>> parent of f9dc8d7... added local database
 =======
 >>>>>>> parent of f9dc8d7... added local database
     // HELP

@@ -25,6 +25,9 @@ class Succulent extends Bioasset {
 =======
     @required String name,
     @required String description
+<<<<<<< HEAD
+>>>>>>> parent of f9dc8d7... added local database
+=======
 >>>>>>> parent of f9dc8d7... added local database
   }) : super(
     costWater: costWater,

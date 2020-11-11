@@ -227,7 +227,11 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
             child: Prefabs.image(img: e.name, size: 12, blend: false),
             onTap: () => setState(() {
 <<<<<<< HEAD
+<<<<<<< HEAD
               PietrarioCtrl.put(e as Succulent, place);
+=======
+              PietrarioCtrl.put(e, place);
+>>>>>>> parent of f9dc8d7... added local database
 =======
               PietrarioCtrl.put(e, place);
 >>>>>>> parent of f9dc8d7... added local database
