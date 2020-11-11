@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'assets.dart';
 import 'consts.dart';
@@ -83,4 +84,25 @@ class Prefabs {
     );
   }
 
+  static Widget progressCircle(double value, double maxValue, String img, Color color){
+    return Column(
+      children: [
+        new CircularPercentIndicator(
+          radius: 60.0,
+          lineWidth: 3.0,
+          percent: value/maxValue,
+          center: Image.asset(
+            Assets.img(img),
+            height: Consts.width(10),
+            width: Consts.width(10),
+          ),
+          progressColor: color,
+        ),
+        Text(
+          value.toString(),
+          style: TextStyle(color: color),
+        ),
+      ],
+    );
+  }
 }

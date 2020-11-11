@@ -7,6 +7,8 @@ import 'package:pietrario_sample_app/model/Succulent.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
 
+import '../util/prefabs.dart';
+
 /// @author estidlozano
 class PietrarioScreen extends StatefulWidget {
   @override
@@ -204,6 +206,21 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
               PietrarioCtrl.drop(place);
               Navigator.of(context).pop();
             }),
+          ),
+          SizedBox(height: Consts.width(4)),
+          Text(
+            Consts.getText('statistics'),
+            style: Consts.titleStyle,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: Consts.width(4)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Prefabs.progressCircle(s.hydration.value, s.hydration.maxValue, "water2", Consts.water),
+              Prefabs.progressCircle(s.minerals.value, s.minerals.maxValue, "mineral", Consts.minerals),
+              Prefabs.progressCircle(s.temperature.value, s.temperature.maxValue, "temperature", Consts.temperature),
+            ],
           ),
         ],
       ),
