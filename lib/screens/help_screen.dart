@@ -18,8 +18,7 @@ class _HelpScreenState extends State<HelpScreen> {
   void initState() {
     super.initState();
     sections = ['introduction', 'resources', 'timer', 'pietrario', 'modes'];
-    images = [
-      'logo','fox','time','pietrario','settings'];
+    images = ['logo','fox','time','pietrario','settings'];
     section = 0;
   }
 
@@ -75,10 +74,9 @@ class _HelpScreenState extends State<HelpScreen> {
                   Text(
                     Consts.getText('content_${sections[section]}'),
                     style: Consts.textStyle,
+                    textAlign: TextAlign.justify,
                   ),
                   SizedBox(height: 30,),
-
-
                   section==1 ?
                   (Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,9 +95,8 @@ class _HelpScreenState extends State<HelpScreen> {
                   Container(
                     alignment: Alignment.bottomCenter,
                     margin: EdgeInsets.only(bottom: Consts.width(20)),
-                    child: Prefabs.imgRouteButton(img:
-                    Prefabs.image(img: images[section], size: 50, blend: false),
-                        context: context),
+                    child: Prefabs.image(img:
+                    images[section], size: 50, blend: false),
                   ),
                 ],
               ),
