@@ -16,28 +16,49 @@ class InventoryCtrl {
     put(Resource(costWater: 100, costEnergy: 100, amount: 500, name: 'moss'));
     put(Resource(costWater: 100, costMoss: 100, amount: 500, name: 'energy'));
     put(Succulent(
+<<<<<<< Updated upstream
       health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 1.0),
       hydration: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 0.5),
       minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 0.5),
       temperature: Vital(value: 20, minValue: 10, maxValue: 30, losingValue: 0.1),
+=======
+      health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
+      hydration: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+      minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+      temperature: Vital(value: 20, minValue: 10, maxValue: 30, losingValue: 1),
+>>>>>>> Stashed changes
       costWater: 480,
       costMoss: 480,
       name: 'succulent1',
     ));
     put(Succulent(
+<<<<<<< Updated upstream
         health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 1.0),
         hydration: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 0.5),
         minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 0.5),
         temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 0.1),
+=======
+        health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
+        hydration: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 5),
+        minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+        temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 1),
+>>>>>>> Stashed changes
         costWater: 540,
         costMoss: 500,
         name: 'succulent2',
     ));
     put(Succulent(
+<<<<<<< Updated upstream
         health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 1.0),
         hydration: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 0.5),
         minerals: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 0.5),
         temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 0.1),
+=======
+        health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
+        hydration: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+        minerals: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 5),
+        temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 1),
+>>>>>>> Stashed changes
         costWater: 500,
         costMoss: 540,
         name: 'succulent3',

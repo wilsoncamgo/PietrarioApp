@@ -6,6 +6,7 @@ import 'package:pietrario_sample_app/model/Guardian.dart';
 import 'package:pietrario_sample_app/model/Succulent.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
+import 'package:pietrario_sample_app/util/tools.dart';
 
 /// @author estidlozano
 class PietrarioScreen extends StatefulWidget {
@@ -25,13 +26,13 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
               alignment: Alignment(0, 0),
               child: Prefabs.image(img: 'base', size: 90, blend: false),
             ),
-            buidMoss(0.5, 0.03),
-            buidMoss(-0.15, 0.1),
-            buidMoss(0.35, 0.13),
-            buidMoss(0.85, 0.16),
-            buidMoss(-0.3, 0.2),
-            buidMoss(0.2, 0.23),
-            buidMoss(0.7, 0.26),
+            buildMoss(0.5, 0.03),
+            buildMoss(-0.15, 0.1),
+            buildMoss(0.35, 0.13),
+            buildMoss(0.85, 0.16),
+            buildMoss(-0.3, 0.2),
+            buildMoss(0.2, 0.23),
+            buildMoss(0.7, 0.26),
 
             buildSucculent(-0.65, -0.35, 0),
             buildSucculent(-0.85, -0.15, 1),
@@ -49,7 +50,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
     );
   }
 
-  Widget buidMoss(double x, double y) {
+  Widget buildMoss(double x, double y) {
     return Align(
       alignment: Alignment(x, y),
       child: Prefabs.image(img: 'moss1', size: 26, blend: false),
@@ -204,6 +205,21 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
               PietrarioCtrl.drop(place);
               Navigator.of(context).pop();
             }),
+          ),
+          SizedBox(height: Consts.width(4)),
+          Text(
+            Consts.getText('statistics'),
+            style: Consts.titleStyle,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: Consts.width(4)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Tools.progressCircle(s.hydration.value, s.hydration.maxValue, "water2", Consts.water),
+              Tools.progressCircle(s.minerals.value, s.minerals.maxValue, "mineral", Consts.minerals),
+              Tools.progressCircle(s.temperature.value, s.temperature.maxValue, "temperature", Consts.temperature),
+            ],
           ),
         ],
       ),
