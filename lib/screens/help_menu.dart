@@ -69,7 +69,7 @@ class HelpMenu extends StatelessWidget {
                       ),
                       Expanded(
                         child: AutoSizeText(
-                          "Recursos",
+                          "Recurso",
                           maxFontSize: 20,
                           textAlign: TextAlign.center,
                           style: TextStyle(
