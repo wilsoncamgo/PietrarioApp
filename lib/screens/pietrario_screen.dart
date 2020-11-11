@@ -86,7 +86,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           child: InkWell(
             child: Prefabs.image(img: e.name, size: 12, blend: false),
             onTap: () => setState(() {
-              PietrarioCtrl.addGuardian(e);
+              PietrarioCtrl.putGuardian(e);
               Navigator.of(context).pop();
             }),
           ),
@@ -236,7 +236,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           child: InkWell(
             child: Prefabs.image(img: e.name, size: 12, blend: false),
             onTap: () => setState(() {
-              PietrarioCtrl.add(e as Succulent, place);
+              PietrarioCtrl.put(e as Succulent, place);
               Navigator.of(context).pop();
             }),
           ),

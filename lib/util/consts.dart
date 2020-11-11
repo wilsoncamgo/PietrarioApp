@@ -23,21 +23,24 @@ class Consts {
   }
 
   static void loadTexts() {
-<<<<<<< Updated upstream
+
     // BIOASSETS NAME
     texts['succulent1'] = ['Succulent1', 'Suculenta1'];
     texts['succulent2'] = ['Succulent2', 'Suculenta2'];
     texts['succulent3'] = ['Succulent3', 'Suculenta3'];
     texts['dog'] = ['Dog', 'Perro'];
     texts['fox'] = ['Fox', 'Zorro'];
+
     // BIOASSETS DESCRIPTION
     texts['desc_succulent1'] = [
       'Pretty1',
       'Bonita1',
-=======
+    ];
+
     // HELP
     texts['help'] = ['Help', 'Ayuda'];
     texts['help_introduction'] = ['Introduction', 'Introducción'];
+    texts['help_market'] = ['Market', 'Mercado'];
     texts['help_resources'] = ['Resources', 'Recursos'];
     texts['help_timer'] = ['Timer', 'Temporizador'];
     texts['help_pietrario'] = ['Pietrario', 'Pietrario'];
@@ -47,7 +50,7 @@ class Consts {
     texts['content_introduction'] = [
       'Pietrario app tries to train your focus on your daily activities. For that, it is based on Pomodoro methodology and offers you a Pietrario (a space where succulents grow), where you may use rewards won by concentrating to plant, take care and personalize them. Next, you will find more information about the different parts of the games ',
       'La aplicación Pietrario busca fortalecer tu concentración en tus actividades diarias. Para ello, se basa en la metodología Pomodoro y te ofrece un Pietrario (un espacio donde se cultivan suculentas), donde podrás usar recompensas ganadas en tiempos de concentración para plantar, cuidar y personalizarlas. A continuación, encontrarás información sobre las distintas partes del juego. '
->>>>>>> Stashed changes
+
     ];
     texts['desc_succulent2'] = [
       'Pretty2',
@@ -65,11 +68,6 @@ class Consts {
       'Smart guardian for your plants',
       'Guardián inteligente para tus plantas',
     ];
-    // HELP
-    texts['help'] = ['Help', 'Ayuda'];
-    texts['help_introduction'] = ['Introduction', 'Introducción'];
-    texts['help_market'] = ['Market', 'Mercado'];
-    texts['help_resources'] = ['Resources', 'Recursos'];
     // INVENTORY
     texts['inventory'] = ['Inventory', 'Inventario'];
     // MARKET

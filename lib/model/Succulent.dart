@@ -20,7 +20,7 @@ class Succulent extends Bioasset {
     int costMoss = 0,
     int costEnergy = 0,
     int amount = 0,
-    @required String name,
+    @required String name, String description,
   }) : super(
     costWater: costWater,
     costMoss: costMoss,

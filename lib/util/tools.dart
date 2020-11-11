@@ -40,7 +40,7 @@ class Tools {
     );
   }
 
-  static Widget progressCircle(int value, int maxValue, String img, Color color){
+  static Widget progressCircle(double value, double maxValue, String img, Color color){
     return Column(
       children: [
         new CircularPercentIndicator(
