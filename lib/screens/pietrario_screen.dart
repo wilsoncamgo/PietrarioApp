@@ -115,15 +115,10 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
 
   Widget buildGuardianInfo(Guardian g, BuildContext context) {
     return Prefabs.popUp(
-      title: 'guardian',
+      title: g.name,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            g.name,
-            style: Consts.textStyle,
-          ),
-          SizedBox(height: Consts.width(4)),
           Prefabs.image(
             img: g.name,
             size: 25,
@@ -175,15 +170,10 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
   Widget buildSucculentInfo(int place, BuildContext context) {
     Succulent s = PietrarioCtrl.get(place);
     return Prefabs.popUp(
-      title: 'succulent',
+      title: s.name,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            s.name,
-            style: Consts.textStyle,
-          ),
-          SizedBox(height: Consts.width(4)),
           Prefabs.image(
             img: s.name,
             size: 25,

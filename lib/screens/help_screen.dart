@@ -81,16 +81,14 @@ class _HelpScreenState extends State<HelpScreen> {
                   (Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: {'water', 'moss', 'energy'}
-                        .map(
-                          (e) => Row(
+                        .map((e) => Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Prefabs.image(img: e, size: 20),
                               SizedBox(width: Consts.width(3)),
                             ],
                           ),
-                        )
-                        .toList(),
+                        ).toList(),
                   )):SizedBox(width: Consts.width(10)),
                   Container(
                     alignment: Alignment.bottomCenter,
