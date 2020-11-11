@@ -20,6 +20,7 @@ class Resource extends Bioasset {
     costEnergy: costEnergy,
     amount: amount,
     name: name,
+    description: description,
     type: 'resource',
   );
 

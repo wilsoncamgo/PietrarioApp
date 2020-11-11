@@ -15,6 +15,7 @@ class InventoryCtrl {
     put(Resource(costWater: 200, costEnergy: 200, amount: 500, name: 'moss', description: 'resource'));
     put(Resource(costWater: 200, costMoss: 200, amount: 500, name: 'energy', description: 'resource'));
     put(Succulent(
+<<<<<<< HEAD
         health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
         hydration: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
         minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
@@ -27,6 +28,20 @@ class InventoryCtrl {
     put(Succulent(
         health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
         hydration: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 5),
+=======
+      health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
+      hidratation: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+      minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+      temperature: Vital(value: 20, minValue: 10, maxValue: 30, losingValue: 1),
+      costWater: 480,
+      costMoss: 480,
+      name: 'succulent1',
+      description: 'succulent'
+    ));
+    put(Succulent(
+        health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
+        hidratation: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 5),
+>>>>>>> parent of f9dc8d7... added local database
         minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
         temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 1),
         costWater: 540,
@@ -36,7 +51,11 @@ class InventoryCtrl {
     ));
     put(Succulent(
         health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 10),
+<<<<<<< HEAD
         hydration: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+=======
+        hidratation: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 5),
+>>>>>>> parent of f9dc8d7... added local database
         minerals: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 5),
         temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 1),
         costWater: 500,
@@ -45,6 +64,7 @@ class InventoryCtrl {
         description: 'succulent'
     ));
     put(Guardian(
+<<<<<<< HEAD
         bonusWater: 0.1,
         bonusMoss: 0.2,
         bonusEnergy: 0.1,
@@ -53,6 +73,16 @@ class InventoryCtrl {
         amount: 0,
         name: 'dog',
         description: 'good protector of your plants'
+=======
+      bonusWater: 0.1,
+      bonusMoss: 0.2,
+      bonusEnergy: 0.1,
+      costMoss: 500,
+      costEnergy: 500,
+      amount: 0,
+      name: 'dog',
+      description: 'good protector of your plants'
+>>>>>>> parent of f9dc8d7... added local database
     ));
     put(Guardian(
         bonusWater: 0.2,

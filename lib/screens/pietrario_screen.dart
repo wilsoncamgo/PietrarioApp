@@ -126,7 +126,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           ),
           SizedBox(height: Consts.width(4)),
           Text(
-            Consts.getText('desc_' + g.name),
+            g.description,
             style: Consts.textStyle,
             textAlign: TextAlign.center,
           ),
@@ -181,7 +181,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           ),
           SizedBox(height: Consts.width(4)),
           Text(
-            Consts.getText('desc_' + s.name),
+            s.description,
             style: Consts.textStyle,
             textAlign: TextAlign.center,
           ),
@@ -226,7 +226,11 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           child: InkWell(
             child: Prefabs.image(img: e.name, size: 12, blend: false),
             onTap: () => setState(() {
+<<<<<<< HEAD
               PietrarioCtrl.put(e as Succulent, place);
+=======
+              PietrarioCtrl.put(e, place);
+>>>>>>> parent of f9dc8d7... added local database
               Navigator.of(context).pop();
             }),
           ),

@@ -16,13 +16,19 @@ class Guardian extends Bioasset {
     int costMoss = 0,
     int costEnergy = 0,
     int amount = 0,
+<<<<<<< HEAD
     @required String name, String description,
+=======
+    @required String name,
+    @required String description,
+>>>>>>> parent of f9dc8d7... added local database
   }) : super(
     costWater: costWater,
     costMoss: costMoss,
     costEnergy: costEnergy,
     amount: amount,
     name: name,
+    description: description,
     type: 'guardian',
   );
 
@@ -37,6 +43,7 @@ class Guardian extends Bioasset {
       costEnergy: costEnergy,
       amount: amount,
       name: name,
+      description: description,
     );
   }
 
