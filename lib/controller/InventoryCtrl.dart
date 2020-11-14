@@ -12,32 +12,32 @@ class InventoryCtrl {
   static void initInventory() async {
     User().inventory = Map<String, Bioasset>();
     // Initialize the bioassets
-    put(Resource(costMoss: 100, costEnergy: 100, amount: 500, name: 'water'));
-    put(Resource(costWater: 100, costEnergy: 100, amount: 500, name: 'moss'));
-    put(Resource(costWater: 100, costMoss: 100, amount: 500, name: 'energy'));
+    put(Resource(costMoss: 100, costEnergy: 100, amount: 500, name: Resource.water));
+    put(Resource(costWater: 100, costEnergy: 100, amount: 500, name: Resource.moss));
+    put(Resource(costWater: 100, costMoss: 100, amount: 500, name: Resource.energy));
     put(Succulent(
-      health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 1.0),
-      hydration: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 0.5),
-      minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 0.5),
-      temperature: Vital(value: 20, minValue: 10, maxValue: 30, losingValue: 0.1),
+      health: Vital(value: 80, maxValue: 100, losingValue: 1.0),
+      hydration: Vital(value: 80,maxValue: 100, losingValue: 0.5),
+      minerals: Vital(value: 80, maxValue: 100, losingValue: 0.5),
+      temperature: Vital(value: 20, maxValue: 30, losingValue: 0.1),
       costWater: 480,
       costMoss: 480,
       name: 'succulent1',
     ));
     put(Succulent(
-        health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 1.0),
-        hydration: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 0.5),
-        minerals: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 0.5),
-        temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 0.1),
+        health: Vital(value: 80, maxValue: 100, losingValue: 1.0),
+        hydration: Vital(value: 96, maxValue: 120, losingValue: 0.5),
+        minerals: Vital(value: 80, maxValue: 100, losingValue: 0.5),
+        temperature: Vital(value: 20, maxValue: 32, losingValue: 0.1),
         costWater: 540,
         costMoss: 500,
         name: 'succulent2',
     ));
     put(Succulent(
-        health: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 1.0),
-        hydration: Vital(value: 80, minValue: 0, maxValue: 100, losingValue: 0.5),
-        minerals: Vital(value: 96, minValue: 0, maxValue: 120, losingValue: 0.5),
-        temperature: Vital(value: 20, minValue: 9, maxValue: 31, losingValue: 0.1),
+        health: Vital(value: 80, maxValue: 100, losingValue: 1.0),
+        hydration: Vital(value: 80, maxValue: 100, losingValue: 0.5),
+        minerals: Vital(value: 96, maxValue: 120, losingValue: 0.5),
+        temperature: Vital(value: 20, maxValue: 32, losingValue: 0.1),
         costWater: 500,
         costMoss: 540,
         name: 'succulent3',

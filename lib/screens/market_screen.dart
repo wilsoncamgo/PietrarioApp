@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pietrario_sample_app/controller/MarketCtrl.dart';
 import 'package:pietrario_sample_app/model/Bioasset.dart';
+import 'package:pietrario_sample_app/model/Resource.dart';
 import 'package:pietrario_sample_app/model/User.dart';
 import 'package:pietrario_sample_app/util/assets.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
@@ -27,7 +28,7 @@ class _MarketScreenState extends State<MarketScreen> {
                 padding: EdgeInsets.all(Consts.width(3)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: {'water', 'moss', 'energy'}.map((e) =>
+                  children: {Resource.water, Resource.moss, Resource.energy}.map((e) =>
                     buildResource(e),
                   ).toList(),
                 ),
@@ -91,11 +92,11 @@ class _MarketScreenState extends State<MarketScreen> {
             height: Consts.width(12),
           ),
           SizedBox(height: Consts.width(2)),
-          buildCost('water', b.costWater),
+          buildCost(Resource.water, b.costWater),
           SizedBox(height: Consts.width(1)),
-          buildCost('moss', b.costMoss),
+          buildCost(Resource.moss, b.costMoss),
           SizedBox(height: Consts.width(1)),
-          buildCost('energy', b.costEnergy),
+          buildCost(Resource.energy, b.costEnergy),
         ],
       ),
     );

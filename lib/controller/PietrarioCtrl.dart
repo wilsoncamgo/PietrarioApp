@@ -1,8 +1,10 @@
 import 'package:pietrario_sample_app/controller/InventoryCtrl.dart';
 import 'package:pietrario_sample_app/model/Guardian.dart';
 import 'package:pietrario_sample_app/model/Pietrario.dart';
+import 'package:pietrario_sample_app/model/Resource.dart';
 import 'package:pietrario_sample_app/model/Succulent.dart';
 import 'package:pietrario_sample_app/model/User.dart';
+import 'package:pietrario_sample_app/model/Vital.dart';
 import 'package:pietrario_sample_app/util/db_helper.dart';
 
 /// @author estidlozano
@@ -26,14 +28,14 @@ class PietrarioCtrl {
       s.hydration.value = e['hydration'];
       s.minerals.value = e['minerals'];
       s.temperature.value = e['temperature'];
-      put(s, e['place']);
+      insert(s, e['place']);
     });
     // load guardian
     List<Map<String, dynamic>> guardiansData =
     await DBHelper().queryAllRows(DBHelper.guardians);
     guardiansData.forEach((e) {
       Guardian g = InventoryCtrl.get(e['name']);
-      putGuardian(g);
+      insertGuardian(g);
     });
   }
 
@@ -53,7 +55,7 @@ class PietrarioCtrl {
     return getGuardian() != null;
   }
 
-  static Future<bool> put(Succulent s, int place) async {
+  static Future<bool> insert(Succulent s, int place) async {
     User().pietrario.succulents[place] = s.copy();
     return await DBHelper().insert(DBHelper.succulents, {
       'name' : s.name,
@@ -68,10 +70,10 @@ class PietrarioCtrl {
   static Future<bool> add(Succulent s, int place) async {
     if(succulentIn(place)) return false;
     InventoryCtrl.drop(s.name, 1);
-    return put(s, place);
+    return insert(s, place);
   }
 
-  static Future<bool> putGuardian(Guardian g) async {
+  static Future<bool> insertGuardian(Guardian g) async {
     User().pietrario.guardian = g.copy();
     return await DBHelper().insert(DBHelper.guardians, {
       'name' : g.name,
@@ -81,10 +83,10 @@ class PietrarioCtrl {
   static Future<bool> addGuardian(Guardian g) async {
     if(guardianIn()) return false;
     InventoryCtrl.drop(g.name, 1);
-    return putGuardian(g);
+    return insertGuardian(g);
   }
 
-  static Future<bool> drop(int place) async {
+  static Future<bool> delete(int place) async {
     if(!succulentIn(place)) return false;
     Succulent s  = get(place);
     InventoryCtrl.add(s.name, 1);
@@ -92,12 +94,54 @@ class PietrarioCtrl {
     return await DBHelper().delete(DBHelper.succulents, s.name) == 1;
   }
 
-  static Future<bool> dropGuardian() async {
+  static Future<bool> deleteGuardian() async {
     if(!guardianIn()) return false;
     Guardian g = getGuardian();
     InventoryCtrl.add(g.name, 1);
     User().pietrario.guardian = null;
     return await DBHelper().delete(DBHelper.guardians, g.name) == 1;
+  }
+
+  static Future<bool> update(Succulent s, int place) async {
+    User().pietrario.succulents[place] = s.copy();
+    return await DBHelper().update(DBHelper.succulents, {
+      'name' : s.name,
+      'place' : place,
+      'health' : s.health.value,
+      'hydration' : s.hydration.value,
+      'minerals' : s.minerals.value,
+      'temperature' : s.temperature.value,
+    }) == 1;
+  }
+
+  static bool canVitalize(Vital v, String name) {
+    return name != Vital.health || (
+        InventoryCtrl.get(Resource.water).amount >= 5
+            && InventoryCtrl.get(Resource.moss).amount >= 5
+            && InventoryCtrl.get(Resource.energy).amount >= 5
+    );
+  }
+
+  static bool vitalize(Vital v, String name) {
+    if(name != Vital.health) {
+      v.increase();
+      String resource = Vital.vitalResources[name];
+      if(InventoryCtrl.get(resource).amount >= 10
+          && v.value < v.maxValue) {
+        InventoryCtrl.drop(resource, 10);
+        return true;
+      }
+    } else if(InventoryCtrl.get(Resource.water).amount >= 5
+        && InventoryCtrl.get(Resource.moss).amount >= 5
+        && InventoryCtrl.get(Resource.energy).amount >= 5
+        && v.value < v.maxValue) {
+      v.increase();
+      InventoryCtrl.drop(Resource.water, 5);
+      InventoryCtrl.drop(Resource.moss, 5);
+      InventoryCtrl.drop(Resource.energy, 5);
+      return true;
+    }
+    return false;
   }
 
 }

@@ -84,25 +84,15 @@ class Prefabs {
     );
   }
 
-  static Widget progressCircle(double value, double maxValue, String img, Color color){
-    return Column(
-      children: [
-        new CircularPercentIndicator(
-          radius: 60.0,
-          lineWidth: 3.0,
-          percent: value/maxValue,
-          center: Image.asset(
-            Assets.img(img),
-            height: Consts.width(10),
-            width: Consts.width(10),
-          ),
-          progressColor: color,
-        ),
-        Text(
-          value.toString(),
-          style: TextStyle(color: color),
-        ),
-      ],
+  static Widget circularPercentIndicator({@required double percent, Widget center,
+      Color color, double lineWidth = 1, double radius = 12}) {
+    return CircularPercentIndicator(
+      backgroundColor: Consts.mainColor,
+      lineWidth: Consts.width(lineWidth),
+      percent: percent,
+      progressColor: color ?? Consts.textColor,
+      radius: Consts.width(radius),
+      center: center,
     );
   }
 }

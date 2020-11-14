@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pietrario_sample_app/model/Resource.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
 
@@ -80,7 +81,7 @@ class _HelpScreenState extends State<HelpScreen> {
                   section==1 ?
                   (Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: {'water', 'moss', 'energy'}
+                    children: {Resource.water, Resource.moss, Resource.energy}
                         .map(
                           (e) => Row(
                         mainAxisAlignment: MainAxisAlignment.center,

@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pietrario_sample_app/controller/InventoryCtrl.dart';
 import 'package:pietrario_sample_app/controller/PietrarioCtrl.dart';
+import 'package:pietrario_sample_app/model/Bioasset.dart';
 import 'package:pietrario_sample_app/model/Guardian.dart';
 import 'package:pietrario_sample_app/model/Succulent.dart';
+import 'package:pietrario_sample_app/screens/succulent_screen.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
 
@@ -51,6 +53,11 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
     );
   }
 
+  void callBackSucculent() {
+    setState(() {
+    });
+  }
+
   Widget buidMoss(double x, double y) {
     return Align(
       alignment: Alignment(x, y),
@@ -64,7 +71,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
       alignment: Alignment(x, y),
       child: g == null ?
         InkWell(
-          child: Prefabs.image(img: 'guardian', size: 10, blend: false),
+          child: Prefabs.image(img: 'guardian', size: 10),
           onTap: () => showDialog(context: context,
             builder: (BuildContext context) => buildGuardiansList(context),
           ),
@@ -80,7 +87,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
 
   Widget buildGuardiansList(BuildContext context) {
     List<Widget> guardians = InventoryCtrl.getAll().values.where((e) =>
-      e.type == 'guardian' && e.amount != 0,
+      e.type == Bioasset.typeGuardian && e.amount != 0,
     ).map((e) =>
         Container(
           margin: EdgeInsets.all(Consts.width(2)),
@@ -116,15 +123,10 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
 
   Widget buildGuardianInfo(Guardian g, BuildContext context) {
     return Prefabs.popUp(
-      title: 'guardian',
+      title: g.name,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            g.name,
-            style: Consts.textStyle,
-          ),
-          SizedBox(height: Consts.width(4)),
           Prefabs.image(
             img: g.name,
             size: 25,
@@ -143,7 +145,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
               size: 15,
             ),
             onTap: () => setState(() {
-              PietrarioCtrl.dropGuardian();
+              PietrarioCtrl.deleteGuardian();
               Navigator.of(context).pop();
             }),
           ),
@@ -164,73 +166,16 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           builder: (BuildContext context) => buildSucculentsList(place, context),
         ),
       ) :
-      InkWell(
-        child: Prefabs.image(img: s.name, size: 25, blend: false),
-        onTap: () => showDialog(context: context,
-          builder: (BuildContext context) => buildSucculentInfo(place, context),
-        ),
+      Prefabs.imgRouteButton(
+          img: Prefabs.image(img: s.name, size: 25, blend: false),
+          context: context, route: SucculentScreen(place: place, callBack: () => callBackSucculent()),
       ),
-    );
-  }
-
-  Widget buildSucculentInfo(int place, BuildContext context) {
-    Succulent s = PietrarioCtrl.get(place);
-    return Prefabs.popUp(
-      title: 'succulent',
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            s.name,
-            style: Consts.textStyle,
-          ),
-          SizedBox(height: Consts.width(4)),
-          Prefabs.image(
-            img: s.name,
-            size: 25,
-            blend: false,
-          ),
-          SizedBox(height: Consts.width(4)),
-          Text(
-            Consts.getText('desc_' + s.name),
-            style: Consts.textStyle,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: Consts.width(4)),
-          InkWell(
-            child: Prefabs.image(
-              img: 'inventory',
-              size: 15,
-            ),
-            onTap: () => setState(() {
-              PietrarioCtrl.drop(place);
-              Navigator.of(context).pop();
-            }),
-          ),
-          SizedBox(height: Consts.width(4)),
-          Text(
-            Consts.getText('statistics'),
-            style: Consts.titleStyle,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: Consts.width(4)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Prefabs.progressCircle(s.hydration.value, s.hydration.maxValue, "water2", Consts.water),
-              Prefabs.progressCircle(s.minerals.value, s.minerals.maxValue, "mineral", Consts.minerals),
-              Prefabs.progressCircle(s.temperature.value, s.temperature.maxValue, "temperature", Consts.temperature),
-            ],
-          ),
-        ],
-      ),
-      context: context,
     );
   }
 
   Widget buildSucculentsList(int place, BuildContext context) {
     List<Widget> succulents = InventoryCtrl.getAll().values.where((e) =>
-      e.type == 'succulent' && e.amount != 0,
+      e.type == Bioasset.typeSucculent && e.amount != 0,
     ).map((e) =>
         Container(
           margin: EdgeInsets.all(Consts.width(2)),

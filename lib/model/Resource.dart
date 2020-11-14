@@ -4,6 +4,11 @@ import 'package:pietrario_sample_app/model/Bioasset.dart';
 /// @author estidlozano
 class Resource extends Bioasset {
 
+  static String
+      water = 'water',
+      moss = 'moss',
+      energy = 'energy';
+
   double production;
 
   Resource({
@@ -19,7 +24,7 @@ class Resource extends Bioasset {
     costEnergy: costEnergy,
     amount: amount,
     name: name,
-    type: 'resource',
+    type: Bioasset.typeResource,
   );
 
 }

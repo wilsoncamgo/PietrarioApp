@@ -1,27 +1,25 @@
 import 'package:pietrario_sample_app/model/Bioasset.dart';
-import 'package:pietrario_sample_app/model/User.dart';
-
+import 'package:pietrario_sample_app/model/Resource.dart';
 import 'InventoryCtrl.dart';
 
 /// @author estidlozano
 class MarketCtrl {
 
   static bool canPurchase(Bioasset bio) {
-    return User().inventory['water'].amount >= bio.costWater
-        && User().inventory['moss'].amount >= bio.costMoss
-        && User().inventory['energy'].amount >= bio.costEnergy;
+    return InventoryCtrl.get(Resource.water).amount >= bio.costWater
+        && InventoryCtrl.get(Resource.moss).amount >= bio.costMoss
+        && InventoryCtrl.get(Resource.energy).amount >= bio.costEnergy;
   }
 
   static bool purchase(Bioasset bio) {
-    bool b = false;
     if(canPurchase(bio)) {
-      InventoryCtrl.add(bio.name, 1);
-      InventoryCtrl.drop('water', bio.costWater);
-      InventoryCtrl.drop('moss', bio.costMoss);
-      InventoryCtrl.drop('energy', bio.costEnergy);
-      b = true;
+      InventoryCtrl.add(bio.name, bio.type == Bioasset.typeResource ? 100 : 1);
+      InventoryCtrl.drop(Resource.water, bio.costWater);
+      InventoryCtrl.drop(Resource.moss, bio.costMoss);
+      InventoryCtrl.drop(Resource.energy, bio.costEnergy);
+      return true;
     }
-    return b;
+    return false;
   }
 
 }

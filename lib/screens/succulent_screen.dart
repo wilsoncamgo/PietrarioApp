@@ -1,120 +1,157 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/screens/guardian_screen.dart';
-import 'package:pietrario_sample_app/util/assets.dart';
+import 'package:pietrario_sample_app/controller/PietrarioCtrl.dart';
+import 'package:pietrario_sample_app/model/Succulent.dart';
+import 'package:pietrario_sample_app/model/Vital.dart';
 import 'package:pietrario_sample_app/util/consts.dart';
 import 'package:pietrario_sample_app/util/prefabs.dart';
 
-class SucculentScreen extends StatelessWidget {
+class SucculentScreen extends StatefulWidget {
+  int place;
+  Function callBack;
 
-  BuildContext context;
+  SucculentScreen({@required this.place, this.callBack});
+  @override
+  _SucculentScreenState createState() => _SucculentScreenState();
+}
+
+class _SucculentScreenState extends State<SucculentScreen> {
+
+  Succulent succulent;
+
+  _SucculentScreenState();
+
+  @override
+  void initState() {
+    super.initState();
+    succulent = PietrarioCtrl.get(widget.place);
+  }
+
+  void callBackIndicator() {
+    setState(() {
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    this.context = context;
-    return Material(
-      color: Consts.bgColor,
-      child: Stack(
+    return Prefabs.scaffold(
+      title: succulent.name,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          buildEnvironment(),
-          Align(
-            alignment: Alignment(-1.4, -0.6),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Consts.mainColor,
-                shape: BoxShape.circle,
-                border: Border.all(color: Consts.textColor),
-              ),
-              padding: EdgeInsets.all(Consts.width(10)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'Mi Teyuna Parte 2',
-                    textAlign: TextAlign.center,
-                    style: Consts.textStyle,
-                  ),
-                  Prefabs.image(img: 'succulent1', size: 20, blend: false),
-                ],
-              ),
-              width: Consts.width(50),
-              height: Consts.width(50),
+          Prefabs.image(
+            img: succulent.name,
+            size: 40,
+            blend: false,
+          ),
+          SizedBox(height: Consts.width(5)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              buildIndicator(succulent.health, Vital.health, Consts.healthColor),
+              buildIndicator(succulent.hydration, Vital.hydration, Consts.hydrationColor),
+              buildIndicator(succulent.minerals, Vital.minerals, Consts.mineralsColor),
+              buildIndicator(succulent.temperature, Vital.temperature, Consts.temperatureColor),
+            ],
+          ),
+          SizedBox(height: Consts.width(15)),
+          Text(
+            Consts.getText('desc_' + succulent.name),
+            style: Consts.textStyle,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: Consts.width(15)),
+          InkWell(
+            child: Prefabs.image(
+              img: 'inventory',
+              size: 15,
             ),
+            onTap: () {
+              Navigator.of(context).pop();
+              PietrarioCtrl.delete(widget.place);
+              widget.callBack();
+            },
           ),
         ],
       ),
     );
   }
 
-  Widget buildEnvironment() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 40),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: Column(
-              children: [
-                buildBar('health', Color(0xFF00CC66)),
-                buildBar('hidratation', Color(0xFF0066CC)),
-                buildBar('minerals', Color(0xFFAAAAAA)),
-                buildBar('temperature', Color(0xFFCC3333)),
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                InkWell(
-                  child: Image.asset(
-                    Assets.img('fox'),
-                    width: Consts.width(35),
-                    height: Consts.width(50),
-                  ),
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => GuardianScreen())),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildBar(String text, Color color) {
+  Widget buildIndicator(Vital v, String name, Color color) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: Consts.width(3)),
-        Text(
-            Consts.getText(text),
-            style: Consts.textStyle
+        InkWell(
+          child: Prefabs.circularPercentIndicator(
+            color: color,
+            center: Prefabs.image(img: name, size: 6, blend: false),
+            percent: v.value / v.maxValue,
+          ),
+          onTap: () => showDialog(context: context,
+            builder: (BuildContext context) => Prefabs.popUp(
+              title: name,
+              content: buildIndicatorInfo(v, name, color),
+              context: context,
+            ),
+          ),
         ),
-        SizedBox(height: Consts.width(0.5)),
-        Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: color),
-                borderRadius: BorderRadius.all(Radius.circular(Consts.width(7))),
-              ),
-              width: Consts.width(32),
-              height: Consts.width(3),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(Consts.width(7))),
-                color: color,
-              ),
-              width: 0.4 * Consts.width(32),
-              height: Consts.width(3),
-            ),
-          ],
-        )
+        Text(
+          v.value.toString(),
+          style: Consts.textStyle,
+        ),
       ],
     );
   }
+
+  Widget buildIndicatorInfo(Vital v, String name, Color color) {
+    return StatefulBuilder(
+      builder: (context, StateSetter setState) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Prefabs.circularPercentIndicator(
+              color: color,
+              center: Prefabs.image(img: name, size: 8, blend: false),
+              percent: v.value / v.maxValue,
+              radius: 16,
+            ),
+            SizedBox(height: Consts.width(4)),
+            Text(
+              '${v.value} / ${v.maxValue}',
+              style: Consts.textStyle,
+            ),
+            SizedBox(height: Consts.width(5)),
+            PietrarioCtrl.canVitalize(v, name) ?
+            InkWell(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Prefabs.image(img: 'double_up'),
+                    SizedBox(height: Consts.width(2)),
+                    Text(
+                      '+ ${v.losingValue * 10}',
+                      style: Consts.textStyle,
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  setState(() {
+                    if (PietrarioCtrl.vitalize(v, name)) {
+                      PietrarioCtrl.update(succulent, widget.place);
+                    }
+                  });
+                  callBackIndicator();
+                }
+            ) : SizedBox(),
+          ],
+        );
+      }
+    );
+  }
+
 }

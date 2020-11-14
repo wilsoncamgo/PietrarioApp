@@ -76,12 +76,10 @@ class TimeState extends State<TimerScreen> {
               Consts.getText(text),
               style: Consts.textStyle,
             ),
-            CircularPercentIndicator(
-              backgroundColor: Consts.mainColor,
-              lineWidth: Consts.width(2),
+            Prefabs.circularPercentIndicator(
+              lineWidth: 2,
               percent: ((minuts.toDouble() * 60 + seconds)/(time.toDouble() * 60)),
-              progressColor: Consts.textColor,
-              radius: Consts.width(60),
+              radius: 60,
               center: running ?
               Text(
                 '$minuts : $seconds',

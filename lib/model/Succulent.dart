@@ -27,7 +27,7 @@ class Succulent extends Bioasset {
     costEnergy: costEnergy,
     amount: amount,
     name: name,
-    type: 'succulent',
+    type: Bioasset.typeSucculent,
   );
 
   @override

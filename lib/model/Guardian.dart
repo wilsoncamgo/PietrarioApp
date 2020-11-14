@@ -23,7 +23,7 @@ class Guardian extends Bioasset {
     costEnergy: costEnergy,
     amount: amount,
     name: name,
-    type: 'guardian',
+    type: Bioasset.typeGuardian,
   );
 
   @override

@@ -3,12 +3,17 @@ import 'package:flutter/cupertino.dart';
 /// @author estidlozano
 class Bioasset {
 
+  static int
+      typeGuardian = 1,
+      typeResource = 2,
+      typeSucculent = 3;
+
   int costWater,
       costMoss,
       costEnergy,
-      amount;
-  String name,
+      amount,
       type;
+  String name;
 
   Bioasset({
     this.costWater = 0,
