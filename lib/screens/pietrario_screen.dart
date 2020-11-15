@@ -17,7 +17,7 @@ class PietrarioScreen extends StatefulWidget {
 }
 
 class _PietrarioScreenState extends State<PietrarioScreen> {
-  static const MethodChannel androidChannel = MethodChannel('androidChannel');
+  final MethodChannel androidChannel = MethodChannel('androidChannel');
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +57,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
   }
 
   void callBackSucculent() {
-    setState(() {
-    });
+    setState(() { });
   }
 
   Widget buidMoss(double x, double y) {
@@ -235,13 +234,13 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
     );
   }
 
-  Future<String> turnAr() async {
+  Future<void> turnAr() async {
     String value = 'failed';
     try {
       value = await androidChannel.invokeMethod('turnAr');
-    } catch(e) {
+    } on PlatformException catch(e) {
       print(e);
     }
-    print(value);
+    print('turnAr ' + value);
   }
 }

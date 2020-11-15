@@ -1,7 +1,5 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:pietrario_app/model/Resource.dart';
 import 'package:pietrario_app/model/User.dart';
 import 'package:pietrario_app/screens/inventory_screen.dart';

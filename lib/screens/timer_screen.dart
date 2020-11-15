@@ -64,6 +64,7 @@ class TimeState extends State<TimerScreen> {
     String text = running ? 'focus_time' : (ended ? 'timer_reward' : 'enter_time');
     String imgButton = running ? 'pause' : (ended ? 'check' : 'play');
     Function onTap = () => running ? stopTimer() : (ended ? checkReward() : startTimer());
+    double percent = ((minuts * 60.0 + seconds)/(time * 60.0));
     return Prefabs.scaffold(
       title: 'timer',
       body: Align(
@@ -78,7 +79,7 @@ class TimeState extends State<TimerScreen> {
             ),
             Prefabs.circularPercentIndicator(
               lineWidth: 2,
-              percent: ((minuts.toDouble() * 60 + seconds)/(time.toDouble() * 60)),
+              percent: percent,
               radius: 60,
               center: running ?
               Text(
@@ -171,8 +172,11 @@ class TimeState extends State<TimerScreen> {
       running = true;
     });
     Timer.periodic(Duration(seconds: 1), (time) {
-      if(!running) time.cancel();
       setState(() {
+        if(!running) {
+          time.cancel();
+          return;
+        }
         if(--seconds == -1) {
           if(--minuts == -1) {
             minuts = 0;
@@ -180,9 +184,8 @@ class TimeState extends State<TimerScreen> {
             stopTimer();
             endFocusTime();
             return;
-          } else {
-            seconds = 59;
           }
+          seconds = 59;
         }
       });
     });

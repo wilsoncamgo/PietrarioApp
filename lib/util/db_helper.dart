@@ -35,17 +35,16 @@ class DBHelper {
   }
 
   Future onCreate(Database db, int version) async {
-    await db.execute('PRAGMA foreign_keys = ON');
     await db.execute('CREATE TABLE inventory ('
         + 'name TEXT NOT NULL PRIMARY KEY,'
-        + 'amount INTEGER NOT NULL)');
+        + 'amount INTEGER)');
     await db.execute('CREATE TABLE succulents ('
         + 'name TEXT NOT NULL,'
-        + 'place INTEGER NOT NULL,'
-        + 'health REAL NOT NULL,'
-        + 'hydration REAL NOT NULL,'
-        + 'minerals REAL NOT NULL,'
-        + 'temperature REAL NOT NULL)');
+        + 'place INTEGER,'
+        + 'health REAL,'
+        + 'hydration REAL,'
+        + 'minerals REAL,'
+        + 'temperature REAL)');
     await db.execute('CREATE TABLE guardians ('
         + 'name TEXT)');
   }

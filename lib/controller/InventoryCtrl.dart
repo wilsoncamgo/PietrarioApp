@@ -74,9 +74,7 @@ class InventoryCtrl {
       inventoryData.forEach((e) {
         String name = e['name'];
         int amount = e['amount'];
-        if(amount > 0 && exist(name)) {
-          get(name).amount = amount;
-        }
+        if(exist(name)) get(name).amount = amount;
       });
     }
   }

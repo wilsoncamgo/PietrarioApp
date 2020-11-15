@@ -1,84 +1,39 @@
 package com.example.pietrario_app;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
-import com.example.pietrario_app.R;
 
-import io.flutter.embedding.android.FlutterFragment;
+public class ArActivity extends Activity {
 
-public class ArActivity extends FragmentActivity {
-    // Define a tag String to represent the FlutterFragment within this
-    // Activity's FragmentManager. This value can be whatever you'd like.
-    private static final String TAG_FLUTTER_FRAGMENT = "flutter_fragment";
-
-    // Declare a local variable to reference the FlutterFragment so that you
-    // can forward calls to it later.
-    private FlutterFragment flutterFragment;
+    ImageView imgBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Inflate a layout that has a container for your FlutterFragment.
-        // For this example, assume that a FrameLayout exists with an ID of
-        // R.id.fragment_container.
         setContentView(R.layout.activity_ar);
 
-        // Get a reference to the Activity's FragmentManager to add a new
-        // FlutterFragment, or find an existing one.
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        imgBack = findViewById(R.id.ar_back);
 
-        // Attempt to find an existing FlutterFragment,
-        // in case this is not the first time that onCreate() was run.
-        flutterFragment = (FlutterFragment) fragmentManager
-                .findFragmentByTag(TAG_FLUTTER_FRAGMENT);
-
-        // Create and attach a FlutterFragment if one does not exist.
-        if (flutterFragment == null) {
-            flutterFragment = FlutterFragment.createDefault();
-
-            fragmentManager.beginTransaction()
-                    .add(R.id.frame, flutterFragment, TAG_FLUTTER_FRAGMENT)
-                    .commit();
-        }
+        init();
     }
 
-    @Override
-    public void onPostResume() {
-        super.onPostResume();
-        flutterFragment.onPostResume();
+    private void init() {
+        listenClick();
     }
 
-    @Override
-    protected void onNewIntent(@NonNull Intent intent) {
-        super.onNewIntent(intent);
-        flutterFragment.onNewIntent(intent);
+    private void listenClick() {
+        View.OnClickListener clickListen = v -> {
+            if(v == imgBack) {
+                Intent i = new Intent(ArActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        };
+        imgBack.setOnClickListener(clickListen);
     }
 
-    @Override
-    public void onBackPressed() {
-        flutterFragment.onBackPressed();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-            @NonNull String[] permissions, @NonNull int[] grantResults) {
-        flutterFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
-    public void onUserLeaveHint() {
-        flutterFragment.onUserLeaveHint();
-    }
-
-    @Override
-    public void onTrimMemory(int level) {
-        super.onTrimMemory(level);
-        flutterFragment.onTrimMemory(level);
-    }
 }
