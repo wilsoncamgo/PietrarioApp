@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/util/assets.dart';
-import 'package:pietrario_sample_app/util/config.dart';
-import 'package:pietrario_sample_app/util/consts.dart';
-import 'package:pietrario_sample_app/util/prefabs.dart';
+import 'package:pietrario_app/util/config.dart';
+import 'package:pietrario_app/util/consts.dart';
+import 'package:pietrario_app/util/prefabs.dart';
 
 /// @author JuanCuevas2207
 class SettingsScreen extends StatefulWidget {

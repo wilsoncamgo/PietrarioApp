@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:pietrario_sample_app/model/Bioasset.dart';
+import 'package:pietrario_app/model/Bioasset.dart';
 
 /// @author estidlozano
 class Resource extends Bioasset {

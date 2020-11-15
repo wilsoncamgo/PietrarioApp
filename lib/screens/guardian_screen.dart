@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/util/assets.dart';
-import 'package:pietrario_sample_app/util/consts.dart';
-import 'package:pietrario_sample_app/util/prefabs.dart';
+import 'package:pietrario_app/util/consts.dart';
+import 'package:pietrario_app/util/prefabs.dart';
 
 class GuardianScreen extends StatefulWidget {
   const GuardianScreen({Key key}) : super(key: key);

@@ -2,15 +2,15 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:pietrario_sample_app/model/Resource.dart';
-import 'package:pietrario_sample_app/model/User.dart';
-import 'package:pietrario_sample_app/screens/inventory_screen.dart';
-import 'package:pietrario_sample_app/screens/market_screen.dart';
-import 'package:pietrario_sample_app/screens/pietrario_screen.dart';
-import 'package:pietrario_sample_app/screens/settings_screen.dart';
-import 'package:pietrario_sample_app/screens/timer_screen.dart';
-import 'package:pietrario_sample_app/util/consts.dart';
-import 'package:pietrario_sample_app/util/prefabs.dart';
+import 'package:pietrario_app/model/Resource.dart';
+import 'package:pietrario_app/model/User.dart';
+import 'package:pietrario_app/screens/inventory_screen.dart';
+import 'package:pietrario_app/screens/market_screen.dart';
+import 'package:pietrario_app/screens/pietrario_screen.dart';
+import 'package:pietrario_app/screens/settings_screen.dart';
+import 'package:pietrario_app/screens/timer_screen.dart';
+import 'package:pietrario_app/util/consts.dart';
+import 'package:pietrario_app/util/prefabs.dart';
 
 import 'help_screen.dart';
 
@@ -89,7 +89,9 @@ class _MenuScreenState extends State<MenuScreen>
                 'help' : HelpScreen(),
                 'settings' : SettingsScreen(),
               }.entries.map((e) => Prefabs.imgRouteButton(
-                  img: Prefabs.image(img: e.key), context: context, route: e.value)).toList(),
+                  img: Prefabs.image(img: e.key),
+                  context: context, route: e.value)
+              ).toList(),
             ),
           ),
         ),
@@ -147,25 +149,6 @@ class _MenuScreenState extends State<MenuScreen>
                       ),
                     ).toList(),
                   ),
-                ),
-              ),
-              Align(
-                alignment: Alignment(0.8, -0.6),
-                child: CircularPercentIndicator(
-                  animationDuration: 100,
-                  animateFromLastPercent: true,
-                  arcType: ArcType.FULL,
-                  backgroundColor: Consts.bgColor,
-                  progressColor: Colors.yellow,
-                  percent: 0.95,
-                  animation: true,
-                  radius: Consts.width(22),
-                  lineWidth: Consts.width(1),
-                  center: AutoSizeText(
-                    "95%",
-                    style: Consts.textStyle,
-                  ),
-                  circularStrokeCap: CircularStrokeCap.round,
                 ),
               ),
             ],

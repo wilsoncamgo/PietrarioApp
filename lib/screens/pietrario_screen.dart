@@ -1,15 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/controller/InventoryCtrl.dart';
-import 'package:pietrario_sample_app/controller/PietrarioCtrl.dart';
-import 'package:pietrario_sample_app/model/Bioasset.dart';
-import 'package:pietrario_sample_app/model/Guardian.dart';
-import 'package:pietrario_sample_app/model/Succulent.dart';
-import 'package:pietrario_sample_app/screens/succulent_screen.dart';
-import 'package:pietrario_sample_app/util/consts.dart';
-import 'package:pietrario_sample_app/util/prefabs.dart';
-
-import '../util/prefabs.dart';
+import 'package:flutter/services.dart';
+import 'package:pietrario_app/controller/InventoryCtrl.dart';
+import 'package:pietrario_app/controller/PietrarioCtrl.dart';
+import 'package:pietrario_app/model/Bioasset.dart';
+import 'package:pietrario_app/model/Guardian.dart';
+import 'package:pietrario_app/model/Succulent.dart';
+import 'package:pietrario_app/screens/succulent_screen.dart';
+import 'package:pietrario_app/util/consts.dart';
+import 'package:pietrario_app/util/prefabs.dart';
 
 /// @author estidlozano
 class PietrarioScreen extends StatefulWidget {
@@ -18,6 +17,8 @@ class PietrarioScreen extends StatefulWidget {
 }
 
 class _PietrarioScreenState extends State<PietrarioScreen> {
+  static const MethodChannel androidChannel = MethodChannel('androidChannel');
+
   @override
   Widget build(BuildContext context) {
     return Prefabs.scaffold(
@@ -47,6 +48,8 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
             buildSucculent(0.05, -0.02, 7),
 
             buildGuardian(0.35, 0),
+
+            buildArButton(),
           ],
         ),
       ),
@@ -207,5 +210,38 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
       ),
       context: context,
     );
+  }
+
+  Widget buildArButton() {
+    return Align(
+      alignment: Alignment(0.8, -0.9),
+      child: InkWell(
+        child: Prefabs.circularPercentIndicator(
+          color: Colors.yellow,
+          percent: 0.95,
+          radius: 20,
+          center: Text(
+            "95%",
+            style: Consts.textStyle,
+          ),
+        ),
+        onTap: () {
+          turnAr();
+          setState(() {
+
+          });
+        },
+      ),
+    );
+  }
+
+  Future<String> turnAr() async {
+    String value = 'failed';
+    try {
+      value = await androidChannel.invokeMethod('turnAr');
+    } catch(e) {
+      print(e);
+    }
+    print(value);
   }
 }

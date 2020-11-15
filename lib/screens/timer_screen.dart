@@ -2,12 +2,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:pietrario_sample_app/controller/InventoryCtrl.dart';
-import 'package:pietrario_sample_app/util/config.dart';
+import 'package:pietrario_app/controller/InventoryCtrl.dart';
+import 'package:pietrario_app/util/config.dart';
 
-import 'package:pietrario_sample_app/util/consts.dart';
-import 'package:pietrario_sample_app/util/prefabs.dart';
+import 'package:pietrario_app/util/consts.dart';
+import 'package:pietrario_app/util/prefabs.dart';
+import 'package:pietrario_app/model/Resource.dart';
 
 /// @author estidlozano
 class TimerScreen extends StatefulWidget {
@@ -131,8 +131,11 @@ class TimeState extends State<TimerScreen> {
       padding: EdgeInsets.symmetric(vertical: Consts.width(10)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: {'water' : obtainedWater, 'moss' : obtainedMoss, 'energy': obtainedEnergy}
-            .entries.map((e) =>
+        children: {
+          Resource.water: obtainedWater,
+          Resource.moss: obtainedMoss,
+          Resource.energy: obtainedEnergy
+        }.entries.map((e) =>
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -151,12 +154,12 @@ class TimeState extends State<TimerScreen> {
 
   void endFocusTime() {
     double hours = time / 60;
-    obtainedWater = (InventoryCtrl.getProduction('water') * hours).round();
-    obtainedMoss = (InventoryCtrl.getProduction('moss') * hours).round();
-    obtainedEnergy = (InventoryCtrl.getProduction('energy') * hours).round();
-    InventoryCtrl.add('water', obtainedWater);
-    InventoryCtrl.add('moss', obtainedMoss);
-    InventoryCtrl.add('energy', obtainedEnergy);
+    obtainedWater = (InventoryCtrl.getProduction(Resource.water) * hours).round();
+    obtainedMoss = (InventoryCtrl.getProduction(Resource.moss) * hours).round();
+    obtainedEnergy = (InventoryCtrl.getProduction(Resource.energy) * hours).round();
+    InventoryCtrl.add(Resource.water, obtainedWater);
+    InventoryCtrl.add(Resource.moss, obtainedMoss);
+    InventoryCtrl.add(Resource.energy, obtainedEnergy);
     ended = true;
     if(vibrationSupport && Config.vibration) {
       Vibrate.vibrate();

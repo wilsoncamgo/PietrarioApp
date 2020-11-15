@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:pietrario_sample_app/model/Resource.dart';
+import 'package:pietrario_app/model/Resource.dart';
 
 /// @author estidlozano
 class Vital {

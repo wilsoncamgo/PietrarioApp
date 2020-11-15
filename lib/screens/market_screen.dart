@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/controller/MarketCtrl.dart';
-import 'package:pietrario_sample_app/model/Bioasset.dart';
-import 'package:pietrario_sample_app/model/Resource.dart';
-import 'package:pietrario_sample_app/model/User.dart';
-import 'package:pietrario_sample_app/util/assets.dart';
-import 'package:pietrario_sample_app/util/consts.dart';
-import 'package:pietrario_sample_app/util/prefabs.dart';
+import 'package:pietrario_app/controller/MarketCtrl.dart';
+import 'package:pietrario_app/model/Bioasset.dart';
+import 'package:pietrario_app/model/Resource.dart';
+import 'package:pietrario_app/model/User.dart';
+import 'package:pietrario_app/util/consts.dart';
+import 'package:pietrario_app/util/prefabs.dart';
 
 /// @author estidlozano
 class MarketScreen extends StatefulWidget {

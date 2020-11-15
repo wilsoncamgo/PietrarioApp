@@ -1,4 +1,4 @@
-import 'package:pietrario_sample_app/util/consts.dart';
+import 'package:pietrario_app/util/consts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// @author estidlozano

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:pietrario_sample_app/model/Guardian.dart';
-import 'package:pietrario_sample_app/model/Succulent.dart';
+import 'package:pietrario_app/model/Guardian.dart';
+import 'package:pietrario_app/model/Succulent.dart';
 
 /// @author estidlozano
 class Pietrario {

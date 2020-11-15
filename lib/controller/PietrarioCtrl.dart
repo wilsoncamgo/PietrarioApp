@@ -1,11 +1,11 @@
-import 'package:pietrario_sample_app/controller/InventoryCtrl.dart';
-import 'package:pietrario_sample_app/model/Guardian.dart';
-import 'package:pietrario_sample_app/model/Pietrario.dart';
-import 'package:pietrario_sample_app/model/Resource.dart';
-import 'package:pietrario_sample_app/model/Succulent.dart';
-import 'package:pietrario_sample_app/model/User.dart';
-import 'package:pietrario_sample_app/model/Vital.dart';
-import 'package:pietrario_sample_app/util/db_helper.dart';
+import 'package:pietrario_app/controller/InventoryCtrl.dart';
+import 'package:pietrario_app/model/Guardian.dart';
+import 'package:pietrario_app/model/Pietrario.dart';
+import 'package:pietrario_app/model/Resource.dart';
+import 'package:pietrario_app/model/Succulent.dart';
+import 'package:pietrario_app/model/User.dart';
+import 'package:pietrario_app/model/Vital.dart';
+import 'package:pietrario_app/util/db_helper.dart';
 
 /// @author estidlozano
 class PietrarioCtrl {

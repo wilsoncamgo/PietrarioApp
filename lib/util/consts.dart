@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/util/config.dart';
+import 'package:pietrario_app/util/config.dart';
 
 /// @author estidlozano
+
+
+class Assets {
+
+  static String img(String name) {
+    return "assets/img/" + name + ".png";
+  }
+
+  static String svg(String name) {
+    return "assets/svg/" + name + ".svg";
+  }
+
+}
+
 class Consts {
 
   static double screenW, screenH;

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-import 'assets.dart';
 import 'consts.dart';
 
 class Prefabs {
@@ -48,6 +47,7 @@ class Prefabs {
     return InkWell(child: img,
       onTap: () => Navigator.push(context,
           MaterialPageRoute(builder: (context) => route)),
+
     );
   }
 
@@ -87,6 +87,9 @@ class Prefabs {
   static Widget circularPercentIndicator({@required double percent, Widget center,
       Color color, double lineWidth = 1, double radius = 12}) {
     return CircularPercentIndicator(
+      animateFromLastPercent: true,
+      animation: true,
+      animationDuration: 200,
       backgroundColor: Consts.mainColor,
       lineWidth: Consts.width(lineWidth),
       percent: percent,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/controller/PietrarioCtrl.dart';
-import 'package:pietrario_sample_app/model/Succulent.dart';
-import 'package:pietrario_sample_app/model/Vital.dart';
-import 'package:pietrario_sample_app/util/consts.dart';
-import 'package:pietrario_sample_app/util/prefabs.dart';
+import 'package:pietrario_app/controller/PietrarioCtrl.dart';
+import 'package:pietrario_app/model/Succulent.dart';
+import 'package:pietrario_app/model/Vital.dart';
+import 'package:pietrario_app/util/consts.dart';
+import 'package:pietrario_app/util/prefabs.dart';
 
 class SucculentScreen extends StatefulWidget {
   int place;

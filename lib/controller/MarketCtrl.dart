@@ -1,5 +1,5 @@
-import 'package:pietrario_sample_app/model/Bioasset.dart';
-import 'package:pietrario_sample_app/model/Resource.dart';
+import 'package:pietrario_app/model/Bioasset.dart';
+import 'package:pietrario_app/model/Resource.dart';
 import 'InventoryCtrl.dart';
 
 /// @author estidlozano

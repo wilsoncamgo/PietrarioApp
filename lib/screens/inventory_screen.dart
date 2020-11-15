@@ -1,16 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pietrario_sample_app/model/Bioasset.dart';
-import 'package:pietrario_sample_app/model/User.dart';
-import 'package:pietrario_sample_app/util/consts.dart';
-import 'package:pietrario_sample_app/util/prefabs.dart';
+import 'package:pietrario_app/model/Bioasset.dart';
+import 'package:pietrario_app/model/User.dart';
+import 'package:pietrario_app/util/consts.dart';
+import 'package:pietrario_app/util/prefabs.dart';
 
-class InventoryScreen extends StatefulWidget {
-  @override
-  _InventoryScreenState createState() => _InventoryScreenState();
-}
-
-class _InventoryScreenState extends State<InventoryScreen> {
+class InventoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Prefabs.scaffold(
