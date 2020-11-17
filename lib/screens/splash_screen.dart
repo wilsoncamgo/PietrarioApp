@@ -21,20 +21,18 @@ class SplashScreen extends StatelessWidget {
       InventoryCtrl.initInventory();
       PietrarioCtrl.initPietrario();
       Timer.periodic(Duration(seconds: 3), (time) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MenuScreen()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => MenuScreen()));
         time.cancel();
       });
       loaded = true;
     }
     return Scaffold(
       body: Center(
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(Consts.width(2)),
-          child: Image.asset(
-            Assets.img('logo'),
-            height: Consts.width(30),
-            width: Consts.width(30),
-          ),
+        child: Image.asset(
+          Assets.img('leaf'),
+          width: Consts.width(30),
+          height: Consts.width(30),
         ),
       ),
     );

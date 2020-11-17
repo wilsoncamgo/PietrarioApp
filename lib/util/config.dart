@@ -10,7 +10,7 @@ class Config {
   static bool cloudy, dark, rigorous, vibration;
   static double music, sound;
 
-  static Future<void> loadConfig() async {
+  static void loadConfig() async {
     langs.add('English');
     langs.add('Español');
     prefs = await SharedPreferences.getInstance();

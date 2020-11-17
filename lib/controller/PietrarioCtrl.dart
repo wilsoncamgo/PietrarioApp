@@ -10,7 +10,7 @@ import 'package:pietrario_app/util/db_helper.dart';
 /// @author estidlozano
 class PietrarioCtrl {
 
-  static Future<void> initPietrario() async {
+  static void initPietrario() async {
     Map<int, Succulent> succulents = Map<int, Succulent>();
     Guardian guardian;
     User().pietrario = Pietrario(

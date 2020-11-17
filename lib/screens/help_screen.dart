@@ -19,7 +19,7 @@ class _HelpScreenState extends State<HelpScreen> {
   void initState() {
     super.initState();
     sections = ['introduction', 'resources', 'timer', 'pietrario', 'modes'];
-    images = ['logo','fox','time','pietrario','settings'];
+    images = ['leaf','fox','time','pietrario','settings'];
     section = 0;
   }
 
@@ -77,27 +77,20 @@ class _HelpScreenState extends State<HelpScreen> {
                     style: Consts.textStyle,
                     textAlign: TextAlign.justify,
                   ),
-                  SizedBox(height: 30,),
-                  section==1 ?
-                  (Row(
+                  SizedBox(height: 30),
+                  section==1 ? Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: {Resource.water, Resource.moss, Resource.energy}
-                        .map(
-                          (e) => Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Prefabs.image(img: e, size: 20),
-                          SizedBox(width: Consts.width(3)),
-                        ],
-                      ),
-                    )
-                        .toList(),
-                  )):SizedBox(width: Consts.width(10)),
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    margin: EdgeInsets.only(bottom: Consts.width(20)),
-                    child: Prefabs.image(img:
-                    images[section], size: 50, blend: false),
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: {
+                      Resource.water,
+                      Resource.moss,
+                      Resource.energy,
+                    }.map((e) => Prefabs.image(img: e, size: 20)).toList(),
+                  ) : SizedBox(height: 0),
+                  SizedBox(height: Consts.width(10)),
+                  Prefabs.image(
+                    img: images[section], size: 50,
+                    blend: (section == 2 || section == 4),
                   ),
                 ],
               ),

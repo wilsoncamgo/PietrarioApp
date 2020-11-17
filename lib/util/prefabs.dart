@@ -26,10 +26,11 @@ class Prefabs {
   }
 
   static Widget image({@required String img, double size = 10,
-      bool blend = true}) {
+      bool blend = true, ColorFilter filter}) {
+    filter = filter ?? ColorFilter.mode(Consts.textColor, BlendMode.srcIn);
     return blend ?
     ColorFiltered(
-      colorFilter: ColorFilter.mode(Consts.textColor, BlendMode.srcIn),
+      colorFilter: filter,
       child: Image.asset(
         Assets.img(img),
         width: Consts.width(size),

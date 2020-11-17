@@ -3,19 +3,25 @@
     package="com.example.pietrario_app">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.ar" android:required="true" />
 
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:icon="@mipmap/ic_launcher"
-        android:label="pietrario_app">
-        <activity android:name=".ArActivity"></activity>
-        <!-- <activity android:name="com.example.pietrario_app.ArActivity" /> -->
+        android:label="pietrario_app"
+        android:theme="@style/LaunchTheme"
+        android:allowBackup="true">
+        <meta-data android:name="com.google.ar.core" android:value="required" />
+        <activity
+            android:name=".ArActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"/>
         <activity
             android:name=".MainActivity"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize                     |locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"
-            android:theme="@style/LaunchTheme"
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="io.flutter.embedding.android.NormalTheme"

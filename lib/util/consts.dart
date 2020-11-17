@@ -10,10 +10,6 @@ class Assets {
     return "assets/img/" + name + ".png";
   }
 
-  static String svg(String name) {
-    return "assets/svg/" + name + ".svg";
-  }
-
 }
 
 class Consts {
@@ -27,7 +23,7 @@ class Consts {
       textColor = Colors.grey[900],
       healthColor = Color(0xFFFF2222),
       hydrationColor = Color(0xFF0066CC),
-      mineralsColor = Color(/*0xFFFFFF33*/0xFF00CC66),
+      mineralsColor = Color(0xFF00CC66),
       temperatureColor = Color(0xFFCC3333);
 
   static final Map<String, List<String>> texts = Map<String, List<String>>();

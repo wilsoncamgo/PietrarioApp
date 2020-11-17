@@ -42,10 +42,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
           InkWell(
-            child: Image.asset(
-              Assets.img(Config.dark ? 'bulb_off' : 'bulb'),
-              width: Consts.width(14),
-              height: Consts.width(14),
+            child: Prefabs.image(
+              img: 'bulb',
+              size: 14,
+              blend: Config.dark,
+              filter: ColorFilter.mode(Colors.blue[700], BlendMode.modulate),
             ),
             onTap: () => setState(() {
               Config.setDark(!Config.dark);
