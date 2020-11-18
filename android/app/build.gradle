@@ -55,7 +55,6 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    buildToolsVersion = '29.0.3'
 }
 
 flutter {
@@ -71,34 +70,29 @@ dependencies {
 sceneform.asset('sampledata/pietrario.obj',
         'default',
         'sampledata/pietrario.sfa',
-        'src/main/res/raw/pietrario.sfb')
-
-sceneform.asset('sampledata/succulent1.obj',
-        'default',
-        'sampledata/succulent1.sfa',
-        'src/main/res/raw/succulent1.sfb')
-
-sceneform.asset('sampledata/succulent2.obj',
-        'default',
-        'sampledata/succulent2.sfa',
-        'src/main/res/raw/succulent2.sfb')
-
-sceneform.asset('sampledata/succulent3.obj',
-        'default',
-        'sampledata/succulent3.sfa',
-        'src/main/res/raw/succulent3.sfb')
+        'src/main/res/raw/pietrario')
 
 sceneform.asset('sampledata/guardian1.obj',
         'default',
         'sampledata/guardian1.sfa',
-        'src/main/res/raw/guardian1.sfb')
+        'src/main/res/raw/guardian1')
 
 sceneform.asset('sampledata/guardian2.obj',
         'default',
         'sampledata/guardian2.sfa',
-        'src/main/res/raw/guardian2.sfb')
+        'src/main/res/raw/guardian2')
 
-sceneform.asset('sampledata/cactus1.fbx',
+sceneform.asset('sampledata/succulent1.obj',
         'default',
-        'sampledata/cactus1.sfa',
-        'src/main/res/raw/cactus1')
+        'sampledata/succulent1.sfa',
+        'src/main/res/raw/succulent1')
+
+sceneform.asset('sampledata/succulent2.obj',
+        'default',
+        'sampledata/succulent2.sfa',
+        'src/main/res/raw/succulent2')
+
+sceneform.asset('sampledata/succulent3.obj',
+        'default',
+        'sampledata/succulent3.sfa',
+        'src/main/res/raw/succulent3')

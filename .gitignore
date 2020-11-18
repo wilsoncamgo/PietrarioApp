@@ -42,3 +42,4 @@ app.*.map.json
 *.bin
 *.lock
 android/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+android/local.properties
