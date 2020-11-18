@@ -1,3 +1,5 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:pietrario_app/util/consts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,6 +11,8 @@ class Config {
   static int lang;
   static bool cloudy, dark, rigorous, vibration;
   static double music, sound;
+  static AudioPlayer audioPlayer;
+  static AudioCache audioCache;
 
   static void loadConfig() async {
     langs.add('English');
@@ -22,6 +26,8 @@ class Config {
     music = prefs.getDouble('music') ?? 10;
     sound = prefs.getDouble('sound') ?? 10;
     Consts.setDark(dark);
+    audioPlayer = AudioPlayer();
+    audioCache = AudioCache(fixedPlayer: audioPlayer);
   }
 
   static void setLang(int val) {
@@ -53,6 +59,13 @@ class Config {
   static void setMusic(double val) {
     music = val;
     prefs.setDouble('music', val);
+    if(music > 0.0)
+    {
+      audioCache.play("audio/music.mp3");
+      audioPlayer.setVolume(music/10);
+    }else{
+      audioPlayer.stop();
+    }
   }
 
   static void setSound(double val) {
