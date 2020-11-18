@@ -74,8 +74,7 @@ public class ArActivity extends AppCompatActivity {
     private void listenClick() {
         View.OnClickListener clickListen = v -> {
             if(v == imgBack) {
-                Intent i = new Intent(ArActivity.this, MainActivity.class);
-                startActivity(i);
+                finish();
             }
         };
         imgBack.setOnClickListener(clickListen);
@@ -121,33 +120,29 @@ public class ArActivity extends AppCompatActivity {
         };
         // rotation
         rotationPietrario = new Quaternion();
-        rotationGuardian = new Quaternion();
+        rotationGuardian = new Quaternion(90, 0, 0, 1);
         rotationSucculents = new Quaternion[]{
-                new Quaternion(),
-                new Quaternion(),
-                new Quaternion(),
-                new Quaternion(),
-                new Quaternion(),
-                new Quaternion(),
-                new Quaternion(),
-                new Quaternion(),
-                new Quaternion(),
-                new Quaternion(),
+                new Quaternion(92.9f, -2.03f, -3.98f, 1),
+                new Quaternion(85.5f, 2.98f, -63.1f, 1),
+                new Quaternion(89.9f, 2.56f, -3.88f, 1),
+                new Quaternion(85.6f, -2.73f, 75.8f, 1),
+                new Quaternion(81.5f, -2.82f, -37.1f, 1),
+                new Quaternion(80.0f, -6.61f, 0.746f, 1),
+                new Quaternion(78.4f, -8.1f, -2.94f, 1),
+                new Quaternion(87.6f, -2.67f, 39.3f, 1),
         };
         // position
-        posPietrario = new Vector3();
-        posGuardian = new Vector3(0.3f, 0.3f, 0.3f);
+        posPietrario = new Vector3(0, 0, 0);
+        posGuardian = new Vector3(0.13144f, 0.091951f, 0.000238f);
         posSucculents = new Vector3[]{
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
+                new Vector3(-1.0475f, 0.69443f, 0.90855f),
+                new Vector3(-0.21225f, 0.049081f, 0.063879f),
+                new Vector3(-0.51632f, 0.60319f, 0.42301f),
+                new Vector3(-1.0213f, 0.075998f, 0.39727f),
+                new Vector3(-0.18599f, -0.14582f, -0.046029f),
+                new Vector3(-0.007491f, -0.20771f, -0.048179f),
+                new Vector3(0.48603f, 0.56679f, -0.003352f),
+                new Vector3(-0.025618f, 0.79617f, 0.23613f),
         };
     }
 
@@ -168,7 +163,7 @@ public class ArActivity extends AppCompatActivity {
                 nodeGuardian = buildNode(hitResult, modelGuardians[guardian],
                         posGuardian, scaleGuardians[guardian], rotationGuardian);
             }
-            nodeSucculents = new AnchorNode[10];
+            nodeSucculents = new AnchorNode[8];
             succulents.forEach((k, v) -> {
                 // key = position [0, 9]
                 // value = succulent [0, 2]
