@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import 'consts.dart';
@@ -16,43 +17,106 @@ class Prefabs {
           color: Consts.textColor, //change your color here
         ),
         centerTitle: true,
-        title: Text(
-          Consts.getText(title),
-          style: Consts.titleStyle,
-        ),
+        title: Prefabs.title(title),
       ),
       body: body,
     );
   }
 
-  static Widget image({@required String img, double size = 10,
-      bool blend = true, ColorFilter filter}) {
-    filter = filter ?? ColorFilter.mode(Consts.textColor, BlendMode.srcIn);
-    return blend ?
-    ColorFiltered(
-      colorFilter: filter,
-      child: Image.asset(
-        Assets.img(img),
-        width: Consts.width(size),
-        height: Consts.width(size),
-      ),
-    ) : Image.asset(
+  static Widget text(String text, [bool search = true]) {
+    return Text(
+      search ? Consts.getText(text) : text,
+      style: Consts.textStyle,
+      textAlign: TextAlign.justify,
+    );
+  }
+
+  static Widget title(String title) {
+    return Text(
+      Consts.getText(title),
+      style: Consts.titleStyle,
+    );
+  }
+
+  static Widget icon(IconData icon, {double size = 10}) {
+    return Icon(
+      icon,
+      size: Consts.width(size),
+      color: Consts.textColor,
+    );
+  }
+  
+  static Widget image({@required String img, double size = 10}) {
+    return Image.asset(
       Assets.img(img),
       width: Consts.width(size),
       height: Consts.width(size),
     );
   }
 
-  static Widget imgRouteButton({@required Widget img,
-      @required context, @required Widget route}) {
-    return InkWell(child: img,
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => route)),
+  static Widget iconImg({@required String img, double size = 10, ColorFilter filter}) {
+    filter = filter ?? ColorFilter.mode(Consts.textColor, BlendMode.srcIn);
+    return ColorFiltered(
+      colorFilter: filter,
+      child: Prefabs.image(img: img, size: size),
+    );
+  }
+
+  static Widget imgRouteBtn({@required String img, double size = 10,
+      @required BuildContext ctx, @required Widget route}) {
+    return InkWell(child: Prefabs.iconImg(img: img, size: size),
+      onTap: () => Navigator.push(ctx,
+          MaterialPageRoute(builder: (ctx) => route)),
 
     );
   }
 
-  static Widget popUp({@required String title, @required content, @required context}) {
+  static Widget switchBtn({@required String text, bool value = true,
+      @required void onChanged(v)}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Prefabs.text(text),
+        Switch(
+          value: value,
+          activeTrackColor: Consts.btnScndColor,
+          activeColor: Consts.btnMainColor,
+          inactiveThumbColor: Consts.bgColor,
+          inactiveTrackColor: Consts.scndColor,
+          onChanged: (v) => onChanged(v),
+        ),
+      ],
+    );
+  }
+
+  static Widget sliderBtn({@required String text, double min = 0,
+    double max = 10, double value, int divisions = 10,
+    @required void onChanged(v)}) {
+    return Row(
+      children: [
+        Prefabs.text(text),
+        Slider(
+          value: value ?? max,
+          min: min,
+          max: max,
+          divisions: divisions,
+          activeColor: Consts.btnScndColor,
+          inactiveColor: Consts.scndColor,
+          onChanged: (v) => onChanged(v),
+        ),
+      ],
+    );
+  }
+
+  static Widget popBtn({@required BuildContext ctx, double size = 6}) {
+    return InkWell(
+      child: Prefabs.iconImg(img: 'close', size: size),
+      onTap: () => Navigator.of(ctx).pop(),
+    );
+  }
+
+  static Widget popUp({@required String title, @required Widget content,
+      @required BuildContext ctx}) {
     double padding = Consts.width(6);
     return AlertDialog(
       backgroundColor: Consts.mainColor,
@@ -61,18 +125,8 @@ class Prefabs {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(width: padding),
-          Text(
-            Consts.getText(title),
-            style: Consts.titleStyle,
-          ),
-          InkWell(
-            child: Icon(
-              Icons.close,
-              size: padding,
-              color: Consts.textColor,
-            ),
-            onTap: () => Navigator.of(context).pop(),
-          ),
+          Prefabs.title(title),
+          Prefabs.popBtn(ctx: ctx),
         ],
       ),
       contentPadding: EdgeInsets.all(padding),

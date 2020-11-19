@@ -40,11 +40,7 @@ class _SucculentScreenState extends State<SucculentScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Prefabs.image(
-            img: succulent.name,
-            size: 40,
-            blend: false,
-          ),
+          Prefabs.image(img: succulent.name, size: 40),
           SizedBox(height: Consts.width(5)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -57,17 +53,10 @@ class _SucculentScreenState extends State<SucculentScreen> {
             ],
           ),
           SizedBox(height: Consts.width(15)),
-          Text(
-            Consts.getText('desc_' + succulent.name),
-            style: Consts.textStyle,
-            textAlign: TextAlign.center,
-          ),
+          Prefabs.text('desc_' + succulent.name),
           SizedBox(height: Consts.width(15)),
           InkWell(
-            child: Prefabs.image(
-              img: 'inventory',
-              size: 15,
-            ),
+            child: Prefabs.iconImg(img: 'inventory', size: 15),
             onTap: () {
               Navigator.of(context).pop();
               PietrarioCtrl.delete(widget.place);
@@ -87,21 +76,18 @@ class _SucculentScreenState extends State<SucculentScreen> {
         InkWell(
           child: Prefabs.circularPercentIndicator(
             color: color,
-            center: Prefabs.image(img: name, size: 6, blend: false),
+            center: Prefabs.image(img: name, size: 6),
             percent: v.value / v.maxValue,
           ),
           onTap: () => showDialog(context: context,
             builder: (BuildContext context) => Prefabs.popUp(
               title: name,
               content: buildIndicatorInfo(v, name, color),
-              context: context,
+              ctx: context,
             ),
           ),
         ),
-        Text(
-          v.value.toString(),
-          style: Consts.textStyle,
-        ),
+        Prefabs.text(v.value.toString(), false),
       ],
     );
   }
@@ -115,15 +101,12 @@ class _SucculentScreenState extends State<SucculentScreen> {
           children: [
             Prefabs.circularPercentIndicator(
               color: color,
-              center: Prefabs.image(img: name, size: 8, blend: false),
+              center: Prefabs.image(img: name, size: 8),
               percent: v.value / v.maxValue,
               radius: 16,
             ),
             SizedBox(height: Consts.width(4)),
-            Text(
-              '${v.value} / ${v.maxValue}',
-              style: Consts.textStyle,
-            ),
+            Prefabs.text('${v.value} / ${v.maxValue}', false),
             SizedBox(height: Consts.width(5)),
             PietrarioCtrl.canVitalize(v, name) ?
             InkWell(
@@ -131,12 +114,9 @@ class _SucculentScreenState extends State<SucculentScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Prefabs.image(img: 'double_up'),
+                    Prefabs.iconImg(img: 'double_up'),
                     SizedBox(height: Consts.width(2)),
-                    Text(
-                      '+ ${v.losingValue * 10}',
-                      style: Consts.textStyle,
-                    ),
+                    Prefabs.text('+ ${v.losingValue * 10}', false),
                   ],
                 ),
                 onTap: () {
@@ -153,5 +133,4 @@ class _SucculentScreenState extends State<SucculentScreen> {
       }
     );
   }
-
 }

@@ -6,6 +6,7 @@ import 'package:pietrario_app/controller/PietrarioCtrl.dart';
 import 'package:pietrario_app/screens/menu_screen.dart';
 import 'package:pietrario_app/util/config.dart';
 import 'package:pietrario_app/util/consts.dart';
+import 'package:pietrario_app/util/prefabs.dart';
 
 /// @author estidlozano
 class SplashScreen extends StatelessWidget {
@@ -16,7 +17,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     if(!loaded) {
       Consts.setScreenSize(MediaQuery.of(context).size);
-      Consts.loadTexts();
+      Consts.initTexts();
       Config.loadConfig();
       InventoryCtrl.initInventory();
       PietrarioCtrl.initPietrario();
@@ -29,11 +30,7 @@ class SplashScreen extends StatelessWidget {
     }
     return Scaffold(
       body: Center(
-        child: Image.asset(
-          Assets.img('leaf'),
-          width: Consts.width(30),
-          height: Consts.width(30),
-        ),
+        child: Prefabs.image(img: 'leaf', size: 30),
       ),
     );
   }

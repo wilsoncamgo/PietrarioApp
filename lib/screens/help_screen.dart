@@ -37,28 +37,16 @@ class _HelpScreenState extends State<HelpScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                section == 0
-                    ? SizedBox(width: Consts.width(10))
-                    : InkWell(
-                  child: Icon(
-                    Icons.chevron_left,
-                    size: Consts.width(10),
-                    color: Consts.textColor,
-                  ),
+                section == 0 ?
+                SizedBox(width: Consts.width(10)) : InkWell(
+                  child: Prefabs.icon(Icons.chevron_left),
                   onTap: () => setState(() => section--),
                 ),
-                Text(
-                  Consts.getText('help_${sections[section]}'),
-                  style: Consts.textStyle,
-                ),
-                (section == sections.length - 1)
-                    ? SizedBox(width: Consts.width(10))
-                    : InkWell(
-                  child: Icon(
-                    Icons.chevron_right,
-                    size: Consts.width(10),
-                    color: Consts.textColor,
-                  ),
+                Prefabs.text('help_${sections[section]}'),
+                (section == sections.length - 1) ?
+                SizedBox(width: Consts.width(10)) :
+                InkWell(
+                  child: Prefabs.icon(Icons.chevron_right),
                   onTap: () => setState(() => section++),
                 ),
               ],
@@ -72,26 +60,20 @@ class _HelpScreenState extends State<HelpScreen> {
               padding: EdgeInsets.all(Consts.width(5)),
               child: ListView(
                 children: [
-                  Text(
-                    Consts.getText('content_${sections[section]}'),
-                    style: Consts.textStyle,
-                    textAlign: TextAlign.justify,
-                  ),
+                  Prefabs.text('content_${sections[section]}'),
                   SizedBox(height: 30),
-                  section==1 ? Row(
+                  section==1 ?
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: {
-                      Resource.water,
-                      Resource.moss,
-                      Resource.energy,
-                    }.map((e) => Prefabs.image(img: e, size: 20)).toList(),
-                  ) : SizedBox(height: 0),
+                    children: {Resource.water, Resource.moss, Resource.energy}
+                    .map((e) => Prefabs.iconImg(img: e, size: 20)).toList(),
+                  ) :
+                  SizedBox(height: 0),
                   SizedBox(height: Consts.width(10)),
-                  Prefabs.image(
-                    img: images[section], size: 50,
-                    blend: (section == 2 || section == 4),
-                  ),
+                  section == 2 || section == 4 ?
+                  Prefabs.iconImg(img: images[section], size: 50) :
+                  Prefabs.image(img: images[section], size: 50),
                 ],
               ),
             ),

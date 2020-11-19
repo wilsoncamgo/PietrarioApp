@@ -7,14 +7,16 @@ class Pietrario {
 
   String terrain;
   double temperature;
+  double light;
   Guardian guardian;
   Map<int, Succulent> succulents;
 
   Pietrario({
     @required this.terrain,
     @required this.temperature,
-    this.succulents,
-    this.guardian,
+    @required this.light,
+    @required this.succulents,
+    @required this.guardian,
   });
 
 }

@@ -16,11 +16,9 @@ class InventoryScreen extends StatelessWidget {
           crossAxisCount: 3,
           crossAxisSpacing: Consts.width(2),
           childAspectRatio: 0.75,
-          children: User().inventory.values.where((e) =>
-          (e.amount ?? 0) > 0
-          ).map((v) =>
-              buildBioasset(v),
-          ).toList(),
+          children: User().inventory.values
+              .where((e) => (e.amount ?? 0) > 0)
+              .map((v) => buildBioasset(v)).toList(),
         ),
       ),
     );
@@ -37,12 +35,9 @@ class InventoryScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Prefabs.image(img: b.name, size: 12, blend: false),
+          Prefabs.image(img: b.name, size: 12),
           SizedBox(height: Consts.width(2)),
-          Text(
-            '${b.amount}',
-            style: Consts.textStyle,
-          ),
+          Prefabs.text('${b.amount}', false),
         ],
       ),
     );

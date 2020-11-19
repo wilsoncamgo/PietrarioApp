@@ -3,7 +3,6 @@ import 'package:pietrario_app/util/config.dart';
 
 /// @author estidlozano
 
-
 class Assets {
 
   static String img(String name) {
@@ -14,13 +13,15 @@ class Assets {
 
 class Consts {
 
-  static double screenW, screenH;
+  static double screenW, screenH, screenWP1, screenHP1;
   static TextStyle titleStyle, textStyle;
   static Color
       bgColor = Colors.grey[50],
       mainColor = Colors.grey[300],
       scndColor = Colors.grey[500],
       textColor = Colors.grey[900],
+      btnMainColor = Colors.green,
+      btnScndColor = Colors.lightGreenAccent,
       healthColor = Color(0xFFFF2222),
       hydrationColor = Color(0xFF0066CC),
       mineralsColor = Color(0xFF00CC66),
@@ -31,9 +32,11 @@ class Consts {
   static void setScreenSize(Size screenSize) {
     screenW = screenSize.width;
     screenH = screenSize.height;
+    screenWP1 = screenW / 100;
+    screenHP1 = screenH / 100;
   }
 
-  static void loadTexts() {
+  static void initTexts() {
     // BIOASSETS NAME
     texts['succulent1'] = ['Succulent1', 'Suculenta1'];
     texts['succulent2'] = ['Succulent2', 'Suculenta2'];
@@ -169,11 +172,11 @@ class Consts {
   }
 
   static double width(double percent) {
-    return screenW / 100 * percent;
+    return screenWP1 * percent;
   }
 
   static double height(double percent) {
-    return screenH / 100 * percent;
+    return screenHP1 * percent;
   }
 
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:pietrario_app/controller/InventoryCtrl.dart';
 import 'package:pietrario_app/model/Resource.dart';
 import 'package:pietrario_app/model/User.dart';
 import 'package:pietrario_app/screens/inventory_screen.dart';
@@ -22,6 +24,9 @@ class MenuScreen extends StatefulWidget {
 
 class _MenuScreenState extends State<MenuScreen>
     with SingleTickerProviderStateMixin {
+
+  final MethodChannel androidChannel = MethodChannel('androidChannel');
+
   bool isCollapsed = true;
   final Duration duration = const Duration(milliseconds: 300);
   AnimationController _controller;
@@ -86,9 +91,8 @@ class _MenuScreenState extends State<MenuScreen>
                 'inventory' : InventoryScreen(),
                 'help' : HelpScreen(),
                 'settings' : SettingsScreen(),
-              }.entries.map((e) => Prefabs.imgRouteButton(
-                  img: Prefabs.image(img: e.key),
-                  context: context, route: e.value)
+              }.entries.map((e) => Prefabs.imgRouteBtn(img: e.key,
+                  ctx: context, route: e.value)
               ).toList(),
             ),
           ),
@@ -113,9 +117,11 @@ class _MenuScreenState extends State<MenuScreen>
               Container(
                 alignment: Alignment.bottomCenter,
                 margin: EdgeInsets.only(bottom: Consts.width(20)),
-                child: Prefabs.imgRouteButton(img:
-                Prefabs.image(img: 'pietrario', size: 90, blend: false),
-                    context: context, route: PietrarioScreen()),
+                child: InkWell(
+                  child: Prefabs.image(img: 'pietrario', size: 90),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (ctx) => PietrarioScreen())),
+                ),
               ),
               Align(
                 alignment: Alignment(-1, -0.6),
@@ -137,12 +143,9 @@ class _MenuScreenState extends State<MenuScreen>
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Prefabs.image(img: e, size: 7),
+                          Prefabs.iconImg(img: e, size: 7),
                           SizedBox(width: Consts.width(3)),
-                          Text(
-                            '${User().inventory[e].amount}',
-                            style: Consts.textStyle,
-                          ),
+                          Prefabs.text('${InventoryCtrl.get(e).amount}', false),
                         ],
                       ),
                     ).toList(),
@@ -163,18 +166,11 @@ class _MenuScreenState extends State<MenuScreen>
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            child: Icon(
-              Icons.exit_to_app_sharp,
-              size: Consts.width(9),
-              color: Consts.textColor,
-            ),
+            child: Prefabs.icon(Icons.exit_to_app_sharp, size: 9),
+            onTap: () => SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
           ),
           InkWell(
-            child: Icon(
-              Icons.menu,
-              size: Consts.width(9),
-              color: Consts.textColor,
-            ),
+            child: Prefabs.icon(Icons.menu, size: 9),
             onTap: () => setState(() {
               if (isCollapsed) _controller.forward();
               else _controller.reverse();
@@ -185,5 +181,4 @@ class _MenuScreenState extends State<MenuScreen>
       ),
     );
   }
-
 }

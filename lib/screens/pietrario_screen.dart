@@ -6,6 +6,7 @@ import 'package:pietrario_app/controller/PietrarioCtrl.dart';
 import 'package:pietrario_app/model/Bioasset.dart';
 import 'package:pietrario_app/model/Guardian.dart';
 import 'package:pietrario_app/model/Succulent.dart';
+import 'package:pietrario_app/model/User.dart';
 import 'package:pietrario_app/screens/succulent_screen.dart';
 import 'package:pietrario_app/util/consts.dart';
 import 'package:pietrario_app/util/prefabs.dart';
@@ -28,7 +29,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           children: [
             Align(
               alignment: Alignment(0, 0),
-              child: Prefabs.image(img: 'base', size: 90, blend: false),
+              child: Prefabs.image(img: 'base', size: 90),
             ),
             buidMoss(0.5, 0.03),
             buidMoss(-0.15, 0.1),
@@ -63,7 +64,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
   Widget buidMoss(double x, double y) {
     return Align(
       alignment: Alignment(x, y),
-      child: Prefabs.image(img: 'moss1', size: 26, blend: false),
+      child: Prefabs.image(img: 'moss1', size: 26),
     );
   }
 
@@ -73,13 +74,13 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
       alignment: Alignment(x, y),
       child: g == null ?
         InkWell(
-          child: Prefabs.image(img: 'guardian', size: 10),
+          child: Prefabs.iconImg(img: 'guardian', size: 10),
           onTap: () => showDialog(context: context,
             builder: (BuildContext context) => buildGuardiansList(context),
           ),
         ) :
         InkWell(
-          child: Prefabs.image(img: g.name, size: 25, blend: false),
+          child: Prefabs.image(img: g.name, size: 25),
           onTap: () => showDialog(context: context,
             builder: (BuildContext context) => buildGuardianInfo(g, context),
           ),
@@ -94,7 +95,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
         Container(
           margin: EdgeInsets.all(Consts.width(2)),
           child: InkWell(
-            child: Prefabs.image(img: e.name, size: 12, blend: false),
+            child: Prefabs.image(img: e.name, size: 12),
             onTap: () => setState(() {
               PietrarioCtrl.addGuardian(e);
               Navigator.of(context).pop();
@@ -105,21 +106,19 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
     return Prefabs.popUp(
       title: 'guardians',
       content: guardians.length == 0 ?
-        Text(
-          Consts.getText('no_guardians'),
-          style: Consts.textStyle,
-        ) : Container(
-          width: Consts.width(70),
-          height: Consts.width(70),
-          padding: EdgeInsets.all(Consts.width(5)),
-          child: GridView.count(
-            crossAxisCount: 2,
-            crossAxisSpacing: Consts.width(2),
-            childAspectRatio: 0.75,
-            children: guardians,
-          ),
+      Prefabs.text('no_guardians') :
+      Container(
+        width: Consts.width(70),
+        height: Consts.width(70),
+        padding: EdgeInsets.all(Consts.width(5)),
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: Consts.width(2),
+          childAspectRatio: 0.75,
+          children: guardians,
         ),
-      context: context,
+      ),
+      ctx: context,
     );
   }
 
@@ -129,23 +128,12 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Prefabs.image(
-            img: g.name,
-            size: 25,
-            blend: false,
-          ),
+          Prefabs.image(img: g.name, size: 25),
           SizedBox(height: Consts.width(4)),
-          Text(
-            Consts.getText('desc_' + g.name),
-            style: Consts.textStyle,
-            textAlign: TextAlign.center,
-          ),
+          Prefabs.text('desc_' + g.name),
           SizedBox(height: Consts.width(4)),
           InkWell(
-            child: Prefabs.image(
-              img: 'inventory',
-              size: 15,
-            ),
+            child: Prefabs.iconImg(img: 'inventory', size: 15),
             onTap: () => setState(() {
               PietrarioCtrl.deleteGuardian();
               Navigator.of(context).pop();
@@ -153,7 +141,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           ),
         ],
       ),
-      context: context,
+      ctx: context,
     );
   }
 
@@ -163,14 +151,16 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
       alignment: Alignment(x, y),
       child: s == null ?
       InkWell(
-        child: Prefabs.image(img: 'leaf', size: 7, blend: false),
+        child: Prefabs.image(img: 'leaf', size: 7),
         onTap: () => showDialog(context: context,
           builder: (BuildContext context) => buildSucculentsList(place, context),
         ),
       ) :
-      Prefabs.imgRouteButton(
-          img: Prefabs.image(img: s.name, size: 25, blend: false),
-          context: context, route: SucculentScreen(place: place, callBack: () => callBackSucculent()),
+      Prefabs.imgRouteBtn(img: s.name, size: 25, ctx: context,
+        route: SucculentScreen(
+          place: place,
+          callBack: () => callBackSucculent(),
+        ),
       ),
     );
   }
@@ -182,7 +172,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
         Container(
           margin: EdgeInsets.all(Consts.width(2)),
           child: InkWell(
-            child: Prefabs.image(img: e.name, size: 12, blend: false),
+            child: Prefabs.image(img: e.name, size: 12),
             onTap: () => setState(() {
               PietrarioCtrl.add(e as Succulent, place);
               Navigator.of(context).pop();
@@ -193,10 +183,8 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
     return Prefabs.popUp(
       title: 'succulents',
       content: succulents.length == 0 ?
-      Text(
-        Consts.getText('no_succulents'),
-        style: Consts.textStyle,
-      ) : Container(
+      Prefabs.text('no_succulents') :
+      Container(
         width: Consts.width(70),
         height: Consts.width(70),
         padding: EdgeInsets.all(Consts.width(5)),
@@ -207,7 +195,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           children: succulents,
         ),
       ),
-      context: context,
+      ctx: context,
     );
   }
 
@@ -219,17 +207,9 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           color: Colors.yellow,
           percent: 0.95,
           radius: 20,
-          center: Text(
-            "95%",
-            style: Consts.textStyle,
-          ),
+          center: Prefabs.text('${User().pietrario.light}%', false),
         ),
-        onTap: () {
-          turnAr();
-          setState(() {
-
-          });
-        },
+        onTap: () => turnAr(),
       ),
     );
   }
@@ -241,6 +221,6 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
     } on PlatformException catch(e) {
       print(e);
     }
-    print('turnAr ' + value);
+    print('pietrario ' + value);
   }
 }

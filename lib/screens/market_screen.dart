@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pietrario_app/controller/InventoryCtrl.dart';
 import 'package:pietrario_app/controller/MarketCtrl.dart';
 import 'package:pietrario_app/model/Bioasset.dart';
 import 'package:pietrario_app/model/Resource.dart';
@@ -62,13 +63,10 @@ class _MarketScreenState extends State<MarketScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Prefabs.image(img: resource, size: 7),
+        Prefabs.iconImg(img: resource, size: 7),
         Container(
           margin: EdgeInsets.only(left: Consts.width(1), right: Consts.width(5)),
-          child: Text(
-            '${User().inventory[resource].amount}',
-            style: Consts.textStyle,
-          ),
+          child: Prefabs.text('${InventoryCtrl.get(resource).amount}', false),
         ),
       ],
     );
@@ -85,11 +83,7 @@ class _MarketScreenState extends State<MarketScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            Assets.img(b.name),
-            width: Consts.width(12),
-            height: Consts.width(12),
-          ),
+          Prefabs.image(img: b.name, size: 12),
           SizedBox(height: Consts.width(2)),
           buildCost(Resource.water, b.costWater),
           SizedBox(height: Consts.width(1)),
@@ -102,45 +96,38 @@ class _MarketScreenState extends State<MarketScreen> {
   }
 
   Widget buildCost(String img, int val) {
-    return val == 0 ? SizedBox() :
+    return val == 0 ?
+    SizedBox() :
     Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Prefabs.image(img: img, size: 5),
+        Prefabs.iconImg(img: img, size: 5),
         SizedBox(width: Consts.width(1)),
-        Text(
-          '$val',
-          style: Consts.textStyle,
-        ),
+        Prefabs.text('$val', false),
       ],
     );
   }
 
-  Widget buildPurchasing(Bioasset b, BuildContext context) {
+  Widget buildPurchasing(Bioasset b, BuildContext ctx) {
     bool canPurchase = MarketCtrl.canPurchase(b);
     return Prefabs.popUp(
         title: 'exchange',
-        content: canPurchase ? Column(
+        content: canPurchase ?
+        Column(
           children: [
             buildBioasset(b),
             SizedBox(height: Consts.width(6)),
             InkWell(
-              child: Prefabs.image(
-                img: 'check',
-                size: 8,
-              ),
+              child: Prefabs.iconImg(img: 'check', size: 8),
               onTap: () => setState(() {
                 MarketCtrl.purchase(b);
-                Navigator.of(context).pop();
+                Navigator.of(ctx).pop();
               }),
             ),
           ],
-        ) : Text(
-          Consts.getText('insuficient_resources'),
-          textAlign: TextAlign.center,
-          style: Consts.textStyle,
-        ),
-        context: context,
+        ) :
+        Prefabs.text('insuficient_resources'),
+        ctx: ctx,
     );
   }
 

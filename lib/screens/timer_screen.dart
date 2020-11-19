@@ -73,10 +73,7 @@ class TimeState extends State<TimerScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              Consts.getText(text),
-              style: Consts.textStyle,
-            ),
+            Prefabs.text(text),
             Prefabs.circularPercentIndicator(
               lineWidth: 2,
               percent: percent,
@@ -85,10 +82,11 @@ class TimeState extends State<TimerScreen> {
               Text(
                 '$minuts : $seconds',
                 style: textStyle,
-              ) : (ended ? buildReward() : inputMinuts),
+              ) :
+              (ended ? buildReward() : inputMinuts),
             ),
             InkWell(
-              child: Prefabs.image(img: imgButton, size: 20),
+              child: Prefabs.iconImg(img: imgButton, size: 20),
               onTap: onTap,
             ),
           ],
@@ -140,12 +138,9 @@ class TimeState extends State<TimerScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Prefabs.image(img: e.key, size: 7),
+                Prefabs.iconImg(img: e.key, size: 7),
                 SizedBox(width: Consts.width(3)),
-                Text(
-                  '${e.value}',
-                  style: Consts.textStyle,
-                ),
+                Prefabs.text('${e.value}', false),
               ],
             ),
         ).toList(),

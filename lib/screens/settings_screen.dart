@@ -42,12 +42,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
           InkWell(
-            child: Prefabs.image(
-              img: 'bulb',
-              size: 14,
-              blend: Config.dark,
+            child: Config.dark ?
+            Prefabs.iconImg(img: 'bulb', size: 14,
               filter: ColorFilter.mode(Colors.blue[700], BlendMode.modulate),
-            ),
+            ) :
+            Prefabs.image(img: 'bulb', size: 14),
             onTap: () => setState(() {
               Config.setDark(!Config.dark);
             }),
@@ -69,70 +68,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                Consts.getText('rigorous'),
-                style: Consts.textStyle,
-              ),
-              Switch(
-                value: Config.rigorous,
-                activeTrackColor: Colors.lightGreenAccent,
-                activeColor: Colors.green,
-                inactiveThumbColor: Consts.bgColor,
-                inactiveTrackColor: Consts.scndColor,
-                onChanged: (v) => setState(() {
-                  Config.setRigorous(v);
-                }),
-              ),
-            ],
+          Prefabs.switchBtn(
+            text: 'rigorous',
+            value: Config.rigorous,
+            onChanged: (v) => setState(() {
+              Config.setRigorous(v);
+            }),
+          ),
+          Prefabs.switchBtn(
+            text: 'cloudy',
+            value: Config.cloudy,
+            onChanged: (v) => setState(() {
+              Config.setCloudy(v);
+            }),
+          ),
+          Prefabs.switchBtn(
+            text: 'vibration',
+            value: Config.vibration,
+            onChanged: (v) => setState(() {
+              Config.setVibration(v);
+            }),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                Consts.getText('cloudy'),
-                style: Consts.textStyle,
-              ),
-              Switch(
-                value: Config.cloudy,
-                activeTrackColor: Colors.lightGreenAccent,
-                activeColor: Colors.green,
-                inactiveThumbColor: Consts.bgColor,
-                inactiveTrackColor: Consts.scndColor,
-                onChanged: (v) => setState(() {
-                  Config.setCloudy(v);
-                }),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                Consts.getText('vibration'),
-                style: Consts.textStyle,
-              ),
-              Switch(
-                value: Config.vibration,
-                activeTrackColor: Colors.lightGreenAccent,
-                activeColor: Colors.green,
-                inactiveThumbColor: Consts.bgColor,
-                inactiveTrackColor: Consts.scndColor,
-                onChanged: (v) => setState(() {
-                  Config.setVibration(v);
-                }),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                Consts.getText('language'),
-                style: Consts.textStyle,
-              ),
+              Prefabs.text('language'),
               DropdownButton(
                 value: Config.getLang(),
                 dropdownColor: Consts.mainColor,
@@ -149,43 +109,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ],
           ),
-          Row(
-            children: [
-              Text(
-                Consts.getText('sound'),
-                style: Consts.textStyle,
-              ),
-              Slider(
-                value: Config.sound,
-                min: 0,
-                max: 10,
-                divisions: 10,
-                activeColor: Colors.lightGreenAccent,
-                inactiveColor: Consts.scndColor,
-                onChanged: (v) => setState(() {
-                  Config.setSound(v);
-                }),
-              ),
-            ],
+          Prefabs.sliderBtn(
+            text: 'sound',
+            value: Config.sound,
+            onChanged: (v) => setState(() {
+              Config.setSound(v);
+            }),
           ),
-          Row(
-            children: [
-              Text(
-                Consts.getText('music'),
-                style: Consts.textStyle,
-              ),
-              Slider(
-                value: Config.music,
-                min: 0,
-                max: 10,
-                divisions: 10,
-                activeColor: Colors.lightGreenAccent,
-                inactiveColor: Colors.grey,
-                onChanged: (v) => setState(() {
-                  Config.setMusic(v);
-                }),
-              ),
-            ],
+          Prefabs.sliderBtn(
+            text: 'music',
+            value: Config.music,
+            onChanged: (v) => setState(() {
+              Config.setMusic(v);
+            }),
           ),
         ],
       ),

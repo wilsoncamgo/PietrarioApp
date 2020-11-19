@@ -16,6 +16,7 @@ class PietrarioCtrl {
     User().pietrario = Pietrario(
       terrain: 'Desert',
       temperature: 35,
+      light: 95,
       succulents: succulents,
       guardian: guardian,
     );
