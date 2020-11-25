@@ -96,3 +96,8 @@ sceneform.asset('sampledata/succulent3.obj',
         'default',
         'sampledata/succulent3.sfa',
         'src/main/res/raw/succulent3')
+
+sceneform.asset('sampledata/pietrario_full.obj',
+        'default',
+        'sampledata/pietrario_full.sfa',
+        'src/main/res/raw/pietrario_full')

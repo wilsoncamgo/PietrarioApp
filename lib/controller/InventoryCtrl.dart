@@ -12,9 +12,9 @@ class InventoryCtrl {
   static void initInventory() async {
     User().inventory = Map<String, Bioasset>();
     // Initialize the bioassets
-    put(Resource(costMoss: 100, costEnergy: 100, amount: 500, name: Resource.water));
-    put(Resource(costWater: 100, costEnergy: 100, amount: 500, name: Resource.moss));
-    put(Resource(costWater: 100, costMoss: 100, amount: 500, name: Resource.energy));
+    put(Resource(costMoss: 100, costEnergy: 100, amount: 1500, name: Resource.water));
+    put(Resource(costWater: 100, costEnergy: 100, amount: 1500, name: Resource.moss));
+    put(Resource(costWater: 100, costMoss: 100, amount: 1500, name: Resource.energy));
     put(Succulent(
       health: Vital(value: 80, maxValue: 100, losingValue: 1.0),
       hydration: Vital(value: 80,maxValue: 100, losingValue: 0.5),
