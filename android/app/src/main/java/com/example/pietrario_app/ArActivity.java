@@ -149,16 +149,16 @@ public class ArActivity extends AppCompatActivity {
         fragAr.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             // remove old
             if(nodePietrario != null) scene.removeChild(nodePietrario);
-            /*if(nodeGuardian != null) scene.removeChild(nodeGuardian);
+            if(nodeGuardian != null) scene.removeChild(nodeGuardian);
             if(nodeSucculents != null) {
                 for(int i = nodeSucculents.length - 1; i >= 0; i--) {
                     if(nodeSucculents[i] != null) scene.removeChild(nodeSucculents[i]);
                 }
-            }*/
+            }
             // add new
             nodePietrario = buildNode(hitResult, modelPietrario,
                     posPietrario, scalePietrario, rotationPietrario);
-            /*if(guardian != -1) {
+            if(guardian != -1) {
                 nodeGuardian = buildNode(hitResult, modelGuardians[guardian],
                         posGuardian, scaleGuardians[guardian], rotationGuardian);
             }
@@ -168,7 +168,7 @@ public class ArActivity extends AppCompatActivity {
                 // value = succulent [0, 2]
                 nodeSucculents[k] = buildNode(hitResult, modelSucculents[v],
                         posSucculents[k], scaleSucculents[v], rotationSucculents[k]);
-            });*/
+            });
         });
     }
 
