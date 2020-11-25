@@ -95,7 +95,7 @@ public class ArActivity extends AppCompatActivity {
     }
 
     private void initModels() {
-        buildModel(R.raw.pietrario_full, renderable -> modelPietrario = renderable);
+        buildModel(R.raw.pietrario, renderable -> modelPietrario = renderable);
         modelGuardians = new ModelRenderable[2];
         buildModel(R.raw.guardian1, renderable -> modelGuardians[0] = renderable);
         buildModel(R.raw.guardian2, renderable -> modelGuardians[1] = renderable);
