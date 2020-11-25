@@ -48,8 +48,8 @@ public class ArActivity extends AppCompatActivity {
     private AnchorNode nodeGuardian;
     private AnchorNode[] nodeSucculents;
 
-    private HashMap<Integer, Integer> succulents;
-    private int guardian;
+    public static HashMap<Integer, Integer> succulents = new HashMap<>();
+    public static int guardian = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class ArActivity extends AppCompatActivity {
 
     private void init() {
         listenClick();
-        initSucculents();
+        //initSucculents();
         initAr();
         initModels();
         initVectors();
@@ -79,13 +79,13 @@ public class ArActivity extends AppCompatActivity {
         imgBack.setOnClickListener(clickListen);
     }
 
-    private void initSucculents() {
+    /*private void initSucculents() {
         // key = position [0, 9]
         // value = succulent [0, 2]
         guardian = 0;
         succulents = new HashMap<>();
         succulents.put(0, 0);
-    }
+    }*/
 
     private void initAr() {
         fragAr = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.frag_ar);
@@ -107,15 +107,15 @@ public class ArActivity extends AppCompatActivity {
 
     private void initVectors() {
         // scale
-        scalePietrario = new Vector3(0.9f, 0.9f, 0.9f);
+        scalePietrario = new Vector3(0.35f, 0.35f, 0.35f);
         scaleGuardians = new Vector3[]{
                 new Vector3(0.3f, 0.3f, 0.3f),
                 new Vector3(0.3f, 0.3f, 0.3f),
         };
         scaleSucculents = new Vector3[]{
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
-                new Vector3(0.3f, 0.3f, 0.3f),
+                new Vector3(0.25f, 0.25f, 0.25f),
+                new Vector3(0.25f, 0.25f, 0.25f),
+                new Vector3(0.25f, 0.25f, 0.25f),
         };
         // rotation
         rotationPietrario = new Quaternion();
@@ -132,16 +132,16 @@ public class ArActivity extends AppCompatActivity {
         };
         // position
         posPietrario = new Vector3(0, 0, 0);
-        posGuardian = new Vector3(0.13144f, 0.091951f, 0.000238f);
+        posGuardian = new Vector3(0.26288f, 0.183902f, 0.000476f);
         posSucculents = new Vector3[]{
-                new Vector3(-1.0475f, 0.69443f, 0.90855f),
-                new Vector3(-0.21225f, 0.049081f, 0.063879f),
-                new Vector3(-0.51632f, 0.60319f, 0.42301f),
-                new Vector3(-1.0213f, 0.075998f, 0.39727f),
-                new Vector3(-0.18599f, -0.14582f, -0.046029f),
-                new Vector3(-0.007491f, -0.20771f, -0.048179f),
-                new Vector3(0.48603f, 0.56679f, -0.003352f),
-                new Vector3(-0.025618f, 0.79617f, 0.23613f),
+                new Vector3(-2.095f, 1.38886f, -1.8171f),
+                new Vector3(-0.4245f, 0.098162f, -0.127758f),
+                new Vector3(-1.03264f, 1.20638f, -0.84602f),
+                new Vector3(-2.0426f, 0.151996f, -0.79454f),
+                new Vector3(-0.37198f, -0.29164f, +0.092058f),
+                new Vector3(-0.014982f, -0.41542f, +0.096358f),
+                new Vector3(0.97206f, 1.13358f, +0.006704f),
+                new Vector3(-0.051236f, 1.59234f, -0.47226f),
         };
     }
 
@@ -186,13 +186,13 @@ public class ArActivity extends AppCompatActivity {
         Anchor anchor = hitResult.createAnchor();
         AnchorNode node = new AnchorNode(anchor);
         scene.addChild(node);
-        node.setLocalPosition(position);
-        node.setLocalScale(scale);
-        node.setLocalRotation(rotation);
         TransformableNode tNode = new TransformableNode(fragAr.getTransformationSystem());
         node.addChild(tNode);
         tNode.setRenderable(model);
         tNode.select();
+        tNode.setWorldPosition(position);
+        node.setWorldScale(scale);
+        //node.setWorldRotation(rotation);
         return node;
     }
 

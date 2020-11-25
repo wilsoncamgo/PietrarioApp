@@ -82,7 +82,7 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
         InkWell(
           child: Prefabs.image(img: g.name, size: 25),
           onTap: () => showDialog(context: context,
-            builder: (BuildContext context) => buildGuardianInfo(g, context),
+            builder: (ctx) => buildGuardianInfo(g, ctx),
           ),
         ),
     );
@@ -156,10 +156,13 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
           builder: (BuildContext context) => buildSucculentsList(place, context),
         ),
       ) :
-      Prefabs.imgRouteBtn(img: s.name, size: 25, ctx: context,
-        route: SucculentScreen(
-          place: place,
-          callBack: () => callBackSucculent(),
+      InkWell(
+        child: Prefabs.image(img: s.name, size: 25),
+        onTap: () => Navigator.push(context,
+          MaterialPageRoute(builder: (ctx) => SucculentScreen(
+            place: place,
+            callBack: () => callBackSucculent(),
+          )),
         ),
       ),
     );
@@ -216,8 +219,16 @@ class _PietrarioScreenState extends State<PietrarioScreen> {
 
   Future<void> turnAr() async {
     String value = 'failed';
+    Guardian g = PietrarioCtrl.getGuardian();
+    var params = <String, dynamic>{
+      'guardian': g == null ? 'none' : g.name,
+    };
+    for(int i = 7; i >= 0; i--) {
+      Succulent s = PietrarioCtrl.get(i);
+      params.putIfAbsent('place$i', () => s == null ? 'none' : s.name);
+    }
     try {
-      value = await androidChannel.invokeMethod('turnAr');
+      value = await androidChannel.invokeMethod('turnAr', params);
     } on PlatformException catch(e) {
       print(e);
     }

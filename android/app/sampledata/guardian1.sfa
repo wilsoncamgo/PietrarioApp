@@ -1,7 +1,7 @@
 {
   materials: [
     {
-      name: 'Mat',
+      name: 'Mat.002',
       parameters: [
         {
           baseColor: null,

@@ -20,8 +20,8 @@ class InventoryCtrl {
       hydration: Vital(value: 80,maxValue: 100, losingValue: 0.5),
       minerals: Vital(value: 80, maxValue: 100, losingValue: 0.5),
       temperature: Vital(value: 20, maxValue: 30, losingValue: 0.1),
-      costWater: 480,
-      costMoss: 480,
+      costWater: 240,
+      costMoss: 240,
       name: 'succulent1',
     ));
     put(Succulent(
@@ -29,8 +29,8 @@ class InventoryCtrl {
         hydration: Vital(value: 96, maxValue: 120, losingValue: 0.5),
         minerals: Vital(value: 80, maxValue: 100, losingValue: 0.5),
         temperature: Vital(value: 20, maxValue: 32, losingValue: 0.1),
-        costWater: 540,
-        costMoss: 500,
+        costWater: 270,
+        costMoss: 250,
         name: 'succulent2',
     ));
     put(Succulent(
@@ -38,27 +38,27 @@ class InventoryCtrl {
         hydration: Vital(value: 80, maxValue: 100, losingValue: 0.5),
         minerals: Vital(value: 96, maxValue: 120, losingValue: 0.5),
         temperature: Vital(value: 20, maxValue: 32, losingValue: 0.1),
-        costWater: 500,
-        costMoss: 540,
+        costWater: 250,
+        costMoss: 270,
         name: 'succulent3',
     ));
     put(Guardian(
       bonusWater: 0.1,
       bonusMoss: 0.2,
       bonusEnergy: 0.1,
-      costMoss: 500,
-      costEnergy: 500,
+      costMoss: 250,
+      costEnergy: 250,
       amount: 0,
-      name: 'dog',
+      name: 'wolf',
     ));
     put(Guardian(
         bonusWater: 0.2,
         bonusMoss: 0.1,
         bonusEnergy: 0.1,
-        costWater: 500,
-        costEnergy: 500,
+        costWater: 250,
+        costEnergy: 250,
         amount: 0,
-        name: 'fox',
+        name: 'deer',
     ));
     // load inventory
     List<Map<String, dynamic>> inventoryData =

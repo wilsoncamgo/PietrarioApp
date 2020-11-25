@@ -41,8 +41,8 @@ class Consts {
     texts['succulent1'] = ['Succulent1', 'Suculenta1'];
     texts['succulent2'] = ['Succulent2', 'Suculenta2'];
     texts['succulent3'] = ['Succulent3', 'Suculenta3'];
-    texts['dog'] = ['Dog', 'Perro'];
-    texts['fox'] = ['Fox', 'Zorro'];
+    texts['wolf'] = ['Wolf', 'Lobo'];
+    texts['deer'] = ['Deer', 'Ciervo'];
     // BIOASSETS DESCRIPTION
     texts['desc_succulent1'] = [
       'Pretty1',
@@ -56,11 +56,11 @@ class Consts {
       'Pretty3',
       'Bonita3',
     ];
-    texts['desc_dog'] = [
-      'Good guardian for your plants',
-      'Buen guardián para tus plantas',
+    texts['desc_wolf'] = [
+      'Strong guardian for your plants',
+      'Guardián fuerte para tus plantas',
     ];
-    texts['desc_fox'] = [
+    texts['desc_deer'] = [
       'Smart guardian for your plants',
       'Guardián inteligente para tus plantas',
     ];
